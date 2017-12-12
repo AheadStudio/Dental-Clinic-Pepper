@@ -1,0 +1,138 @@
+include ../lib/html/html.jade
+doctype html
+<!--[if IE 7]><html lang="ru" prefix="og: http://ogp.me/ns#" class="ie8 no-js"><![endif]-->
+<!--[if IE 8]><html lang="ru" prefix="og: http://ogp.me/ns#" class="ie8 no-js"><![endif]-->
+<!--[if IE 9]><html lang="ru" prefix="og: http://ogp.me/ns#" class="ie9 no-js"><![endif]-->
+<!--[if !IE]><!-->
+html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
+	<!--<![endif]-->
+	head
+		+headerMeta({
+			charset: "utf-8",
+			keywords: info.keywords,
+			description: info.description,
+			title: info.title,
+			robots: "index, follow",
+			viewport: "width=device-width, initial-scale=1.0"
+		})
+		+openGraph({
+			type: "website",
+			siteName: info.siteName,
+			title: info.title,
+			description: info.description,
+			url: info.productionUrl,
+			image: info.image
+		})
+		+webIcons({
+			favicon: {
+				src: "/i/favicon.ico"
+			},
+			appleTouchIcon: [
+				{
+					src: "../i/icons/apple-touch-icon.jpg"
+				}, {
+					src: "../i/icons/apple-touch-icon-76.jpg",
+					size: "76x76"
+				}, {
+					src: "../i/icons/apple-touch-icon-140.jpg",	
+					size: "140x140"
+				}, {
+					src: "../i/icons/apple-touch-icon-152.jpg",
+					size: "152x152"
+				}
+			]
+		})
+		+addCSS([
+			{
+				media: "screen",
+				href: "../css/sprite.css",
+				noCache: true,
+			}, {
+				media: "screen",
+				href: "../css/" + info.code + ".css",
+				noCache: true
+			}
+		])
+
+	body(itemscope, itemtype="http://schema.org/WebPage")
+
+		div(class="page")
+			div(class="page-inner page-inner--w1")
+				header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+					div(class="header-logo-holder")
+						img(src="../i/icons/logo.png")
+					div(class="header-menu-holder")
+						+menu({
+							rootClass: "header-menu",
+							items: [
+								{
+									name: "Клиника",
+									linkClass: "link link--green link-opacity active",
+									href: "home.html",
+									items: [
+										{
+											name: "О клинике",
+											href: "about.html",
+											linkClass: "link link-opacity animation-link",
+										}, {
+											name: "Новости",
+											href: "news.html",
+											linkClass: "link link-opacity animation-link",
+										}, {
+											name: "Вакансии",
+											href: "vacancies.html",
+											linkClass: "link link-opacity animation-link",
+										}, {
+											name: "Отзывы",
+											href: "reviews.html",
+											linkClass: "link link-opacity animation-link",
+										}
+									]
+								}, {
+									name: "Услуги",
+									href: "service.html",
+									linkClass: "link link--green link-opacity",
+								}, {
+									name: "Цены",
+									href: "price.html",
+									linkClass: "link link--green link-opacity",
+								}, {
+									name: "Врачи",
+									href: "doctors.html",
+									linkClass: "link link--green link-opacity",
+								}, {
+									name: "Контакты",
+									href: "contacts.html",
+									linkClass: "link link--green link-opacity",
+								}
+							]
+						})
+					div(class="header-info-holder")
+						a(href="tel:+74932938-128", class="link header-mobile") +7 (4932) 938-128
+						span Обратный звонок
+					div(class="header-burger-holder")
+						div(class="header-burger")
+					
+			main(class="page-content")
+				block content
+
+		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
+			div(class="page-inner page-inner--w1")
+				div(class="footer-license")
+					p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
+					p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
+					p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
+					a(href="#", class="link link--green link-opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
+				a(href="http://ruformat.ru/", target="_blank", class="link link-opacity footer-creators", title="Разработка интернет-магазинов")
+					div(class="footer-creators-title") Сделанно в
+					div(class="footer-creators-name link--green") Aheadstudio
+				
+
+
+		+addJS([
+			{
+				src: "http://code.jquery.com/jquery-1.11.3.min.js"
+			}, {
+				src: "../js/" + info.code + ".js"
+			}
+		])

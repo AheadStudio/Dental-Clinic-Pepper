@@ -1,10 +1,10 @@
 {
     "info": {
         "name": "Стоматологическая клиника Перцевых",
-        "code": "dental_clinic_pepper",
+        "code": "dentalclinic",
         "year": "2017",
         "notes": "Сайт стоматологической клиники Перцевых",
-        "productionUrl": "http://wemakesites.ru/projects/dental-clinic-pepper/",
+        "productionUrl": "http://wemakesites.ru/projects/dentalclinic/",
         "siteName": "dental-clinic-pepper",
         "title": "Сайт стоматологической клиники",
         "description": "",
@@ -28,7 +28,7 @@
             "progress": {
                 "desktop": "0",
                 "tablet": "0",
-                "mobile": "00"
+                "mobile": "0"
             }
         },
         "catalog": {

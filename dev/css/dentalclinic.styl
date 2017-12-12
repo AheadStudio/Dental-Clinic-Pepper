@@ -1,0 +1,278 @@
+/*** Settings ***/
+@import "nib"
+@import "../lib/css/css"
+
+global-reset();
+reset-html5();
+form-reset();
+b
+strong
+i
+em
+	font-style normal
+	font-weight normal
+
+$transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
+$colorgreen = #009d3c
+$colorgray = #9f9f9f
+
+html
+body
+	width 100%
+	height 100%
+	min-height 100vh
+	line-height 1
+	cursor default
+
+/*** //Settings ***/
+
+
+/*** main style ***/
+
+.page
+	display block
+	width 100%
+
+	min-height 100%
+	max-width 1300px
+
+	margin 0 auto
+
+.page-inner
+	display block
+	margin 0 auto
+
+	box-sizing border-box
+
+	&--w1
+		padding 0 60px
+
+	&--w2
+		padding 0 120px
+
+
+.page-header
+	display flex
+	align-items center
+	justify-content: space-between
+
+	width 100%
+	height 150px
+
+	padding 30px 0
+	box-sizing border-box
+
+.page-header
+	.header-logo-holder
+		display block
+		width 155px
+		margin-right 140px
+
+	.header-menu-holder
+		display block
+		width 430px
+		margin-right 160px
+
+	.header-info-holder
+		display block
+		width 155px
+		margin-right 110px
+
+	.header-burger-holder
+		position relative
+		display block
+
+		width 32px
+		height 24px
+
+		cursor pointer
+
+.header-logo-holder
+	img
+		display block
+		width 100%
+		max-width 100%
+
+/* menu */
+.header-menu-holder
+	.header-menu
+		display block
+		width 100%
+
+.header-menu
+	.header-menu-inner
+		display flex
+		justify-content space-between
+
+	.header-menu-item
+		text-transform uppercase
+		font-size 16px
+		&.active
+			color #000
+
+.header-menu-inner
+	.header-menu-item-holder--has-submenu
+		position relative
+		z-index 10
+
+.header-menu-level1
+	position absolute
+	left -35px
+	top -35px
+
+	display none
+	min-width: 160px
+	min-height 225px
+
+	padding 75px 35px 7px 35px
+	box-sizing: border-box
+
+	background: #fff
+	border: 1px solid #e3e3e3
+
+	opacity 0
+
+	transform translateX(-50px)
+	transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+	z-index -10
+
+	.header-menu-level1-item-holder
+		margin-bottom 25px
+
+	.animation-link
+		opacity 0
+		transition-duration 0.6s
+		transform translateX(-10px)
+		transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+	&.show
+		opacity 1
+		transform translateX(0px)
+
+		.animation-link
+			opacity 1
+			transform translateX(0px)
+
+
+/* menu */
+
+.header-info-holder
+	.header-mobile
+		display block
+		width 100%
+		font-size 20px
+		margin-top 28px
+		margin-bottom 13px
+	span
+		display block
+		font-size 12px
+
+.header-burger-holder
+	overflow hidden
+	.header-burger
+		position absolute
+		top 50%
+		display block
+		width 100%
+		height 2px
+		background $colorgreen
+		transform translateY(-50%)
+		transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+	&:before
+	&:after
+		content ""
+		position absolute
+		top 0
+		left 0
+		display block
+		width 100%
+		height 2px
+		background $colorgreen
+		transition transform 0.3s $transitionAnimation
+	&:after
+		top initial
+		bottom 0
+
+	&.active
+		.header-burger
+			transform translateX(25px)
+		&:before
+			transform translateX(10px)
+		&:after
+			transform translateX(20px)
+
+
+.page-footer
+	display block
+	width 100%
+	max-width 1300px
+
+	margin 0 auto
+
+	padding-top 85px
+	padding-bottom 110px
+	box-sizing border-box
+
+.page-footer
+	.page-inner
+		display flex
+
+.page-footer
+	.footer-license
+		display block
+		width 735px
+		margin-right 160px
+
+.footer-license
+	p
+		display block
+		width 100%
+		margin-bottom 10px
+	a
+		margin-top 30px
+		display block
+
+.footer-creators
+	min-width 165px
+
+	.footer-creators-title
+	.footer-creators-name
+		display inline-block
+		vertical-align top
+
+/** button and link **/
+.link
+	text-decoration none
+	color #000
+
+.link--bold
+	font-weight bold
+
+.link--green
+	color $colorgreen
+
+.link--black-bottom
+	border-bottom 2px solid transparent
+	transition border-bottom-color 0.5s $transitionAnimation
+	&:hover
+		border-bottom-color #000
+
+.link--black-inverse
+	border-bottom 2px solid #000
+	transition border-bottom-color 0.5s $transitionAnimation
+	&:hover
+		border-bottom-color transparent
+
+.link-opacity
+	opacity 1
+	transition opacity 0.3s $transitionAnimation
+
+	&:hover
+		opacity 0.6
+
+/** //button and link **/
+
+
+/*** //main style ***/

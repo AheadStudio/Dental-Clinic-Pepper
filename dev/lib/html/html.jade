@@ -189,7 +189,7 @@ mixin logo(params)
 mixin menu(params)
 	if params.rootClass && params.items
 		- var innerCLass = params.rootClass + "-inner " + (params.ulClass ? params.ulClass : '')
-		- var holderClass = params.rootClass + "-item-holder " + (params.holderClass ? params.holderClass : '')
+		- var holderClass = params.rootClass + "-item-holder" + (params.holderClass ? params.holderClass : '')
 		- var holderSubClass = holderClass + "--has-submenu"
 		- var itemClass = params.rootClass + "-item"
 		- var itemCurrentClass = itemClass + " " + itemClass + "--current"
