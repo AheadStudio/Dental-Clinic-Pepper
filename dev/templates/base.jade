@@ -45,6 +45,9 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		+addCSS([
 			{
 				media: "screen",
+				href: "../css/plugins/slick.css"
+			}, {
+				media: "screen",
 				href: "../css/sprite.css",
 				noCache: true,
 			}, {
@@ -131,8 +134,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 
 		+addJS([
 			{
-				src: "http://code.jquery.com/jquery-1.11.3.min.js"
-			}, {
+				src: "../js/jquery-3.2.1.min.js"
+			}, { 
+				src: "../js/plugins/slick.min.js"
+			}, { 
 				src: "../js/" + info.code + ".js"
 			}
 		])

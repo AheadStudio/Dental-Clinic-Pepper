@@ -16,6 +16,29 @@ $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
 $colorgreen = #009d3c
 $colorgray = #9f9f9f
 
+/* fonts */
+@font-face
+	font-family "ProximaNovaBlack"
+	src url("../fonts/ProximaNova-Black.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaLight"
+	src url("../fonts/ProximaNova-Light.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaRegular"
+	src url("../fonts/ProximaNova-Regular.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaSemibold"
+	src url("../fonts/ProximaNova-Semibold.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaBold"
+	src url("../fonts/ProximaNova-Bold.woff") format("woff")
+
+/* //fonts */
+
 html
 body
 	width 100%
@@ -23,6 +46,10 @@ body
 	min-height 100vh
 	line-height 1
 	cursor default
+
+	font-family "ProximaNovaRegular"
+
+
 
 /*** //Settings ***/
 
@@ -60,9 +87,10 @@ body
 	height 150px
 
 	padding 30px 0
+	margin-bottom 140px
+
 	box-sizing border-box
 
-.page-header
 	.header-logo-holder
 		display block
 		width 155px
@@ -75,7 +103,7 @@ body
 
 	.header-info-holder
 		display block
-		width 155px
+		width 160px
 		margin-right 110px
 
 	.header-burger-holder
@@ -105,8 +133,8 @@ body
 		justify-content space-between
 
 	.header-menu-item
-		text-transform uppercase
 		font-size 16px
+		letter-spacing 2px
 		&.active
 			color #000
 
@@ -118,13 +146,13 @@ body
 .header-menu-level1
 	position absolute
 	left -35px
-	top -35px
+	top -25px
 
 	display none
 	min-width: 160px
 	min-height 225px
 
-	padding 75px 35px 7px 35px
+	padding 70px 35px 8px 35px
 	box-sizing: border-box
 
 	background: #fff
@@ -138,7 +166,7 @@ body
 	z-index -10
 
 	.header-menu-level1-item-holder
-		margin-bottom 25px
+		margin-bottom 20px
 
 	.animation-link
 		opacity 0
@@ -276,3 +304,92 @@ body
 
 
 /*** //main style ***/
+
+
+/*** page style ***/
+
+.main-slider
+	position relative
+	width: 100%
+	height 580px
+	margin-top -95px
+	background #fafafa
+	overflow hidden
+
+.main-slider-items
+	.main-slider-item
+		background #fafafa
+		cursor pointer
+
+.main-slider-item
+	position relative
+
+	.main-slider-item-title
+		position absolute
+		top 95px
+		left 120px
+
+		font-size 54px
+		font-family ProximaNovabold
+
+		line-height 60px
+
+		z-index 10
+
+	.main-slider-item-subtitle
+		position absolute
+		top 260px
+		left 120px
+
+		display block
+		width 460px
+
+		font-size 22px
+		font-family ProximaNovaRegular
+
+		line-height 30px
+		z-index 100
+
+	.main-slider-item-img
+		position relative
+		top 0
+		bottom 0
+		right 0
+		display block
+		box-shadow inset 480px 0px 200px 50px rgb(250, 250, 250)
+		background-repeat no-repeat
+		background-position-x right
+
+	.main-slider-item-img:before
+		content ""
+		display block
+		padding-top 100%
+
+.slick-arrow-container
+	position absolute
+	top 395px
+	left 120px
+
+	display flex
+	justify-content space-between
+	align-items content ''
+	width 190px
+
+	transition opacity 0.2s $transitionAnimation
+
+	.slick-arrow-prev
+	.slick-arrow-next
+		margin-top 5px
+		width 0
+		height 0
+		border-top 3px solid transparent
+		border-bottom 3px solid transparent
+		cursor pointer
+	.slick-arrow-prev
+		border-right 6px solid #009c3c
+	.slick-arrow-next
+		border-left 6px solid #009c3c
+
+	&.hide
+		opacity 0
+/*** //page style ***/
