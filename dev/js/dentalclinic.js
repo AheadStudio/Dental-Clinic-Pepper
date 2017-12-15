@@ -34,9 +34,10 @@
 				},
 
 				mainSlider: function() {
-					var slider = $(".slick-slider");
+					var $slider = $(".slick-slider"),
+						$itemSlider = $(".main-slider-item", $slider);
 
-					slider.slick({
+					$slider.slick({
 						arrows: true,
 						appendArrows: $(".slick-arrow-container"),
 						prevArrow: '<div class="slick-arrow-prev"></div>',
@@ -48,15 +49,26 @@
 						autoplaySpeed: 6000
 					});
 
-					slider.on("swipe", function(event, slick, direction) {
-						var arrows = $(".slick-arrow-container", ".main-slider");
+					$slider.on("swipe", function(event, slick, direction) {
+						var $arrows = $(".slick-arrow-container", ".main-slider");
 
-						arrows.addClass("hide");
+						$arrows.addClass("hide");
 						setTimeout(function() {
-							arrows.removeClass("hide");
+							$arrows.removeClass("hide");
 						}, 600);
 
 					});
+
+					$itemSlider.on("mousedown", function() {
+						item = $(this);
+						item.css("cursor", "-webkit-grab");
+					})
+
+					$itemSlider.on("mouseup", function() {
+						item = $(this);
+						item.css("cursor", "pointer");
+					})
+
 				}
 			},
 		};
