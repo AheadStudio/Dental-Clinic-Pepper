@@ -19,8 +19,8 @@
     },
     "ftp": {
         "host": "wemakesites.ru",
-        "login": "wemakesites",
-        "password": "wemakesites-root"
+        "login": "wms",
+        "password": "7A4m8C7q"
     },
     "pages": {
         "home": {
