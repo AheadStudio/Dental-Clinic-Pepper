@@ -26,7 +26,7 @@
         "home": {
             "name": "Главная",
             "progress": {
-                "desktop": "0",
+                "desktop": "50",
                 "tablet": "0",
                 "mobile": "0"
             }

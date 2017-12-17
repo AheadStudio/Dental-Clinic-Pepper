@@ -15,6 +15,7 @@ em
 $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
 $colorgreen = #009d3c
 $colorgray = #9f9f9f
+$colorgrayfone = #f2f6f4
 
 /* fonts */
 @font-face
@@ -486,7 +487,7 @@ body
 	.services-circle
 		position relative
 		width 50%
-		background #f2f6f4
+		background $colorgrayfone
 		overflow hidden
 
 	.services-slider
@@ -517,7 +518,7 @@ body
 
 		border-radius: 50%;
 
-		background #f2f6f4
+		background $colorgrayfone
 
 		transition left 0.6s $transitionAnimation, top 0.6s $transitionAnimation, background 0.6s $transitionAnimation
 
@@ -557,5 +558,55 @@ body
 
 			&:hover
 				border-bottom-color #282828
+
+.advantages
+	width 100%
+	height 790px
+
+.advantages-slider
+	position relative
+	width 50%
+	height 520px
+	padding-left 60px
+	box-sizing border-box
+	margin-top 177px
+
+	.slick-arrow-container
+		left 60px
+		top auto
+		bottom 0
+
+	.info
+		.title
+			width 100%
+			padding-right 100px
+			box-sizing border-box
+			font-size 48px
+			line-height 70px
+
+.mini-news
+	display grid
+	grid-template-columns 1fr 1fr 1fr 1fr
+	align-items center
+
+	width 100%
+	height 545px
+
+	padding 0 60px
+	box-sizing border-box
+
+	background $colorgrayfone
+
+	.news-item
+		min-height 340px
+
+		&:after
+			content ""
+			width 50px
+			height 10px
+
+			background-image url("../svg/arrow_left_green.svg") no-repiat
+
+
 
 /*** //page style ***/

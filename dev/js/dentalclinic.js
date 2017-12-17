@@ -33,37 +33,62 @@
 
 					self.mainSlider($slider);
 					self.servicesSlider($slider);
+					self.advSlider($slider);
 				},
 
 				mainSlider: function(slider) {
 					var self = this,
 						$mainSlider = $(".main-slider"),
 					 	$slider = $mainSlider.find(slider),
-						$itemSlider = $(".main-slider-item", $slider);
+						$itemSlider = $(".main-slider-item", $slider),
+						$arrowContainer = $(".slick-arrow-container", $mainSlider);
 
-					$slider.slick({
-						arrows: true,
-						appendArrows: $(".slick-arrow-container", $mainSlider),
-						prevArrow: '<div class="slick-arrow-prev"></div>',
-						nextArrow: '<div class="slick-arrow-next"></div>',
-						infinite: true,
-						speed: 600,
-						slidesToShow: 1,
-						//autoplay: true,
-						autoplaySpeed: 6000
-					});
-					self.sliderEfect($slider, $mainSlider, $itemSlider);
+					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true);
 				},
 
 				servicesSlider: function(slider) {
 					var self = this,
 						$servicesSlider = $(".services-slider"),
 					 	$slider = $servicesSlider.find(slider),
-						$itemSlider = $(".services-slider-item", $slider);
+						$itemSlider = $(".services-slider-item", $slider),
+						$arrowContainer = $(".slick-arrow-container", $servicesSlider);
 
-					$slider.slick({
+					self.servicesCalculation();
+					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false);
+
+					$slider.on("swipe", function(event, slick, direction){
+						if (direction == "left") {
+							self.servicesCalculation("prevElement")
+						} else {
+							self.servicesCalculation("nextElement")
+						}
+					});
+
+					$(".slick-arrow-prev", $arrowContainer).on("click", $arrowContainer, function() {
+						self.servicesCalculation("nextElement");
+					})
+					$(".slick-arrow-next", $arrowContainer).on("click", $arrowContainer, function() {
+						self.servicesCalculation("prevElement");
+					})
+
+
+				},
+
+				advSlider: function(slider) {
+					var self = this,
+						$advSlider = $(".advantages-slider"),
+						$slider = $advSlider.find(slider),
+						$itemSlider = $(".main-slider-item", $slider),
+						$arrowContainer = $(".slick-arrow-container", $advSlider);
+
+					self.sliderEffect($slider, $advSlider, $itemSlider, $arrowContainer, false);
+				},
+
+				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint) {
+
+					slider.slick({
 						arrows: true,
-						appendArrows: $(".slick-arrow-container", $servicesSlider),
+						appendArrows: arrowContainer,
 						prevArrow: '<div class="slick-arrow-prev"></div>',
 						nextArrow: '<div class="slick-arrow-next"></div>',
 						infinite: true,
@@ -73,21 +98,7 @@
 						autoplaySpeed: 6000
 					});
 
-					$slider.on("swipe", function(event, slick, direction){
-						if (direction == "left") {
-							self.servicesCalculation("nextElement")
-						} else {
-							self.servicesCalculation("prevElement")
-						}
-					});
-
-					self.sliderEfect(false, $servicesSlider, $itemSlider);
-
-					self.servicesCalculation();
-				},
-
-				sliderEfect: function(slider, container, itemSlider) {
-					if (slider != false) {
+					if (hidePoint == true) {
 						slider.on("swipe", function(event, slick, direction) {
 							var $arrows = $(".slick-arrow-container", container);
 
