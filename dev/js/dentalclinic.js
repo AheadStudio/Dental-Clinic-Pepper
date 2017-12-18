@@ -82,6 +82,31 @@
 						$arrowContainer = $(".slick-arrow-container", $advSlider);
 
 					self.sliderEffect($slider, $advSlider, $itemSlider, $arrowContainer, false);
+
+
+
+					$slider.on("swipe", function(event, slick, direction){
+						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
+							idElement = $element.attr("id"),
+							$photo = $(".advantages-photo", ".advantages-photo-container");
+
+						$photo.each(function (index, element) {
+							var $item = $(this);
+
+							$item.removeClass("active-animation");
+
+							setTimeout(function() {
+								$item.removeClass("active");
+								$("[data-adv="+idElement+"]").addClass("active");
+							}, 200);
+							setTimeout(function() {
+								$("[data-adv="+idElement+"]").addClass("active-animation");
+							}, 400);
+
+						});
+
+					});
+
 				},
 
 				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint) {
