@@ -7,6 +7,54 @@
 		$sel.body = $("body", $sel.html);
 
 		return {
+
+			scrollAnimation: {
+
+				blocks: [],
+				init: function() {
+					var self = this;
+
+					$("[data-animationblock]:not(.animated)").each(function() {
+						var $item = $(this),
+							itemAnimation = $item.data("animationtype");
+							console.log(itemAnimation);
+
+						self.blocks.push({
+							"html": $item,
+							"top": $item.offset().top,
+							"typeAnimation": itemAnimation,
+						});
+						$item.addClass("before-" + itemAnimation);
+					});
+
+					$sel.window.on("scroll", function() {
+						self.check();
+					});
+					setTimeout(function() {
+						self.check();
+					}, 50);
+
+				},
+				check: function() {
+					var self = this,
+						block = false,
+						blockTop = false,
+						top = $sel.window.scrollTop(),
+						buffer = parseInt($sel.window.height()) / 1.1;
+					for(var i = 0, len = self.blocks.length; i < len; i++) {
+						block = self.blocks[i],
+						blockTop = parseInt(block.top, 10);
+						if(block.html.hasClass("animated")) {
+							continue;
+						}
+						if(top + buffer >= blockTop) {
+							block.html.addClass("animated");
+						}
+
+					}
+				}
+			},
+
 			menu: function() {
 				var self = this;
 
@@ -85,25 +133,41 @@
 
 
 
-					$slider.on("swipe", function(event, slick, direction){
+					$slider.on("swipe", function(event, slick, direction) {
 						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
 							idElement = $element.attr("id"),
 							$photo = $(".advantages-photo", ".advantages-photo-container");
 
-						$photo.each(function (index, element) {
-							var $item = $(this);
+						self.advSliderEffect($photo, idElement);
+					});
 
-							$item.removeClass("active-animation");
+					$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
+						var el = $(this),
+							$container  = el.closest(".advantages-slider"),
+							$sliderItem = $container.find(".advantages-slider-item.slick-active");
+							idItem =  $sliderItem.attr("id"),
+							$photo = $(".advantages-photo", ".advantages-photo-container");
 
-							setTimeout(function() {
-								$item.removeClass("active");
-								$("[data-adv="+idElement+"]").addClass("active");
-							}, 200);
-							setTimeout(function() {
-								$("[data-adv="+idElement+"]").addClass("active-animation");
-							}, 400);
+						self.advSliderEffect($photo, idItem);
+					});
 
-						});
+				},
+
+				advSliderEffect: function(el, idElement) {
+					var self = this;
+
+					el.each(function (index, element) {
+						var $item = $(this);
+
+						$item.removeClass("active-animation");
+
+						setTimeout(function() {
+							$item.removeClass("active");
+							$("[data-adv="+idElement+"]").addClass("active");
+						}, 200);
+						setTimeout(function() {
+							$("[data-adv="+idElement+"]").addClass("active-animation");
+						}, 400);
 
 					});
 
@@ -183,10 +247,92 @@
 				},
 
 			},
+
+			map: {
+				init: function() {
+
+			    	$("#map", $sel.body).each(function() {
+			            var $map = $(this),
+			            	lng = parseFloat($map.data("lng"), 10) || 0,
+			            	lat = parseFloat($map.data("lat"), 10) || 0,
+			            	zoom = parseInt($map.data("zoom"));
+			            var options = {
+							center: new google.maps.LatLng(lat, lng),
+							zoom: zoom,
+							mapTypeControl: false,
+							panControl: false,
+							zoomControl: true,
+							zoomControlOptions: {
+								style: google.maps.ZoomControlStyle.LARGE,
+								position: google.maps.ControlPosition.TOP_RIGHT
+							},
+							scaleControl: true,
+							streetViewControl: true,
+							streetViewControlOptions: {
+								position: google.maps.ControlPosition.TOP_RIGHT
+							},
+							mapTypeId: google.maps.MapTypeId.ROADMAP,
+							styles: [
+								{"featureType": "landscape", "stylers": [
+				                    {"saturation": -100},
+				                    {"lightness": 0},
+				                    {"visibility": "on"}
+				                ]},
+				                {"featureType": "poi", "stylers": [
+				                    {"saturation": -300},
+				                    {"lightness": -10},
+				                    {"visibility": "simplified"}
+				                ]},
+				                {"featureType": "road.highway", "stylers": [
+				                    {"saturation": -100},
+				                    {"visibility": "simplified"}
+				                ]},
+				                {"featureType": "road.arterial", "stylers": [
+				                    {"saturation": -100},
+				                    {"lightness": 0},
+				                    {"visibility": "on"}
+				                ]},
+				                {"featureType": "road.local", "stylers": [
+				                    {"saturation": -100},
+				                    {"lightness": 0},
+				                    {"visibility": "on"}
+				                ]},
+				                {"featureType": "transit", "stylers": [
+				                    {"saturation": -100},
+				                    {"visibility": "simplified"}
+				                ]},
+				                {"featureType": "administrative.province", "stylers": [
+				                    {"visibility": "off"}
+				                ]},
+				                {"featureType": "water", "elementType": "labels", "stylers": [
+				                    {"visibility": "on"},
+				                    {"lightness": -25},
+				                    {"saturation": -100}
+				                ]},
+				                {"featureType": "water", "elementType": "geometry", "stylers": [
+				                    {"hue": "#ffff00"},
+				                    {"lightness": -25},
+				                    {"saturation": -97}
+				                ]}
+				            ]
+				        };
+
+			            var api = new google.maps.Map($map[0], options);
+			            var point = new google.maps.Marker({
+			            	position: new google.maps.LatLng(lat, lng),
+			            	map: api,
+			                icon: $map.data("icon")
+			            });
+
+			        });
+			    }
+			}
 		};
 
 	})();
 
 	DENTALCLINIC.menu();
+	DENTALCLINIC.scrollAnimation.init();
+	DENTALCLINIC.map.init();
 	DENTALCLINIC.slickSliders.init();
 })(jQuery);

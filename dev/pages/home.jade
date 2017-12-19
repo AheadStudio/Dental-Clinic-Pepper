@@ -34,20 +34,20 @@ block content
     div(class="page-inner page-inner--w1")
         div(class="intro")
             div(class="intro-personal")
-                div(class="intro-personal-photo")
+                div(class="intro-personal-photo", data-animationblock="true", data-animationtype="animation-perspective")
                     img(src="../dummy/director_percev.png")
                 div(class="intro-personal-data")
                     span(class="data-name") Перцев Сергей Станиславович
                     span(class="data-prof") Директор, главный врач клиники
-            div(class="intro-info") Наша команда, под руководством главного врача-стоматолога с многолетним опытом Сергея Станиславовича Перцева, состоит из специалистов, которые справятся с работой любого объема и степени сложности.
+            div(class="intro-info", data-animationblock="true", data-animationtype="animation-right") Наша команда, под руководством главного врача-стоматолога с многолетним опытом Сергея Станиславовича Перцева, состоит из специалистов, которые справятся с работой любого объема и степени сложности.
     div(class="page-inner page-inner--w1")
         div(class="clinics info")
-            div(class="clinics-info")
+            div(class="clinics-info", data-animationblock="true", data-animationtype="animation-perspective")
                 div(class="tag") клиника
                 div(class="title") Стоматологическая клиника Перцева в Иваново
                 div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
             div(class="clinics-container")
-                img(src="../dummy/microscope.png", alt="")
+                img(src="../dummy/microscope.png", alt="", data-animationblock="true", data-animationtype="animation-zoom")
     div(class="page-inner page-inner--w1")
         div(class="services")
             div(class="services-circle")
@@ -146,9 +146,8 @@ block content
                     img(src="../dummy/potanina.png", alt="")
                 div(class="advantages-photo advantages-photo--one", data-adv="advantages_2")
                     img(src="../dummy/fauteuil_dentaire.png", alt="")
-                div(class="advantages-photo", data-adv="advantages_3")
-                    img(src="../dummy/director_percev.png", alt="")
-                    img(src="../dummy/perceva.png", alt="")
+                div(class="advantages-photo advantages-photo--one", data-adv="advantages_3")
+                    img(src="../dummy/microscope.png", alt="")
 
     div(class="mini-news")
         div(class="news-item")
@@ -168,3 +167,9 @@ block content
             div(class="news-title") Специалисты клиники повышают квалификацию в Москве
             div(class="news-text") Специалисты нашей клиники продолжают совершенствовать свои профессиональные навыки. Елена Гудкова, врач пародонтолог, детский - стоматолог клиники прошла обучение в Москве
                 
+    div(class="page-inner page-inner--w1")
+        div(class="map-block info")
+            div(class="tag") контакты
+            div(class="title") Нас легко найти
+            div(class="map-container")
+                div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../i/point_map.png")

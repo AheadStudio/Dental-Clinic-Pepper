@@ -52,6 +52,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				noCache: true,
 			}, {
 				media: "screen",
+				href: "../css/plugins/scroll-animation.css",
+				noCache: true,
+			}, {
+				media: "screen",
 				href: "../css/" + info.code + ".css",
 				noCache: true
 			}
@@ -63,7 +67,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			div(class="page-inner page-inner--w1")
 				header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
 					div(class="header-logo-holder")
-						img(src="../i/icons/logo.png")
+						img(src="../svg/logo.svg")
 					div(class="header-menu-holder")
 						+menu({
 							rootClass: "header-menu",
@@ -135,7 +139,9 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		+addJS([
 			{
 				src: "../js/jquery-3.2.1.min.js"
-			}, { 
+			}, {
+				src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDOtcx9Sm_hunFMGzh4eqe_XRkFUYMWIao&amp;sensor=true"
+			}, {
 				src: "../js/plugins/slick.min.js"
 			}, { 
 				src: "../js/" + info.code + ".js"

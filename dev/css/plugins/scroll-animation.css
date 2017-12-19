@@ -1,0 +1,79 @@
+/* settings */
+@-webkit-keyframes flip {
+	0% { }
+	100% {
+        -webkit-transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flip {
+	0% { }
+	100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes popUp {
+	0% { }
+	70% { -webkit-transform: scale(1.1); opacity: .8; -webkit-animation-timing-function: ease-out; }
+	100% { -webkit-transform: scale(1); opacity: 1; }
+}
+
+@keyframes popUp {
+	0% { }
+	70% { -webkit-transform: scale(1.1); transform: scale(1.1); opacity: .8; -webkit-animation-timing-function: ease-out; animation-timing-function: ease-out; }
+	100% { -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
+}
+/* settings */
+
+.before-animation-perspective {
+    display: block;
+    opacity: 0;
+}
+
+.before-animation-perspective.animated {
+    -webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+	-webkit-transform: rotateX(-80deg);
+	transform: rotateX(-80deg);
+	-webkit-animation: flip .8s ease-in-out forwards;
+	animation: flip .8s ease-in-out forwards;
+}
+
+
+.before-animation-right {
+    display: block;
+    opacity: 0;
+    transform: translateX(300px);
+    -webkit-transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.before-animation-right.animated {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.before-animation-zoom {
+    display: block;
+    opacity: 0;
+    transition: opacity .8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.before-animation-zoom.animated {
+    -webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: scale(0.4);
+	transform: scale(0.4);
+	-webkit-animation: popUp .8s ease-in forwards;
+	animation: popUp .8s ease-in forwards;
+    opacity: 1;
+}
