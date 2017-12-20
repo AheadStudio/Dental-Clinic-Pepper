@@ -50,9 +50,8 @@ body
 
 	font-family "ProximaNovaRegular"
 
-
-
 /*** //Settings ***/
+
 
 
 /*** main style ***/
@@ -127,6 +126,7 @@ body
 		width 100%
 		max-width 100%
 
+
 /* menu */
 .header-menu-holder
 	.header-menu
@@ -188,8 +188,125 @@ body
 			opacity 1
 			transform translateX(0px)
 
-
 /* menu */
+
+/* mobile menu */
+.mobile-menu
+	position fixed
+	left 0
+	right 0
+	top 0
+	bottom 0
+
+	display none
+
+	z-index 1000
+
+	.mobile-menu-background
+		position absolute
+		right -50px
+		top -50px
+		display block
+		width 50px
+		height 50px
+
+		border-radius 50%
+		background rgba($colorgrayfone, 0.95)
+
+		opacity 0
+
+		transition transform 1s $transitionAnimation, opacity 0.6s $transitionAnimation
+
+.mobile-menu-container
+	position relative
+
+	display none
+	width 650px
+	height 300px
+
+	margin 60px auto 0 auto
+
+	transform translateY(-300px)
+	transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+	transition-duration 1s
+
+	opacity 0
+
+	.mobile-menu-close
+		&:after
+			content ""
+
+			position absolute
+			bottom 0
+			left 50%
+
+			display block
+
+			width 30px
+			height 30px
+
+			margin-left -15px
+
+			background-image url("../svg/close.svg")
+			background-position center
+			background-repeat no-repeat
+			background-size contain
+
+			cursor pointer
+
+			transition transform 0.3s $transitionAnimation
+
+		&:hover
+			&:after
+				transform rotate(90deg)
+
+	.mobile-logo-title
+		margin-bottom 30px
+
+		padding 30px 20px
+		box-sizing border-box
+
+		border-bottom 1px solid $colorgray
+
+		text-align center
+		span
+			font-size 30px
+			font-family ProximaNovaBold
+
+	.header-menu-holder
+		padding-left 60px
+		box-sizing border-box
+
+	.header-menu-inner
+		flex-flow column
+
+		.header-menu-item-holder
+			margin-bottom 10px
+
+		.header-menu-item
+			color #009d3c
+			font-size 20px
+
+
+.mobile-menu
+	&.active-block
+		display block
+
+		.mobile-menu-container
+			display block
+
+	&.active-show
+
+		.mobile-menu-background
+			opacity 1
+			transform scale(100)
+
+		.mobile-menu-container
+			transform translateY(0)
+			opacity 1
+
+
+/* //mobile menu */
 
 .header-info-holder
 	.header-mobile
@@ -618,6 +735,7 @@ body
 
 	img
 		display block
+		width 100%
 
 	&.active
 		display grid

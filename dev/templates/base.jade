@@ -122,7 +122,32 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 					
 			main(class="page-content")
 				block content
-
+					
+		div(class="mobile-menu")
+			div(class="mobile-menu-background")
+			div(class="mobile-menu-container")
+				div(class="mobile-logo-title") 
+					span Стоматологическая клиника Перцева
+				div(class="header-menu-holder")
+					+menu({
+						rootClass: "header-menu",
+						items: [
+							{
+								name: "Клиника",
+								linkClass: "link link--green link-opacity active",
+								href: "home.html",
+							}, {
+								name: "Личный кабинет",
+								href: "service.html",
+								linkClass: "link link--green link-opacity",
+							}, {
+								name: "Отзывы",
+								href: "price.html",
+								linkClass: "link link--green link-opacity",
+							}, 
+						]
+					})
+				div(class="mobile-menu-close")
 		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
 			div(class="page-inner page-inner--w1")
 				div(class="footer-license")
