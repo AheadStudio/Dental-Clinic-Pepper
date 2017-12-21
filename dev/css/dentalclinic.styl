@@ -13,7 +13,7 @@ em
 	font-weight normal
 
 $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
-$colorgreen = #009d3c
+$colorgreen = #009c3c
 $colorgray = #9f9f9f
 $colorgrayfone = #f2f6f4
 
@@ -61,14 +61,14 @@ body
 	width 100%
 
 	min-height 100%
-	max-width 1300px
 
 	margin 0 auto
 
 .page-inner
+	position relative
 	display block
 	margin 0 auto
-
+	max-width 1300px
 	box-sizing border-box
 
 	&--w1
@@ -211,41 +211,76 @@ body
 		height 50px
 
 		border-radius 50%
-		background rgba($colorgrayfone, 0.95)
+		background #fff
 
 		opacity 0
 
 		transition transform 1s $transitionAnimation, opacity 0.6s $transitionAnimation
 
-.mobile-menu-container
-	position relative
+.mobile-menu-items
+	width 100%
+	display grid
+	grid-template-columns 1fr 1fr 1fr
 
-	display none
-	width 650px
-	height 300px
+	margin-bottom 80px
 
-	margin 60px auto 0 auto
 
-	transform translateY(-300px)
-	transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
-	transition-duration 1s
+	.mobile-menu-item
+		display block
+		width 100%
 
-	opacity 0
+		.mobile-menu-item-item-holder
+			margin-bottom 30px
 
+			.mobile-menu-item-item
+				font-size 18px
+
+				&.main
+					font-size 24px
+					font-weight 600
+
+	.contacts
+		.contacts-mobile
+			display block
+			margin-bottom 40px
+
+			font-size 24px
+
+			font-weight 600
+
+		span
+			display block
+			margin-bottom 30px
+
+			font-size 18px
+			color $colorgreen
+
+		.button
+			width 195px
+			padding 15px
+
+.mobile-menu
 	.mobile-menu-close
+		position absolute
+		display none
+		top 65px
+		right 85px
+
+		width 30px
+		height 30px
+		opacity 0
+
+		transition opacity 0.3s $transitionAnimation
+		transition-duration 3s
+
 		&:after
 			content ""
 
 			position absolute
+			top 0
+			left 0
+			right 0
 			bottom 0
-			left 50%
-
-			display block
-
-			width 30px
-			height 30px
-
-			margin-left -15px
 
 			background-image url("../svg/close.svg")
 			background-position center
@@ -259,6 +294,31 @@ body
 		&:hover
 			&:after
 				transform rotate(90deg)
+
+.mobile-menu-container
+	position relative
+
+	display none
+	width 920px
+	height 300px
+
+	margin 150px auto 0 auto
+
+	transform translateY(-300px)
+	transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+	transition-duration 1s
+
+	opacity 0
+
+	.mobile-menu-address
+		display flex
+		width 562px
+		justify-content space-between
+		flex-wrap wrap
+
+		span
+			font-size 18px
+			color #4a494a
 
 	.mobile-logo-title
 		margin-bottom 30px
@@ -295,6 +355,9 @@ body
 		.mobile-menu-container
 			display block
 
+		.mobile-menu-close
+			display block
+
 	&.active-show
 
 		.mobile-menu-background
@@ -305,6 +368,8 @@ body
 			transform translateY(0)
 			opacity 1
 
+		.mobile-menu-close
+			opacity 1
 
 /* //mobile menu */
 
@@ -409,6 +474,9 @@ body
 .link--green
 	color $colorgreen
 
+.link--brown
+	color #4a494a
+
 .link--black-bottom
 	border-bottom 2px solid transparent
 	transition border-bottom-color 0.5s $transitionAnimation
@@ -421,12 +489,52 @@ body
 	&:hover
 		border-bottom-color transparent
 
-.link-opacity
+.link--opacity
 	opacity 1
 	transition opacity 0.3s $transitionAnimation
 
 	&:hover
 		opacity 0.6
+
+.button
+	position relative
+	display block
+	padding 5px
+	box-sizing border-box
+	text-align center
+	border 1px solid #000
+
+.button--green
+	color $colorgreen
+	border 1px solid $colorgreen
+
+	transition color 0.3s $transitionAnimation, border-color 0.3s $transitionAnimation
+
+	overflow hidden
+
+	&:before
+		content ""
+		position absolute
+		top 0
+		left 0
+		bottom 0
+		right 0
+
+		transform scale(0)
+		background transparent
+		border-radius 50%
+
+		transition background 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+		z-index -10
+	&:hover
+		color #fff
+		border-color $colorgreen
+
+		&:before
+			transform scale(2)
+			background $colorgreen
+
 
 /** //button and link **/
 
@@ -454,7 +562,6 @@ body
 	.main-slider-item-info
 		position absolute
 		top 90px
-		left 120px
 
 		z-index 10
 
@@ -482,21 +589,34 @@ body
 		top 0
 		bottom 0
 		right 0
-		display block
-		box-shadow inset 40em 0px 200px -100px #fafafa
-		background-repeat no-repeat
-		background-position-x right
-		background-position-y bottom
+
+		.main-slider-item-img-container
+			position absolute
+			top 0
+			right 0
+			bottom 0
+			width 1000px
+			box-shadow inset 20em 0px 200px -100px #fafafa
+
+			background-position-y bottom
+			background-position-x right
+			background-repeat no-repeat
+			background-size contain
 
 	.main-slider-item-img:before
 		content ""
 		display block
-		padding-top 580px
+		padding-top 582px
 
-.slick-arrow-container
+.slick-arrow-block
 	position absolute
 	top 395px
-	left 120px
+	width 1300px
+	left 50%
+	transform translateX(-50%)
+.slick-arrow-container
+	position absolute
+	left 60px
 
 	display flex
 	justify-content space-between

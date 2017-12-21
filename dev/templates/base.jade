@@ -74,43 +74,43 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							items: [
 								{
 									name: "Клиника",
-									linkClass: "link link--green link-opacity active",
+									linkClass: "link link--green link--opacity active",
 									href: "home.html",
 									items: [
 										{
 											name: "О клинике",
 											href: "about.html",
-											linkClass: "link link-opacity animation-link",
+											linkClass: "link link--opacity animation-link",
 										}, {
 											name: "Новости",
 											href: "news.html",
-											linkClass: "link link-opacity animation-link",
+											linkClass: "link link--opacity animation-link",
 										}, {
 											name: "Вакансии",
 											href: "vacancies.html",
-											linkClass: "link link-opacity animation-link",
+											linkClass: "link link--opacity animation-link",
 										}, {
 											name: "Отзывы",
 											href: "reviews.html",
-											linkClass: "link link-opacity animation-link",
+											linkClass: "link link--opacity animation-link",
 										}
 									]
 								}, {
 									name: "Услуги",
 									href: "service.html",
-									linkClass: "link link--green link-opacity",
+									linkClass: "link link--green link--opacity",
 								}, {
 									name: "Цены",
 									href: "price.html",
-									linkClass: "link link--green link-opacity",
+									linkClass: "link link--green link--opacity",
 								}, {
 									name: "Врачи",
 									href: "doctors.html",
-									linkClass: "link link--green link-opacity",
+									linkClass: "link link--green link--opacity",
 								}, {
 									name: "Контакты",
 									href: "contacts.html",
-									linkClass: "link link--green link-opacity",
+									linkClass: "link link--green link--opacity",
 								}
 							]
 						})
@@ -126,36 +126,115 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		div(class="mobile-menu")
 			div(class="mobile-menu-background")
 			div(class="mobile-menu-container")
-				div(class="mobile-logo-title") 
-					span Стоматологическая клиника Перцева
-				div(class="header-menu-holder")
+				div(class="mobile-menu-items")
 					+menu({
-						rootClass: "header-menu",
+						rootClass: "mobile-menu-item",
 						items: [
 							{
 								name: "Клиника",
-								linkClass: "link link--green link-opacity active",
+								linkClass: "link link--brown link--opacity main",
 								href: "home.html",
 							}, {
-								name: "Личный кабинет",
+								name: "О клинике",
 								href: "service.html",
-								linkClass: "link link--green link-opacity",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Преимущества",
+								href: "adantages.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Новости",
+								href: "news.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Вакансии",
+								href: "vacancies.html",
+								linkClass: "link link--brown link--opacity",
 							}, {
 								name: "Отзывы",
+								href: "reviews.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Цены",
 								href: "price.html",
-								linkClass: "link link--green link-opacity",
+								linkClass: "link link--brown link--opacity main",
+							}, {
+								name: "Врачи",
+								href: "doctors.html",
+								linkClass: "link link--brown link--opacity main",
+							}, {
+								name: "Расписание",
+								href: "schedule.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Контакты",
+								href: "contacts.html",
+								linkClass: "link link--brown link--opacity main",
 							}, 
 						]
 					})
-				div(class="mobile-menu-close")
+					+menu({
+						rootClass: "mobile-menu-item",
+						items: [
+							{
+								name: "Услуги",
+								linkClass: "link link--brown link--opacity main",
+								href: "home.html",
+							}, {
+								name: "3D-диагностика",
+								href: "service.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Терапия",
+								href: "adantages.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Имплантация",
+								href: "news.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Протезирование",
+								href: "vacancies.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Профессиональная гигиена",
+								href: "reviews.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Хирургия",
+								href: "price.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Ортодонтия",
+								href: "doctors.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Детская стоматология",
+								href: "schedule.html",
+								linkClass: "link link--brown link--opacity",
+							}, {
+								name: "Отоларингология",
+								href: "contacts.html",
+								linkClass: "link link--brown link--opacity main",
+							}, 
+						]
+					})
+					div(class="contacts")
+						a(href="tel:+74932938128", class="link link--brown contacts-mobile") +7 (4932) 938-128
+						span Обратный звонок
+						a(href="#", class="link button button--green") Записаться на прием
+				div(class="mobile-menu-address") 
+					span Иваново, ул. Крутицкая, д.13
+					span ПН-СБ: 8:00 - 21:00 ВС: 8:00 - 15:00
+			div(class="mobile-menu-close")
 		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
 			div(class="page-inner page-inner--w1")
 				div(class="footer-license")
 					p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
 					p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
 					p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
-					a(href="#", class="link link--green link-opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
-				a(href="http://ruformat.ru/", target="_blank", class="link link-opacity footer-creators", title="Разработка интернет-магазинов")
+					a(href="#", class="link link--green link--opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
+				a(href="http://ruformat.ru/", target="_blank", class="link link--opacity footer-creators", title="Разработка интернет-магазинов")
 					div(class="footer-creators-title") Сделанно в
 					div(class="footer-creators-name link--green") Aheadstudio
 				
