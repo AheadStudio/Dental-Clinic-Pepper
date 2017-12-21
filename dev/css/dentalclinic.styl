@@ -520,9 +520,8 @@ body
 		bottom 0
 		right 0
 
-		transform scale(0)
+		transform scale(1) rotate(45deg) translateX(-120px) translateY(120px)
 		background transparent
-		border-radius 50%
 
 		transition background 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
 
@@ -532,7 +531,7 @@ body
 		border-color $colorgreen
 
 		&:before
-			transform scale(2)
+			transform scale(2) translateX(0) translateY(0)
 			background $colorgreen
 
 
