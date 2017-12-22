@@ -2,42 +2,43 @@ extends ../templates/base
 
 block content
     div(class="main-slider")
+        div(class="main-slider-info-container")
+            div(class="main-slider-item-info active active-animation", data-sliderToggle="main_1")
+                div(class="main-slider-item-title") 
+                    | Все виды 
+                    br 
+                    | протезирования
+                div(class="main-slider-item-subtitle") Мы обязательно подберем то, что подойдет именно в вашем случае
+            div(class="main-slider-item-info", data-sliderToggle="main_2") 
+                div(class="main-slider-item-title") 
+                    | Имплантация зубов –  
+                    br 
+                    | это чувство здоровья и
+                    br
+                    | комфорта на всю жизнь!
+                div(class="main-slider-item-subtitle") Самый современный и эстетичный способ восстановления утраченных зубов
+            div(class="main-slider-item-info", data-sliderToggle="main_3") 
+                div(class="main-slider-item-title") 
+                    | Простой путь к 
+                    br 
+                    | здоровью полости рта
+                div(class="main-slider-item-subtitle") Уровень ведущих мировых клиник. Инновационное техническое оборудование
+
         div(class="main-slider-items slick-slider")
-            div(class="main-slider-item")
-                div(class="page-inner page-inner--w1")
-                    div(class="main-slider-item-info")
-                        div(class="main-slider-item-title") 
-                            | Все виды 
-                            br 
-                            | протезирования
-                        div(class="main-slider-item-subtitle") Мы обязательно подберем то, что подойдет именно в вашем случае
+            div(class="main-slider-item", id="main_1")
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/grandmother.png)")
-            div(class="main-slider-item")
-                div(class="page-inner page-inner--w1")
-                    div(class="main-slider-item-info") 
-                        div(class="main-slider-item-title") 
-                            | Имплантация зубов –  
-                            br 
-                            | это чувство здоровья и
-                            br
-                            | комфорта на всю жизнь!
-                        div(class="main-slider-item-subtitle") Самый современный и эстетичный способ восстановления утраченных зубов
+            div(class="main-slider-item", id="main_2")
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/ancle.png)")
-            div(class="main-slider-item")
-                div(class="page-inner page-inner--w1")
-                    div(class="main-slider-item-info") 
-                        div(class="main-slider-item-title") 
-                            | Простой путь к 
-                            br 
-                            | здоровью полости рта
-                        div(class="main-slider-item-subtitle") Уровень ведущих мировых клиник. Инновационное техническое оборудование
+            div(class="main-slider-item", id="main_3")
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/girl.png)")
+                        
         div(class="slick-arrow-block")
             div(class="slick-arrow-container")
                 span |
+    
     div(class="page-inner page-inner--w1")
         div(class="intro")
             div(class="intro-personal")
@@ -146,14 +147,14 @@ block content
                 div(class="slick-arrow-container")
                     span |
             div(class="advantages-photo-container")
-                div(class="advantages-photo active active-animation", data-adv="advantages_1")
+                div(class="advantages-photo active active-animation", data-sliderToggle="advantages_1")
                     img(src="../dummy/director_percev.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="0.5s")
                     img(src="../dummy/perceva.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1s")
                     img(src="../dummy/tarhanov.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1.5s")
                     img(src="../dummy/potanina.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="2s")
-                div(class="advantages-photo advantages-photo--one", data-adv="advantages_2")
+                div(class="advantages-photo advantages-photo--one", data-sliderToggle="advantages_2")
                     img(src="../dummy/fauteuil_dentaire.png", alt="")
-                div(class="advantages-photo advantages-photo--one", data-adv="advantages_3")
+                div(class="advantages-photo advantages-photo--one", data-sliderToggle="advantages_3")
                     img(src="../dummy/microscope.png", alt="")
     div(class="page-inner page-inner--w1")
         div(class="mini-news")

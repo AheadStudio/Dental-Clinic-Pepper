@@ -132,6 +132,25 @@
 						$arrowContainer = $(".slick-arrow-container", $mainSlider);
 
 					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true);
+
+					$slider.on("swipe", function(event, slick, direction) {
+						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
+							idElement = $element.attr("id"),
+							$toggle = $(".main-slider-item-info");
+							console.log(idElement);
+						self.sliderToggleAnimation($toggle, idElement);
+					});
+
+					$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
+						var el = $(this),
+							$container  = el.closest(".main-slider"),
+							$sliderItem = $container.find(".main-slider-item.slick-active");
+							idItem =  $sliderItem.attr("id"),
+							$photo = $(".main-slider-item-info");
+						console.log(idItem);
+						self.sliderToggleAnimation($photo, idItem);
+					});
+
 				},
 
 				servicesSlider: function(slider) {
@@ -178,7 +197,7 @@
 							idElement = $element.attr("id"),
 							$photo = $(".advantages-photo", ".advantages-photo-container");
 
-						self.advSliderEffect($photo, idElement);
+						self.sliderToggleAnimation($photo, idElement);
 					});
 
 					$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
@@ -188,12 +207,12 @@
 							idItem =  $sliderItem.attr("id"),
 							$photo = $(".advantages-photo", ".advantages-photo-container");
 
-						self.advSliderEffect($photo, idItem);
+						self.sliderToggleAnimation($photo, idItem);
 					});
 
 				},
 
-				advSliderEffect: function(el, idElement) {
+				sliderToggleAnimation: function(el, idElement) {
 					var self = this;
 
 					el.each(function (index, element) {
@@ -203,10 +222,10 @@
 
 						setTimeout(function() {
 							$item.removeClass("active");
-							$("[data-adv="+idElement+"]").addClass("active");
+							$("[data-sliderToggle="+idElement+"]").addClass("active");
 						}, 200);
 						setTimeout(function() {
-							$("[data-adv="+idElement+"]").addClass("active-animation");
+							$("[data-sliderToggle="+idElement+"]").addClass("active-animation");
 						}, 400);
 
 					});
@@ -366,7 +385,36 @@
 
 			        });
 			    }
+			},
+
+			forms: {
+				init: function() {
+					var self = this;
+
+					self.fillInput();
+				},
+
+				fillInput: function() {
+					var self = this,
+						input = $(".fill-background");
+
+					input.on("click", function() {
+						var el = $(this);
+
+						if (!el.hasClass("active")) {
+							el.addClass("active");
+						}
+					});
+
+					$(document).mouseup(function (event) {
+						if (input.has(event.target).length === 0){
+							input.removeClass("active");
+						}
+					});
+				}
 			}
+
+
 		};
 
 	})();
@@ -376,4 +424,5 @@
 	DENTALCLINIC.scrollAnimation.init();
 	DENTALCLINIC.map.init();
 	DENTALCLINIC.slickSliders.init();
+	DENTALCLINIC.forms.init();
 })(jQuery);
