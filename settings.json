@@ -42,7 +42,7 @@
         "services_main": {
             "name": "Услуги главная",
             "progress": {
-                "desktop": "0",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -50,7 +50,7 @@
         "services_section": {
             "name": "Услуги раздел",
             "progress": {
-                "desktop": "0",
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }
@@ -58,7 +58,7 @@
         "services_element": {
             "name": "Услуги элемент",
             "progress": {
-                "desktop": "0",
+                "desktop": "80",
                 "tablet": "0",
                 "mobile": "0"
             }
