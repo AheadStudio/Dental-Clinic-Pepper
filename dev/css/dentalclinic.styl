@@ -13,7 +13,7 @@ em
 	font-weight normal
 
 $transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
-$colorgreen = #009c3c
+$colorgreen = #009C3C
 $colorgray = #9f9f9f
 $colorgrayfone = #f2f6f4
 $colordark = #282828
@@ -287,7 +287,7 @@ body
 		bottom 0
 		right 0
 
-		transform scale(6) rotate(45deg) translateX(-120px) translateY(120px)
+		transform scale(7) rotate(45deg) translateX(-120px) translateY(120px)
 		background transparent
 
 		transition background 0.4s $transitionAnimation, transform 0.4s $transitionAnimation
@@ -298,7 +298,7 @@ body
 		color #000
 
 		&:before
-			transform scale(6) rotate(45deg) translateX(0) translateY(0)
+			transform scale(7) rotate(45deg) translateX(0) translateY(0)
 			background #9b9b9b
 
 
@@ -830,9 +830,9 @@ body
 		border-bottom 3px solid transparent
 		cursor pointer
 	.slick-arrow-prev
-		border-right 6px solid #009c3c
+		border-right 6px solid $colorgreen
 	.slick-arrow-next
-		border-left 6px solid #009c3c
+		border-left 6px solid $colorgreen
 
 	&.hide
 		opacity 0
@@ -882,7 +882,7 @@ body
 	box-sizing border-box
 
 	font-size 28px
-	color #009c3c
+	color $colorgreen
 
 	line-height 45px
 
@@ -1136,7 +1136,7 @@ body
 
 .services-page
 	width 100%
-	padding 70px 105px 200px 105px
+	padding 0 105px 200px 105px
 	box-sizing border-box
 
 .services-title
@@ -1160,7 +1160,7 @@ body
 		height 85px
 		margin-left 52px
 		box-sizing border-box
-		margin-bottom 45px
+		margin-bottom 35px
 
 		img
 			display block
@@ -1169,10 +1169,10 @@ body
 	.services-block-title
 		display block
 		max-width 370px
-		margin-bottom 45px
+		margin-bottom 30px
 		font-size 36px
 
-		color #009c3c
+		color $colorgreen
 
 	.services-block-list
 		margin-left -10px
@@ -1237,6 +1237,35 @@ body
 		line-height 28px
 		color #404040
 
+	ul
+		margin-left 20px
+		list-style disc
+
+		li
+			padding-left 5px
+			box-sizing border-box
+
+	.page-numbered-list
+		display block
+
+		.page-numbered-list-item
+			position relative
+
+			span
+				position absolute
+				top 15px
+				left -75px
+				font-family ProximaNovaLight
+				font-size 60px
+				color $colorgreen
+
+		.page-numbered-list-subtitle
+			margin-bottom 7px
+			font-family  ProximaNovaBold
+			font-size 20px
+
+		.page-numbered-list-text
+			margin-bottom 65px
 /* //main block in all page */
 
 

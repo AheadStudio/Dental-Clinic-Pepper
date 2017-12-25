@@ -64,62 +64,61 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 	body(itemscope, itemtype="http://schema.org/WebPage")
 
 		div(class="page")
-			if page.code != "services_main"
-				div(class="page-inner page-inner--w1")
-					header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-						div(class="header-logo-holder")
-							img(src="../svg/logo.svg")
-						div(class="header-menu-holder")
-							+menu({
-								rootClass: "header-menu",
-								items: [
-									{
-										name: "Клиника",
-										linkClass: "link link--green link--opacity active",
-										href: "home.html",
-										items: [
-											{
-												name: "О клинике",
-												href: "about.html",
-												linkClass: "link link--opacity animation-link",
-											}, {
-												name: "Новости",
-												href: "news.html",
-												linkClass: "link link--opacity animation-link",
-											}, {
-												name: "Вакансии",
-												href: "vacancies.html",
-												linkClass: "link link--opacity animation-link",
-											}, {
-												name: "Отзывы",
-												href: "reviews.html",
-												linkClass: "link link--opacity animation-link",
-											}
-										]
-									}, {
-										name: "Услуги",
-										href: "service.html",
-										linkClass: "link link--green link--opacity",
-									}, {
-										name: "Цены",
-										href: "price.html",
-										linkClass: "link link--green link--opacity",
-									}, {
-										name: "Врачи",
-										href: "doctors.html",
-										linkClass: "link link--green link--opacity",
-									}, {
-										name: "Контакты",
-										href: "contacts.html",
-										linkClass: "link link--green link--opacity",
-									}
-								]
-							})
-						div(class="header-info-holder")
-							a(href="tel:+74932938-128", class="link header-mobile") +7 (4932) 938-128
-							span Обратный звонок
-						div(class="header-burger-holder")
-							div(class="header-burger")
+			div(class="page-inner page-inner--w1")
+				header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+					div(class="header-logo-holder")
+						img(src="../svg/logo.svg")
+					div(class="header-menu-holder")
+						+menu({
+							rootClass: "header-menu",
+							items: [
+								{
+									name: "Клиника",
+									linkClass: "link link--green link--opacity active",
+									href: "home.html",
+									items: [
+										{
+											name: "О клинике",
+											href: "about.html",
+											linkClass: "link link--opacity animation-link",
+										}, {
+											name: "Новости",
+											href: "news.html",
+											linkClass: "link link--opacity animation-link",
+										}, {
+											name: "Вакансии",
+											href: "vacancies.html",
+											linkClass: "link link--opacity animation-link",
+										}, {
+											name: "Отзывы",
+											href: "reviews.html",
+											linkClass: "link link--opacity animation-link",
+										}
+									]
+								}, {
+									name: "Услуги",
+									href: "service.html",
+									linkClass: "link link--green link--opacity",
+								}, {
+									name: "Цены",
+									href: "price.html",
+									linkClass: "link link--green link--opacity",
+								}, {
+									name: "Врачи",
+									href: "doctors.html",
+									linkClass: "link link--green link--opacity",
+								}, {
+									name: "Контакты",
+									href: "contacts.html",
+									linkClass: "link link--green link--opacity",
+								}
+							]
+						})
+					div(class="header-info-holder")
+						a(href="tel:+74932938-128", class="link header-mobile") +7 (4932) 938-128
+						span Обратный звонок
+					div(class="header-burger-holder")
+						div(class="header-burger")
 					
 			main(class="page-content")
 				block content
@@ -236,17 +235,16 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 					a(href="#",class="link link--brown mobile-menu-version", target="_blank") Версия для слабовидящих
 						
 			div(class="mobile-menu-close")
-		if page.code != "services_main"
-			footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
-				div(class="page-inner page-inner--w1")
-					div(class="footer-license")
-						p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
-						p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
-						p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
-						a(href="#", class="link link--green link--opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
-					a(href="http://ruformat.ru/", target="_blank", class="link link--opacity footer-creators", title="Разработка интернет-магазинов")
-						div(class="footer-creators-title") Сделанно в
-						div(class="footer-creators-name link--green") Aheadstudio
+		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
+			div(class="page-inner page-inner--w1")
+				div(class="footer-license")
+					p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
+					p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
+					p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
+					a(href="#", class="link link--green link--opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
+				a(href="http://ruformat.ru/", target="_blank", class="link link--opacity footer-creators", title="Разработка интернет-магазинов")
+					div(class="footer-creators-title") Сделанно в
+					div(class="footer-creators-name link--green") Aheadstudio
 				
 
 
