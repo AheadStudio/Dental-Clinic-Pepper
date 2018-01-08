@@ -232,6 +232,13 @@ body
 	&:hover
 		box-shadow inset 0 -2.9555px #fff, inset 0 -4px transparent
 
+.link--brown-bottom
+	border-bottom 1px solid #4a494a
+	transition border-bottom-color 0.5s $transitionAnimation
+	&:hover
+		border-bottom-color transparent
+
+
 .button
 	position relative
 	display block
@@ -708,6 +715,7 @@ body
 		display inline-block
 		vertical-align top
 
+
 /*** //main style ***/
 
 
@@ -826,13 +834,13 @@ body
 		margin-top 5px
 		width 0
 		height 0
-		border-top 3px solid transparent
-		border-bottom 3px solid transparent
+		border-top 5px solid transparent
+		border-bottom 5px solid transparent
 		cursor pointer
 	.slick-arrow-prev
-		border-right 6px solid $colorgreen
+		border-right 5px solid $colorgreen
 	.slick-arrow-next
-		border-left 6px solid $colorgreen
+		border-left 5px solid $colorgreen
 
 	&.hide
 		opacity 0
@@ -900,8 +908,9 @@ body
 	.tag
 		margin-bottom 20px
 
-		font-size 13px
-		text-transform lowercase
+		font-size 14px
+		text-transform uppercase
+		letter-spacing 2px
 
 		color #9B9A9B
 
@@ -1008,7 +1017,7 @@ body
 			&:hover
 				border-bottom-color $colordark
 
-.advantages
+.advantages-mini
 	display flex
 	width 100%
 	height 790px
@@ -1087,50 +1096,75 @@ body
 
 	background $colorgrayfone
 
-	.news-item
-		position relative
-		min-height 345px
-		padding-right 30px
-		box-sizing border-box
+.news-item
+	position relative
+	min-height 345px
+	padding-right 30px
+	box-sizing border-box
+	color $colordark
 
-		&:after
-			content ""
-			position absolute
-			bottom 7px
-			left 0
-			width 50px
-			height 10px
+	transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+	transform translateY(0)
 
-			background-image url("../svg/arrow_left_green.svg")
-			background-repeat no-repeat
-			background-size contain
+	&.load-events-item
+		opacity 0
+		transform translateY(100px)
 
-		.news-data
-			margin-bottom 23px
-			line-height 26px
-			font-size 18px
+	.news-arrow
+		content ""
+		position absolute
+		bottom 7px
+		left 0
+		width 50px
+		height 10px
 
-		.news-title
-			margin-bottom 22px
-			font-size 16px
-			font-family ProximaNovabold
+		background-image url("../svg/arrow_left_green.svg")
+		background-repeat no-repeat
+		background-size contain
 
-		.news-text
-			height 185px
-			line-height 27px
+	.news-data
+		margin-bottom 17px
+		line-height 26px
+		font-size 14px
+		letter-spacing 1px
+		text-transform uppercase
+
+	.news-title
+		margin-bottom 22px
+		font-size 16px
+		font-family ProximaNovabold
+		line-height 26px
+
+	.news-text
+		height 185px
+		line-height 27px
+		overflow hidden
 
 .map-block
 	margin-top 175px
+
+	.tag
+		padding-left 60px
+		box-sizing border-box
+
+	.title
+		padding-left 60px
+		box-sizing border-box
+		font-size 48px
+		font-family ProximaNovabold
+
 
 .map-container
 	position relative
 	width 100%
 	height 592px
+	margin-top 60px
 
 	.map
 		position relative
 		width 100%
 		height 100%
+
 
 
 
@@ -1216,10 +1250,17 @@ body
 	.page-tag
 		margin-bottom 20px
 
-		font-size 13px
-		text-transform lowercase
-
+		font-size 14px
+		text-transform uppercase
+		letter-spacing 2px
 		color #9B9A9B
+
+	.page-add-info
+		display block
+		margin-bottom 20px
+
+		font-size 18px
+		color $colordark
 
 .page-text
 	font-size 18px
@@ -1266,6 +1307,54 @@ body
 
 		.page-numbered-list-text
 			margin-bottom 65px
+
+.load
+	position relative
+	width 100%
+	height 75px
+	text-align center
+
+	a
+		position absolute
+
+		left 50%
+		margin-left -25px
+
+		display block
+		width 45px
+		height 45px
+
+		cursor pointer
+
+		transition transform 0.3s $transitionAnimation
+
+		&:hover
+			transform rotate(360deg)
+
+		&:before
+			content ""
+			position absolute
+			width 100%
+			height 22px
+			top 0
+			left 0
+			background-image url(../svg/circle-arrow.svg)
+			background-repeat no-repeat
+			background-size cover
+
+		&:after
+			content ""
+			position absolute
+			bottom -3px
+			left -6px
+			width 100%
+			height 22px
+			transform rotate(180deg)
+			background-image url(../svg/circle-arrow.svg)
+			background-repeat no-repeat
+			background-size cover
+
+
 /* //main block in all page */
 
 
@@ -1397,4 +1486,599 @@ body
 
 		letter-spacing 4px
 
+
+.news
+	.page-tag
+		margin-bottom 15px
+
+	.news-items
+		display: grid
+		grid-template-columns 1fr 1fr 1fr 1fr
+		grid-gap 130px 0
+		align-items center
+		width 100%
+		margin-top 110px
+		margin-bottom 100px
+		box-sizing border-box
+
+	.news-item
+		.news-title
+			font-size 18px
+
+
+.news-detail
+	.page-tag
+		margin-bottom 15px
+
+	.page-title
+		max-width 645px
+
+		font-size 34px
+		line-height 40px
+		color $colordark
+
+	.page-data
+		text-transform uppercase
+		font-size 12px
+		letter-spacing 2px
+
+	.news-detail-text
+		margin-top 86px
+		max-width 785px
+
+		padding-left 60px
+		box-sizing border-box
+
+		color $colordark
+		line-height 27px
+
+		font-size 18px
+
+		p
+			color $colordark
+			margin-bottom 20px
+
+	.news-detail-full
+		display flex
+		margin-top 40px
+
+		.news-detail-slider
+			position relative
+			display block
+			max-height 395px
+			width 50%
+
+			.slick-arrow-container
+				width 188px
+				left 50%
+				margin-left -95px
+				bottom -65px
+
+		.news-detail-text
+			margin 0
+			padding 35px 30px 0 58px
+
+
+.rewiews
+	position relative
+
+	.rewiews-add
+		position absolute
+		right 0
+		top 7px
+		padding 14px 42px
+		font-size 18px
+		letter-spacing 3px
+		text-transform uppercase
+
+	.rewiews-items
+		display grid
+		grid-template-columns 1fr 1fr
+		margin-top 50px
+
+	.load
+		margin-top 28px
+
+
+.rewiews-item
+	position relative
+	display block
+	min-height 330px
+	padding 60px 30px 50px 30px
+	box-sizing border-box
+
+	color $colordark
+
+	transform translateY(0px)
+
+	transition background 0.3s $transitionAnimation, transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+	&.load-events-item
+		opacity 0
+		transform translateY(50px)
+
+	.rewiews-data
+		margin-bottom 27px
+		font-size 12px
+		text-transform uppercase
+
+		letter-spacing 2px
+
+	.rewiews-name
+		margin-bottom 20px
+		font-size 18px
+		font-family ProximaNovaBold
+
+	.rewiews-text
+		max-height 115px
+		overflow hidden
+		line-height 30px
+
+	&:after
+		content ""
+		position absolute
+		display block
+		width 50px
+		height 10px
+		bottom 40px
+		left 30px
+		background-image url("../svg/arrow_left_green.svg")
+		background-repeat no-repeat
+		background-size cover
+
+	&:hover
+		background $colorgrayfone
+
+.clinic
+.contacts
+	.page-title
+		font-size 54px
+		margin-bottom 35px
+
+	.page-info
+		margin-bottom 0
+
+	.page-information
+		margin-bottom 50px
+
+.clinic-inner
+	display block
+	margin-bottom 70px
+
+	&--photo
+		display flex
+		margin-bottom 40px
+
+	.clinic-container
+		width 50%
+
+		.clinic-container-img
+			display block
+			width 100%
+
+			img
+				display block
+				width 100%
+
+		span
+			display block
+			padding-left 5px
+			margin-top 15px
+			font-size 14px
+
+	.clinic-text
+		padding-left 325px
+		box-sizing border-box
+
+		.clinic-name
+			display block
+			margin-bottom 25px
+			font-size 34px
+			font-family ProximaNovabold
+			line-height 60px
+
+		.clinic-info
+			font-size 18px
+			color $colordark
+			line-height 27px
+
+			p
+				margin-bottom 20px
+				font-size 18px
+				color $colordark
+				line-height 28px
+
+				&:last-child
+					margin-bottom 0
+
+.contacts
+	.map-block
+		margin-top 0
+
+.contacts-container
+	display grid
+	grid-template-columns 1fr 1fr
+
+	.contacts-container-items>span
+		display block
+		margin-bottom 40px
+		font-size 35px
+		font-family ProximaNovaBold
+
+	.contacts-container-items
+		padding 50px 0px 0px 60px
+
+	 .contacts-container-items>div
+		display flex
+		margin-bottom 20px
+		max-width 375px
+		justify-content baseline
+		align-items center
+
+		span
+			display block
+			width 110px
+			text-transform uppercase
+			font-size 14px
+			letter-spacing 1.5px
+		a
+			font-size 20px
+
+	.contacts-container-items>.contacts-time
+		display grid
+		grid-gap 20px 0
+		grid-template-columns 115px 1fr
+
+		span.time
+			width 100%
+			font-family ProximaNovaBold
+			font-size 16px
+
+	.button
+		margin-top 40px
+		padding 13px 38px
+		font-size 16px
+		font-family ProximaNovaBold
+
+
+.advantages
+	.page-info
+		margin-bottom 75px
+
+.advantages-inner
+	display flex
+	margin-bottom 50px
+
+	.advantages-container
+		display block
+		width 50%
+
+		.advantages-container-img
+			display block
+			width 100%
+
+			img
+				display block
+				min-width 100%
+
+		span
+			display block
+			padding-left 5px
+			margin-top 15px
+			font-size 14px
+
+		&--text
+			padding 30px 75px 35px 40px
+			box-sizing border-box
+
+			.advantages-title
+				line-height 40px
+				margin-bottom 28px
+
+			ul
+				li
+					padding-left 8px
+					margin-bottom 15px
+
+
+			p
+				margin-bottom 20px
+
+.accordion
+	display block
+	width 100%
+
+	.accordion-item
+		display block
+		width 100%
+		height 100px
+		overflow hidden
+		transition background 0.3s $transitionAnimation, height 0.3s $transitionAnimation
+
+		&:hover
+			background #f7fafa
+
+		&.active
+			height auto
+			background #f7fafa
+
+			.accordion-content
+				display block
+
+			.accordion-header
+				.accordion-arrow
+					&:before
+						width 0
+						height 0
+						margin-left 3px
+						border-left 5px solid transparent
+						border-right 5px solid transparent
+						border-bottom 5px solid $colorgreen
+						background transparent
+
+					&:after
+						width 100%
+						height 1px
+						background $colorgreen
+						border none
+						margin-left 0
+
+
+
+		&.show-content
+			.accordion-content
+				transform translateY(0px)
+				opacity 1
+
+	.accordion-header
+		position relative
+		cursor pointer
+
+		.accordion-text
+			display block
+			padding 33px 0 33px 60px
+			box-sizing border-box
+
+			text-align left
+
+			font-family ProximaNovaBold
+			font-size 34px
+
+		.accordion-arrow
+			position absolute
+			right 33px
+			top 50%
+			margin-top -15px
+			display block
+			width 15px
+			height 30px
+
+			&:before
+				content ""
+				position absolute
+				top 0
+				display block
+				width 100%
+				height 1px
+				background $colorgreen
+				transition border 0.3s $transitionAnimation, height 0.3s $transitionAnimation
+
+			&:after
+				content ""
+				position absolute
+				bottom 0
+				display block
+				width 0
+				height 0
+				margin-left 3px
+				border-left 5px solid transparent
+				border-right 5px solid transparent
+				border-top 5px solid $colorgreen
+				transition border 0.3s $transitionAnimation, height 0.3s $transitionAnimation
+
+
+	.accordion-content
+		display none
+		padding 30px 30px 35px 60px
+		box-sizing border-box
+		opacity 0
+		transform translateY(-50px)
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+		color $colordark
+
+		.accordion-content-title
+			margin-bottom 22px
+			padding-bottom 18px
+			box-sizing border-box
+			border-bottom 1px solid #c6c7c7
+
+			font-size 24px
+			font-weight 600
+
+			color #000
+
+
+		.accordion-content-service
+			display flex
+			margin-bottom 37px
+			justify-content space-between
+			padding 0 100px 0 40px
+			box-sizing border-box
+
+			.service-price
+				font-size 20px
+				font-weight 600
+
+.price
+	.page-info
+		margin-bottom 35px
+
+	.accordion
+		margin-top 75px
+
+.doctors
+	.page-info
+		margin-bottom 50px
+
+.doctors-filter
+	display block
+	margin-bottom 55px
+	padding-left 60px
+	box-sizing border-box
+
+	.doctors-filter-item
+		display inline-block
+		margin-right 20px
+
+		vertical-align middle
+		font-size 16px
+
+		cursor pointer
+
+		transition opacity 0.3s $transitionAnimation
+
+		&:hover
+			opacity 0.6
+
+		&.active
+			font-family ProximaNovaBold
+			color #128F2E
+
+.doctors-items
+	display flex
+
+	.doctors-item
+		display flex
+		width 50%
+		transform translateY(0px)
+		opacity 1
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+		.doctors-item-img
+			display block
+			width 50%
+
+			img
+				display block
+				width 100%
+
+		.doctors-item-text
+			padding 33px 0 0 27px
+			box-sizing: border-box
+
+			.doctors-item-name
+				width 200px
+				margin-bottom 5px
+
+				line-height 35px
+				font-weight 600
+				font-size 24px
+
+			.doctors-item-position
+				width 215px
+				line-height 27px
+
+		&.hide
+			opacity 0
+			transform translateY(50px)
+
+		&.hide-block
+			display none
+
+
+.doctor-detail
+	.page-information
+		margin-top -30px
+
+.doctor-detail-inner
+	display grid
+	grid-template-columns 1fr 3fr
+
+	.doctor-detail-container
+		.doctor-detail-container-img
+			width 100%
+			margin-bottom 50px
+			img
+				width 100%
+				display block
+		span
+			display block
+			line-height  28px
+
+			font-style italic
+
+	.doctor-detail-info
+		padding 35px 50px 30px 50px
+		box-sizing border-box
+
+		.page-title
+			margin-bottom 30px
+
+		ul
+			margin-left 30px
+			margin-bottom 65px
+
+			li
+				margin-bottom 15px
+
+		.doctor-detail-info-left
+			margin-top 95px
+			margin-left -12px
+
+		.certificate-container
+			display grid
+			grid-template-columns 1fr 1fr 1fr 1fr 1fr 1fr
+
+			grid-gap 40px 25px
+
+			align-items center
+
+			width 105%
+			margin-left -13px
+
+			.certificate-img
+				display block
+
+				img
+					display block
+					width 100%
+
+		.doctor-detail-timetable
+			margin-left -12px
+			max-width 225px
+
+			.doctor-detail-timetable-item
+				display flex
+				justify-content space-between
+				margin-bottom 20px
+
+				.timetable-week
+					font-size 13px
+					letter-spacing 2px
+					text-transform uppercase
+					color #696969
+
+				.timetable-time
+					font-weight 600
+					color $colordark
+
+		.doctor-enroll
+			max-width 588px
+			width 100%
+
+			margin-top 75px
+			margin-left -50px
+			padding 30px 0 25px 0
+
+			font-size 20px
+			letter-spacing 4px
+			text-transform uppercase
+
+			&:before
+				transform scale(8) rotate(45deg) translateX(-120px) translateY(120px)
+
+			&:hover
+				&:before
+					transform scale(8) rotate(45deg) translateX(0) translateY(0)
 /*** //page style ***/

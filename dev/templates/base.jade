@@ -56,6 +56,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				noCache: true,
 			}, {
 				media: "screen",
+				href: "../css/plugins/lazy-modal.css",
+				noCache: true,
+			}, {
+				media: "screen",
 				href: "../css/" + info.code + ".css",
 				noCache: true
 			}
@@ -115,8 +119,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							]
 						})
 					div(class="header-info-holder")
-						a(href="tel:+74932938-128", class="link header-mobile") +7 (4932) 938-128
-						span Обратный звонок
+						a(href="tel:+74932938128", class="link header-mobile") +7 (4932) 938-128
+						span(data-lm-element="check") Обратный звонок
 					div(class="header-burger-holder")
 						div(class="header-burger")
 					
@@ -237,12 +241,12 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 			div(class="mobile-menu-close")
 		footer(class="page-footer", itemscope, itemtype="http://schema.org/WPFooter")
 			div(class="page-inner page-inner--w1")
-				div(class="footer-license")
+				div(class="footer-license", data-lm-block="check")
 					p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
 					p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
 					p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
 					a(href="#", class="link link--green link--opacity") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
-				a(href="http://ruformat.ru/", target="_blank", class="link link--opacity footer-creators", title="Разработка интернет-магазинов")
+				a(href="http://aheadstudio.ru", target="_blank", class="link link--opacity footer-creators", title="Разработка интернет-магазинов")
 					div(class="footer-creators-title") Сделанно в
 					div(class="footer-creators-name link--green") Aheadstudio
 				
@@ -255,6 +259,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDOtcx9Sm_hunFMGzh4eqe_XRkFUYMWIao&amp;sensor=true"
 			}, {
 				src: "../js/plugins/slick.min.js"
+			}, { 
+				src: "../js/plugins/jquery.lazy-modal.js"
 			}, { 
 				src: "../js/" + info.code + ".js"
 			}

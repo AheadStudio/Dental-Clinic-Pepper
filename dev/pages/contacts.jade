@@ -1,0 +1,33 @@
+extends ../templates/base
+
+block content
+    div(class="page-inner page-inner--w1")
+        div(class="contacts")
+            div(class="page-information")
+                div(class="page-title") Контакты
+            div(class="contacts-container")
+                div(class="contacts-container-items")
+                    span Нас легко найти
+                    div(class="contacts-address link--brown")
+                        span Адрес
+                        a(href="#", class="link link--brown") Иваново, ул. Крутицкая, д. 13
+                    div(class="contacts-mobile link--brown")
+                        span Телефон
+                        a(href="tel:+74932938128", class="link link--brown") +7 (4932)-938-128
+                    div(class="contacts-email link--brown")
+                        span E-mail
+                        a(href="mail:s-percev@mail.ru", class="link link--brown link--brown-bottom") s-percev@mail.ru
+                    div(class="contacts-instagram link--brown")
+                        span Instagram
+                        a(href="@klinikaperceva", class="link link--brown link--brown-bottom") +7 (4932)-938-128
+                div(class="contacts-container-items")
+                    span Режим работы
+                    div(class="contacts-time")
+                        span Пн-сб
+                        span(class="time") 08:00 &#8212; 21:00  
+                        span Вс
+                        span(class="time") 08:00 &#8212; 15:00  
+                    button(type="button", class="button button--green") Записаться на прием
+            div(class="map-block")
+                div(class="map-container")
+                    div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../i/point_map.png")

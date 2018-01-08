@@ -31,14 +31,6 @@
                 "mobile": "0"
             }
         },
-        "catalog": {
-            "name": "Каталог",
-            "progress": {
-                "desktop": "0",
-                "tablet": "0",
-                "mobile": "0"
-            }
-        },
         "services_main": {
             "name": "Услуги главная",
             "progress": {
@@ -58,7 +50,87 @@
         "services_element": {
             "name": "Услуги элемент",
             "progress": {
-                "desktop": "80",
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "news": {
+            "name": "Новости",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "news_detail_mini": {
+            "name": "Новости детальная мини",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "news_detail_full": {
+            "name": "Новости детальная полная",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "reviews": {
+            "name": "Отзывы",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "clinic": {
+            "name": "Клиника",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "contacts": {
+            "name": "Контакты",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "advantages": {
+            "name": "Преимущества",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "price": {
+            "name": "Цены",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "doctors": {
+            "name": "Врачи",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "doctors_detail": {
+            "name": "Врач резюме",
+            "progress": {
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }

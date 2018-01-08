@@ -1,0 +1,146 @@
+extends ../templates/base
+
+block content
+    div(class="page-inner page-inner--w1")
+        div(class="doctors")
+            div(class="page-information")
+                div(class="page-title") Врачи
+                div(class="page-info") Наши доктора являются высокими профессионалами в своем ремесле, каждый день подтверждая свое звание высококлассного специалиста, в течение года посещая курсы повышения квалификации не только в России, но и за рубежом (Израиль, Германия).
+            div(class="doctors-inner")
+                div(class="doctors-filter")
+                    div(data-filter="all", class="doctors-filter-item active") Все
+                    div(data-filter="terapy", class="doctors-filter-item") Терапия
+                    div(data-filter="protez", class="doctors-filter-item") Протезирование
+                    div(data-filter="implant", class="doctors-filter-item") Имплантация
+                    div(data-filter="hirurg", class="doctors-filter-item") Хирургия
+                    div(data-filter="ortodon", class="doctors-filter-item") Ортодонтия
+                    div(data-filter="childrensto", class="doctors-filter-item") Десткая стоматология
+                    div(data-filter="lordoctor", class="doctors-filter-item") Лор-врач
+                div(class="doctors-items")
+                    div(filter="terapy", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/director_percev.png", alt="director_percev")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Перцев Сергей Станиславович
+                            div(class="doctors-item-position") Директор, главный врач клиники                    
+                    div(filter="hirurg,terapy", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/baranyk.png", alt="baranyk")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Баранок Василий Михайлович
+                            div(class="doctors-item-position") Врач-стоматолог хирург
+                            div(class="doctors-item-position") Врач-стоматолог терапевт
+                div(class="doctors-items")
+                    div(filter="ortodon", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/potanina.png", alt="potanina")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Потанина Анна Павловна
+                            div(class="doctors-item-position") Врач-стоматолог ортодонт              
+                    div(class="doctors-item")
+                div(class="doctors-items")
+                    div(class="doctors-item")
+                    div(filter="ortodon", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/strulev.png", alt="strulev")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Струлев Михаил Юрьевич
+                            div(class="doctors-item-position") Врач-стоматолог ортодонт
+                div(class="doctors-items")
+                    div(filter="hirurg,ortodon", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/tarhanov.png", alt="tarhanov")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Тарханов Александр Валерьевич
+                            div(class="doctors-item-position") Врач-стоматолог хирург              
+                            div(class="doctors-item-position") Врач-стоматолог ортодонт              
+                    div(filter="ortodon", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/ivanova.png", alt="ivanova")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Иванова Галина Анатольевна
+                            div(class="doctors-item-position") Врач-стоматолог ортодонт              
+                div(class="doctors-items")
+                    div(filter="hirurg,implant", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/gelezova.png", alt="gelezova")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Железова Анастасия Борисовна
+                            div(class="doctors-item-position") Врач-стоматолог хирург-имплантолог              
+                    div(class="doctors-item")
+                div(class="doctors-items")
+                    div(class="doctors-item")
+                    div(filter="terapy", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/gukova.png", alt="gukova")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Жукова Марина Сергеевна
+                            div(class="doctors-item-position") Врач-стоматолог терапевт            
+                div(class="doctors-items")
+                    div(filter="terapy,childrensto", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/gladun.png", alt="gladun")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Гладун Оксана Валентиновна
+                            div(class="doctors-item-position") Заведующая терапевтическим отделением клиники
+                            div(class="doctors-item-position") Специалист работы с микроскопом
+                            div(class="doctors-item-position") Врач-стоматолог терапевт
+                            div(class="doctors-item-position") Врач-стоматолог детский
+                    div(class="doctors-item")
+                div(class="doctors-items")
+                    div(class="doctors-item")
+                    div(filter="ortodon", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/gelezonov.png", alt="gelezonov")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Жезелезов Евгений Сергеевич
+                            div(class="doctors-item-position") Врач-стоматолог ортопед
+                div(class="doctors-items")
+                    div(filter="lordoctor", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/hohlova.png", alt="hohlova")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Хохлова Елена Алексеевна
+                            div(class="doctors-item-position") Врач-стоматолог профилактический
+                    div(filter="terapy", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/kurochkina.png", alt="kurochkina")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Курочкина Елена Сергеевна
+                            div(class="doctors-item-position") Врач-стоматолог профилактический
+                            div(class="doctors-item-position") Специалист работы с микроскопом
+                div(class="doctors-items")
+                    div(filter="terapy", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/kashnikov.png", alt="kashnikov")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Кашников  Александр Влерьевич
+                            div(class="doctors-item-position") Врач-стоматолог терапевт
+                            div(class="doctors-item-position") Специалист работы с микроскопом
+                    div(class="doctors-item")
+                div(class="doctors-items")
+                    div(class="doctors-item")
+                    div(filter="terapy,childrensto", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/perceva.png", alt="perceva")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Перцева Ольга Ярославовна
+                            div(class="doctors-item-position") Врач-стоматолог терапевт
+                            div(class="doctors-item-position") Врач-стоматолог десткий
+                div(class="doctors-items")
+                    div(filter="terapy,childrensto", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/gaburina.png", alt="gaburina")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Жабурина Мария Владимировна
+                            div(class="doctors-item-position") Врач-орталаринголок, кандидат медицинских наук, доцент кафедры оториноларингологии и офтальмологии
+                    div(class="doctors-item")
+                div(class="doctors-items")
+                    div(filter="terapy,childrensto", class="doctors-item")
+                        div(class="doctors-item-img")
+                            img(src="../dummy/boklin4.png", alt="boklin4")
+                        div(class="doctors-item-text")
+                            div(class="doctors-item-name") Боклин Андрей Кузьмич
+                            div(class="doctors-item-position") Врач оториноларинголог
+                            div(class="doctors-item-position") Хирург высшей квалификационной категории
+                    div(class="doctors-item")

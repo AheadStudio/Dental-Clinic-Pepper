@@ -8,12 +8,25 @@
 
 		return {
 
+			common: {
+				go: function(topPos, speed, callback) {
+					var curTopPos = $sel.window.scrollTop(),
+						diffTopPos = Math.abs(topPos - curTopPos);
+					$sel.body.add($sel.html).animate({
+						"scrollTop": topPos
+					}, speed, function() {
+						if(callback) {
+							callback();
+						}
+					});
+				}
+			},
+
 			scrollAnimation: {
 
 				blocks: [],
 				init: function() {
 					var self = this;
-
 					$("[data-animationblock]:not(.animated)").each(function() {
 						var $item = $(this),
 							itemAnimation = $item.data("animationtype"),
@@ -122,6 +135,7 @@
 					self.mainSlider($slider);
 					self.servicesSlider($slider);
 					self.advSlider($slider);
+					self.newsSlider($slider);
 				},
 
 				mainSlider: function(slider) {
@@ -137,7 +151,7 @@
 						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
 							idElement = $element.attr("id"),
 							$toggle = $(".main-slider-item-info");
-							console.log(idElement);
+
 						self.sliderToggleAnimation($toggle, idElement);
 					});
 
@@ -147,7 +161,7 @@
 							$sliderItem = $container.find(".main-slider-item.slick-active");
 							idItem =  $sliderItem.attr("id"),
 							$photo = $(".main-slider-item-info");
-						console.log(idItem);
+
 						self.sliderToggleAnimation($photo, idItem);
 					});
 
@@ -210,6 +224,16 @@
 						self.sliderToggleAnimation($photo, idItem);
 					});
 
+				},
+
+				newsSlider: function(slider) {
+					var self = this,
+						$newsSlider = $(".news-detail-slider"),
+						$slider = $newsSlider.find(slider),
+						$itemSlider = $(".news-detail-slider-item", $slider),
+						$arrowContainer = $(".slick-arrow-container", $newsSlider);
+
+					self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
 				},
 
 				sliderToggleAnimation: function(el, idElement) {
@@ -412,9 +436,117 @@
 						}
 					});
 				}
-			}
+			},
 
+			ajaxLoader: function() {
+				$sel.body.on("click", ".load-more", function(event) {
+					var $linkAddress = $(this),
+						href = $linkAddress.attr("href"),
+						$container = $($linkAddress.data("container"));
 
+						(function(href, $container) {
+							$.ajax({
+								url: href,
+								success: function(data) {
+									var $data = $(data).addClass("load-events-item");
+										$container.append($data);
+									setTimeout(function() {
+										$container.find(".load-events-item").removeClass("load-events-item");
+									}, 100);
+									DENTALCLINIC.reload();
+								}
+							})
+						})(href, $container);
+						event.preventDefault();
+				})
+			},
+
+			accordion: {
+
+				init: function() {
+					var self = this,
+						$accordion = $(".accordion"),
+						$accordionItem = $(".accordion-item", $accordion);
+
+					$accordionItem.on("click", function() {
+						var $el = $(this),
+							$elHide = $accordion.find(".accordion-item.active");
+
+						if (!$el.hasClass("active")) {
+							self.show($el);
+							self.hide($elHide);
+						} else {
+							self.hide($el);
+						}
+
+					});
+
+				},
+
+				show: function(el) {
+					el.addClass("active");
+					setTimeout(function() {
+						el.addClass("show-content");
+						setTimeout(function() {
+							DENTALCLINIC.common.go(el.offset().top, 500);
+						}, 100);
+					}, 300);
+				},
+
+				hide: function(el) {
+					el.removeClass("show-content");
+					setTimeout(function() {
+						el.removeClass("active");
+					}, 300);
+				}
+
+			},
+
+			filter: {
+
+				showEl: [],
+
+				init: function() {
+					var self = this,
+						$filterItem = $("div[data-filter]");
+
+					$filterItem.on("click", function() {
+						var item = $(this),
+							dataItem = item.data("filter"),
+							$allItem = $(".doctors-item[filter]"),
+							$showItem;
+
+						$filterItem.removeClass("active");
+
+						setTimeout(function() {
+							item.addClass("active");
+						},50);
+
+						if (dataItem === "all") {
+							$showItem = $(".doctors-item[filter]");
+						} else {
+							$showItem = $(".doctors-item[filter *='"+dataItem+"']");
+						}
+
+						self.show($showItem, $allItem);
+					});
+
+				},
+
+				show: function(el, elements) {
+					var self = this;
+
+					elements.addClass("hide");
+					setTimeout(function() {
+						elements.addClass("hide-block");
+						el.removeClass("hide-block");
+						setTimeout(function() {
+							el.removeClass("hide");
+						},50);
+					},300);
+				}
+
+			},
 		};
 
 	})();
@@ -425,4 +557,11 @@
 	DENTALCLINIC.map.init();
 	DENTALCLINIC.slickSliders.init();
 	DENTALCLINIC.forms.init();
+	DENTALCLINIC.ajaxLoader();
+	DENTALCLINIC.accordion.init();
+	DENTALCLINIC.filter.init();
+
+	DENTALCLINIC.reload = function() {
+		DENTALCLINIC.scrollAnimation.init();
+	}
 })(jQuery);
