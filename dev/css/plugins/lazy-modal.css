@@ -1,16 +1,10 @@
-.show-lazy-modal .lazy-modal-background {
+.lazy-modal-background {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
     z-index: 1111;
-    -webkit-transition: -webkit-opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -moz-transition: -moz-opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -o-transition: -o-opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -ms-transition: -ms-opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transition: opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0;
 }
 .lazy-modal-background.lazy-modal-background--show {
     opacity: 1;

@@ -88,24 +88,21 @@ body
 	height 145px
 
 	padding 30px 0
-	margin-bottom 140px
+	margin-bottom 105px
 
 	box-sizing border-box
 
 	.header-logo-holder
 		display block
 		width 155px
-		margin-right 140px
 
 	.header-menu-holder
 		display block
 		width 430px
-		margin-right 160px
 
 	.header-info-holder
 		display block
 		width 160px
-		margin-right 110px
 
 	.header-burger-holder
 		position relative
@@ -231,6 +228,14 @@ body
 
 	&:hover
 		box-shadow inset 0 -2.9555px #fff, inset 0 -4px transparent
+
+.link--decoration-gray
+	display inline
+	box-shadow inset 0 -2.9555px $colorgrayfone, inset 0 -4px #000
+	transition box-shadow 0.3s $transitionAnimation
+
+	&:hover
+		box-shadow inset 0 -2.9555px $colorgrayfone, inset 0 -4px transparent
 
 .link--brown-bottom
 	border-bottom 1px solid #4a494a
@@ -364,7 +369,7 @@ body
 	z-index 1000
 
 	.mobile-menu-background
-		position absolute
+		position fixed
 		right -50px
 		top -50px
 		display block
@@ -375,6 +380,7 @@ body
 		background #fff
 
 		transition transform 0.6s $transitionAnimation
+
 
 .mobile-menu-items
 	width 100%
@@ -601,6 +607,7 @@ body
 .mobile-menu
 	&.active-block
 		display block
+		overflow-y scroll
 
 		.mobile-menu-container
 			display block
@@ -615,6 +622,9 @@ body
 
 		.mobile-menu-background
 			transform scale(100)
+			right 0
+			top 0
+			bottom 0
 
 		.mobile-menu-container
 			transform translateY(0)
@@ -831,7 +841,7 @@ body
 
 	.slick-arrow-prev
 	.slick-arrow-next
-		margin-top 5px
+		margin-top 3px
 		width 0
 		height 0
 		border-top 5px solid transparent
@@ -899,10 +909,17 @@ body
 	display flex
 
 .clinics-info
+	width 50%
 	padding-left 60px
 	padding-right 55px
 	box-sizing border-box
 	margin-top 65px
+
+.clinics-container
+	width 50%
+
+	img
+		width 100%
 
 .info
 	.tag
@@ -1105,10 +1122,28 @@ body
 
 	transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
 	transform translateY(0)
+	overflow hidden
 
 	&.load-events-item
 		opacity 0
 		transform translateY(100px)
+
+	&:after
+		content ""
+		position absolute
+		right -25px
+		top -25px
+		width 50px
+		height 50px
+		background $colorgrayfone
+
+		opacity 0
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+	&:hover
+		&:after
+			opacity 1
+			transform translate3d(-55px,25px,0)
 
 	.news-arrow
 		content ""
@@ -1122,7 +1157,7 @@ body
 		background-repeat no-repeat
 		background-size contain
 
-	.news-data
+	.news-date
 		margin-bottom 17px
 		line-height 26px
 		font-size 14px
@@ -1230,44 +1265,53 @@ body
 
 
 /* main block in all page */
-.page-information
-	padding-left 60px
-	box-sizing border-box
+.page-text
+	font-size 18px
+	line-height 30px
+	color #404040
 
-	.page-title
+	figure
+		display block
+		width 100%
+
+		img
+			display block
+			width 100%
+			min-width 100%
+
+	figcaption
+		display block
+		padding-left 5px
+		margin-top 10px
+		font-size 14px
+		color #000
+
+	tag
+		display block
+		margin-bottom 20px
+
+		font-size 14px
+		text-transform uppercase
+		letter-spacing 2px
+		line-height 1
+		color #9B9A9B
+
+	h1
 		margin-bottom 35px
 
 		font-family ProximaNovaBold
 		font-size 54px
 
-	.page-info
+		line-height 1
+
+	h2
 		max-width 775px
 		margin-bottom 95px
 
 		line-height 43px
 		font-size 28px
 
-	.page-tag
-		margin-bottom 20px
-
-		font-size 14px
-		text-transform uppercase
-		letter-spacing 2px
-		color #9B9A9B
-
-	.page-add-info
-		display block
-		margin-bottom 20px
-
-		font-size 18px
-		color $colordark
-
-.page-text
-	font-size 18px
-	line-height 30px
-	color #404040
-
-	.page-title
+	h3
 		margin-bottom 40px
 		font-family ProximaNovaBold
 		font-size 34px
@@ -1286,13 +1330,21 @@ body
 			padding-left 5px
 			box-sizing border-box
 
-	.page-numbered-list
+	i
+		font-style italic
+
+	ol
 		display block
+		counter-reset olList
 
-		.page-numbered-list-item
+		li
 			position relative
+			margin-bottom 50px
 
-			span
+			&:before
+				content ""
+				counter-increment olList
+				content counter(olList)
 				position absolute
 				top 15px
 				left -75px
@@ -1300,13 +1352,24 @@ body
 				font-size 60px
 				color $colorgreen
 
-		.page-numbered-list-subtitle
-			margin-bottom 7px
-			font-family  ProximaNovaBold
-			font-size 20px
+			.page-numbered-list-subtitle
+				margin-bottom 7px
+				font-family  ProximaNovaBold
+				font-size 20px
 
-		.page-numbered-list-text
-			margin-bottom 65px
+	date
+		display block
+		text-transform uppercase
+		font-size 12px
+		letter-spacing 2px
+		line-height 1
+
+.page-information
+	padding-left 60px
+	box-sizing border-box
+
+	.page-text
+		color #000
 
 .load
 	position relative
@@ -1357,7 +1420,10 @@ body
 
 /* //main block in all page */
 
-
+.services-section
+	.page-text
+		h2
+			margin-bottom 60px
 
 .services-section-description
 	display flex
@@ -1365,25 +1431,21 @@ body
 	min-height 375px
 	background-color $colorgrayfone
 
+
 	.description-list
 		width 50%
 		padding 50px 50px 10px 90px
 		box-sizing border-box
 
 		ul
+			margin-left 0
 			list-style disc
 
 			a
-				display inline
 				line-height 45px
 
-				box-shadow inset 0 -2.9555px $colorgrayfone, inset 0 -4px #000
-
-				transition box-shadow 0.3s $transitionAnimation
 				font-size 22px
 
-				&:hover
-					box-shadow inset 0 -2.9555px $colorgrayfone, inset 0 -4px transparent
 
 	.description-img
 		position relative
@@ -1410,10 +1472,9 @@ body
 
 
 .services-element
-	margin-top -35px
-
-	.page-info
-		margin-bottom 58px
+	.page-text
+		h2
+			margin-bottom 55px
 
 
 .services-element-inner
@@ -1421,23 +1482,22 @@ body
 	grid-template-columns minmax(100px, 295px) 1fr
 
 .services-element-preview
-	.services-element-preview-img
-		margin-bottom 40px
+	figure
+		margin-bottom 45px
 
 		img
 			display block
 			width 100%
 
-	.services-element-preview-text
+	figcaption
 		padding-right 35px
+		padding-left 0
 
 		box-sizing border-box
 
 		line-height 28px
 
 		font-size 16px
-		font-style italic
-
 		color $colordark
 
 .services-element-information
@@ -1446,8 +1506,8 @@ body
 	box-sizing border-box
 
 	.services-element-information-item
-		max-width 625px
-		margin-bottom 85px
+		max-width 650px
+		margin-bottom 80px
 		padding-left 85px
 		box-sizing border-box
 
@@ -1507,20 +1567,19 @@ body
 
 
 .news-detail
-	.page-tag
-		margin-bottom 15px
+	.page-text
+		tag
+			margin-bottom 15px
 
-	.page-title
-		max-width 645px
+		h1
+			max-width 645px
 
-		font-size 34px
-		line-height 40px
-		color $colordark
+			font-size 34px
+			line-height 40px
+			color $colordark
 
-	.page-data
-		text-transform uppercase
-		font-size 12px
-		letter-spacing 2px
+		date
+			color $colordark
 
 	.news-detail-text
 		margin-top 86px
@@ -1597,7 +1656,7 @@ body
 		opacity 0
 		transform translateY(50px)
 
-	.rewiews-data
+	.rewiews-date
 		margin-bottom 27px
 		font-size 12px
 		text-transform uppercase
@@ -1631,11 +1690,11 @@ body
 
 .clinic
 .contacts
-	.page-title
+	h1
 		font-size 54px
 		margin-bottom 35px
 
-	.page-info
+	h2
 		margin-bottom 0
 
 	.page-information
@@ -1647,24 +1706,10 @@ body
 
 	&--photo
 		display flex
-		margin-bottom 40px
+		margin-bottom 48px
 
 	.clinic-container
 		width 50%
-
-		.clinic-container-img
-			display block
-			width 100%
-
-			img
-				display block
-				width 100%
-
-		span
-			display block
-			padding-left 5px
-			margin-top 15px
-			font-size 14px
 
 	.clinic-text
 		padding-left 325px
@@ -1742,7 +1787,10 @@ body
 
 
 .advantages
-	.page-info
+	margin-top -5px
+	margin-bottom 105px
+
+	h2
 		margin-bottom 75px
 
 .advantages-inner
@@ -1752,20 +1800,6 @@ body
 	.advantages-container
 		display block
 		width 50%
-
-		.advantages-container-img
-			display block
-			width 100%
-
-			img
-				display block
-				min-width 100%
-
-		span
-			display block
-			padding-left 5px
-			margin-top 15px
-			font-size 14px
 
 		&--text
 			padding 30px 75px 35px 40px
@@ -1778,7 +1812,7 @@ body
 			ul
 				li
 					padding-left 8px
-					margin-bottom 15px
+					margin-bottom 17px
 
 
 			p
@@ -1911,8 +1945,15 @@ body
 				font-weight 600
 
 .price
-	.page-info
-		margin-bottom 35px
+	.page-information
+		h2
+			margin-bottom 30px
+		p
+			display block
+			margin-bottom 10px
+
+			font-size 18px
+			color $colordark
 
 	.accordion
 		margin-top 75px
@@ -1996,17 +2037,16 @@ body
 	grid-template-columns 1fr 3fr
 
 	.doctor-detail-container
-		.doctor-detail-container-img
+		figure
 			width 100%
 			margin-bottom 50px
-			img
-				width 100%
-				display block
-		span
-			display block
-			line-height  28px
 
-			font-style italic
+		figcaption
+			padding-left 0
+			display block
+			line-height 28px
+
+			font-size 16px
 
 	.doctor-detail-info
 		padding 35px 50px 30px 50px

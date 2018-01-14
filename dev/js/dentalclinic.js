@@ -466,10 +466,10 @@
 				init: function() {
 					var self = this,
 						$accordion = $(".accordion"),
-						$accordionItem = $(".accordion-item", $accordion);
+						$accordionItem = $(".accordion-header", $accordion);
 
 					$accordionItem.on("click", function() {
-						var $el = $(this),
+						var $el = $(this).parent(),
 							$elHide = $accordion.find(".accordion-item.active");
 
 						if (!$el.hasClass("active")) {
@@ -479,6 +479,14 @@
 							self.hide($el);
 						}
 
+					});
+					$("[data-fancybox]").fancybox({
+						onInit: function(asdasd, a) {
+							console.log("из js",asdasd,a);
+						},
+						afterLoad: function(asdasd, a) {
+							console.log("из js",asdasd,a);
+						},
 					});
 
 				},
