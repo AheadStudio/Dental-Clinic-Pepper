@@ -20,7 +20,7 @@
     var defaults = {
 
         // Position modal window
-        position:  "center",
+        position:  "",
 
         // Content for show
         content:  "",
@@ -41,6 +41,9 @@
         // Type modal
         type: "html",
 
+        // Custom class
+        customclass: "",
+
         // template modal window
         basetpl:
         '<div class="lazy-modal">' +
@@ -50,7 +53,7 @@
         '</div>',
 
         // Button close template
-        btnclosetml: '<button data-lazy-close class="lazy-modal-close"'+
+        btnclosetml: '<button data-lazymodal-close class="lazy-modal-close"'+
                         '<?xml version="1.0" encoding="iso-8859-1"?>'+
                          '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">' +
                             '<g><g id="_x31_0_41_"><g><path d="M415.338,196.662c-7.535-7.535-19.737-7.535-27.253,0l-82.181,82.18l-81.033-81.032c-7.478-7.478-19.584-7.478-27.042,0'+
@@ -111,7 +114,7 @@
 
             initialization = self.el.data("lazyModalInit");
 
-            if (initialization) {
+            if (initialization === "on") {
                 $.error("Plugin already initialized");
             } else {
                 self.el.data("lazyModalInit", "on");
@@ -131,7 +134,7 @@
                         success: function(data) {
                             var $data = $(data);
                             self.options.htmlContent = $data;
-                            console.log(1);
+
                         }
                     })
                 })(self.options.content);
@@ -148,24 +151,102 @@
             var self = this;
 
             self.hooks("beforeLoad");
+
             if ($body) {
+
                 $body.css("overflow", "hidden");
                 $body.prepend(self.options.basetpl);
+                self.options.htmlStructure = {};
+
                 setTimeout(function() {
-                    $(".lazy-modal-background", $body).css("background", self.options.bcgcolor);
+
+                    self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
+                    self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
+                    self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
+
+                    self.options.htmlStructure.mainContainer.addClass(self.options.customclass);
+                    self.options.htmlStructure.background.css("background", self.options.bcgcolor);
 
                     if (self.options.positionclose === "outside") {
-                        $(".lazy-modal", $body).append(self.options.btnclosetml);
+                        self.options.htmlStructure.mainContainer.append(self.options.btnclosetml);
                     } else if (self.options.positionclose === "inside") {
-                        $(".lazy-modal-container", $body).append("<span class='lazy-modal-close'></span>");
+                        self.options.htmlStructure.contentContainer.append("<span class='lazy-modal-close'></span>");
                     }
 
+                    self.includeContent(self.options.htmlStructure.contentContainer, self.options.position);
+
                 }, 100)
+
             } else {
                 $.error("No find 'body' in DOM model");
             }
-            self.hooks("afterLoad");
+
         },
+
+
+        // == include content in container == //
+        includeContent: function(container, position) {
+            var self = this;
+
+            if (position) {
+                container.addClass("lazy-modal-container--" + position);
+            }
+            container.append(self.options.htmlContent);
+
+            self.hooks("afterLoad");
+
+            self.showModal();
+
+        },
+
+
+        // == show modal window ==//
+        showModal: function() {
+            var self = this,
+                content = self.options.htmlStructure.contentContainer;
+
+            self.hooks("beforeShow");
+
+            setTimeout(function() {
+                content.addClass("lazy-modal-container--show");
+                self.hooks("afterShow");
+                self.addEvent();
+            }, 400)
+        },
+
+
+        // == addition event close ==//
+        addEvent: function() {
+            var self = this;
+
+            self.hooks("beforeClose");
+
+            $("[data-lazymodal-close]").off("click.lm-close").on("click.lm-close", function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+
+                self.closeModal();
+            });
+
+        },
+
+        // == close modal == //
+        closeModal: function() {
+            var self = this,
+                $container = self.options.htmlStructure.mainContainer,
+                $content = self.options.htmlStructure.contentContainer;
+
+            $content.removeClass("lazy-modal-container--show");
+
+            setTimeout(function() {
+
+                $container.remove();
+                self.el.data("lazyModalInit", "off");
+                self.hooks("afterClose");
+
+            }, 600);
+        },
+
 
         // == hooks function for user == //
         hooks : function(name) {
@@ -261,5 +342,5 @@ $("[data-lazymodal]").lazyModal({
         console.log(obj);
     },
     type: "ajax",
-    content: "news-load.html"
+    content: "news-load.html",
 });

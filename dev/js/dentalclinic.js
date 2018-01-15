@@ -516,7 +516,7 @@
 
 				init: function() {
 					var self = this,
-						$filterItem = $("div[data-filter]");
+						$filterItem = $("[data-filter]");
 
 					$filterItem.on("click", function() {
 						var item = $(this),

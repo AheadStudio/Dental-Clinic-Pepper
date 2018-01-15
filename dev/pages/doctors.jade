@@ -8,15 +8,23 @@ block content
                     h1 Врачи
                     h2 Наши доктора являются высокими профессионалами в своем ремесле, каждый день подтверждая свое звание высококлассного специалиста, в течение года посещая курсы повышения квалификации не только в России, но и за рубежом (Израиль, Германия).
             div(class="doctors-inner")
-                div(class="doctors-filter")
-                    div(data-filter="all", class="doctors-filter-item active") Все
-                    div(data-filter="terapy", class="doctors-filter-item") Терапия
-                    div(data-filter="protez", class="doctors-filter-item") Протезирование
-                    div(data-filter="implant", class="doctors-filter-item") Имплантация
-                    div(data-filter="hirurg", class="doctors-filter-item") Хирургия
-                    div(data-filter="ortodon", class="doctors-filter-item") Ортодонтия
-                    div(data-filter="childrensto", class="doctors-filter-item") Десткая стоматология
-                    div(data-filter="lordoctor", class="doctors-filter-item") Лор-врач
+                ul(class="doctors-filter")
+                    li(data-filter="all", class="doctors-filter-item active")
+                        span Все
+                    li(data-filter="terapy", class="doctors-filter-item") 
+                        span Терапия
+                    li(data-filter="protez", class="doctors-filter-item")
+                        span Протезирование
+                    li(data-filter="implant", class="doctors-filter-item")
+                        span Имплантация
+                    li(data-filter="hirurg", class="doctors-filter-item")
+                        span Хирургия
+                    li(data-filter="ortodon", class="doctors-filter-item")
+                        span Ортодонтия
+                    li(data-filter="childrensto", class="doctors-filter-item")
+                        span Десткая стоматология
+                    li(data-filter="lordoctor", class="doctors-filter-item")
+                        span Лор-врач
                 div(class="doctors-items")
                     div(filter="terapy", class="doctors-item")
                         div(class="doctors-item-img")
