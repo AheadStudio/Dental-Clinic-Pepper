@@ -14,6 +14,10 @@
     top: 0;
     z-index: 1200;
 }
+.lazy-modal-scroll {
+    position: relative;
+    z-index: 1300;
+}
 
 .lazy-modal-container {
     position: relative;
@@ -22,7 +26,7 @@
     margin: 20px auto;
     background: #fff;
     opacity: 0;
-    width: 600px;
+    max-width: 100%;
     -webkit-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -moz-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -o-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);

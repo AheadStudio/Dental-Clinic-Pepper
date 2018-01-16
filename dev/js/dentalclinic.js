@@ -412,7 +412,7 @@
 			},
 
 			forms: {
-				init: function() {
+				init: function($form) {
 					var self = this;
 
 					self.fillInput();
@@ -563,6 +563,11 @@
 					init: function(obj) {
 						obj.options.htmlContent = $(".form", obj.options.htmlContent);
 					},
+					afterImplant: function(obj) {
+						DENTALCLINIC.forms.init(obj.options.htmlContent);
+					},
+					customclass: "form-call-container",
+
 				});
 
 			}

@@ -42,6 +42,7 @@ $colordark = #282828
 /* //fonts */
 
 html
+	height 100%
 body
 	width 100%
 	height 100%
@@ -362,9 +363,11 @@ body
 
 .form-title
 	width 100%
-	margin-bottom 45px
+	margin-bottom 35px
 
 	text-align center
+
+	letter-spacing: -1px
 
 	font-weight 600
 	font-family ProximaNovaBold
@@ -373,6 +376,28 @@ body
 .form-row
 	width 100%
 	margin-bottom 20px
+
+	&--button
+		margin-top 28px
+
+		button
+			width 100%
+			padding 25px 0px 18px 0px
+			box-sizing border-box
+
+			font-size 20px
+			text-transform: uppercase
+			letter-spacing: 3px
+
+			&:before
+				width 600px
+				height 500px
+				trnasform rotate(45deg) translateX(-100%) translateY(55%)
+
+			&:hover
+				&:before
+					transform rotate(45deg) translateX(-34%) translateY(-27%)
+
 
 .form-label
 	display block
@@ -401,17 +426,35 @@ body
 		.form-item
 			background-color transparent
 
+.form-privacy-policy
+	padding-top 10px
+	line-height 20px
+	box-sizing border-box
+	font-size 13px
+	text-transform: uppercase
+
 .form-item
 	width 100%
-	padding: 20px 20px
+	padding: 18px 20px
 	box-sizing border-box
 
 	border-bottom 1px solid #959696
 
 	background-color $colorgrayfone
 
+	font-size 20px
+
 	cursor pointer
-	color: #000
+	color: #fff
+
+
+// popup //
+.form-call-container
+	.lazy-modal-container
+		padding-top 115px
+		width 590px
+
+
 /** //form **/
 
 

@@ -48,7 +48,9 @@
         basetpl:
         '<div class="lazy-modal">' +
             '<div class="lazy-modal-background"></div>' +
-            '<div class="lazy-modal-container">' +
+            '<div class="lazy-modal-scroll">' +
+                '<div class="lazy-modal-container">' +
+                '</div>' +
             '</div>' +
         '</div>',
 
@@ -125,7 +127,7 @@
             if (self.options.type === "html") {
                 htmlContent = $(self.options.content).get(0).outerHTML;
                 self.options.htmlContent = $(htmlContent);
-                
+
                 self.hooks("init");
                 self.implant();
 
@@ -150,13 +152,19 @@
 
         // == Load structure  in DOM model== //
         implant: function() {
-            var self = this;
+            var self = this,
+                widStyles = {
+                    "margin-right": "17px",
+                    "overflow": "hidden",
+                };
 
             self.hooks("beforeLoad");
 
             if ($body) {
 
                 $body.css("overflow", "hidden");
+                $html.css(widStyles);
+
                 $body.prepend(self.options.basetpl);
                 self.options.htmlStructure = {};
 
@@ -244,7 +252,11 @@
         closeModal: function() {
             var self = this,
                 $container = self.options.htmlStructure.mainContainer,
-                $content = self.options.htmlStructure.contentContainer;
+                $content = self.options.htmlStructure.contentContainer,
+                widStyles = {
+                    "margin-right": "",
+                    "overflow": "",
+                };;
 
             $content.removeClass("lazy-modal-container--show");
 
@@ -252,6 +264,7 @@
 
                 $container.remove();
                 self.el.data("lazyModalInit", "off");
+                $html.css(widStyles);
                 $body.css("overflow", "auto");
                 self.hooks("afterClose");
 
