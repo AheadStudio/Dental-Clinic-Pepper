@@ -134,6 +134,24 @@
                 "tablet": "0",
                 "mobile": "0"
             }
+        },
+        "reviews-item": {
+            "name": "Отзыв отдельно",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
+        },
+        "form-mobile-order": {
+            "name": "Заказ звонка",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
         }
     },
     "paths": {

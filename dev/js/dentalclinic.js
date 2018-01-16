@@ -480,14 +480,6 @@
 						}
 
 					});
-					$("[data-fancybox]").fancybox({
-						onInit: function(asdasd, a) {
-							console.log("из js",asdasd,a);
-						},
-						afterLoad: function(asdasd, a) {
-							console.log("из js",asdasd,a);
-						},
-					});
 
 				},
 
@@ -553,8 +545,27 @@
 						},50);
 					},300);
 				}
-
 			},
+
+			modalWindow: function() {
+				var self = this;
+				// вызывает метод init
+				$(".rewiews-item[data-lazymodal]").lazyModal({
+				    type: "ajax",
+					init: function(obj) {
+						obj.options.htmlContent = $(".rewiews-item", obj.options.htmlContent);
+					}
+				});
+
+				$(".header-info-holder span[data-lazymodal]").lazyModal({
+				    type: "ajax",
+					bcgcolor: "#fff",
+					init: function(obj) {
+						obj.options.htmlContent = $(".form", obj.options.htmlContent);
+					},
+				});
+
+			}
 		};
 
 	})();
@@ -568,6 +579,7 @@
 	DENTALCLINIC.ajaxLoader();
 	DENTALCLINIC.accordion.init();
 	DENTALCLINIC.filter.init();
+	DENTALCLINIC.modalWindow();
 
 	DENTALCLINIC.reload = function() {
 		DENTALCLINIC.scrollAnimation.init();

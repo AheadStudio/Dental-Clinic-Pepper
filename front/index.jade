@@ -138,22 +138,25 @@ html(lang="ru")
 					each page, code in pages
 						- var pageProgress = page.progress;
 						- i++;
-						tr
-							td #{i}
-							td
-								a(href="pages/#{code}.html", target="_blank") #{page.name}
-								if page.note
-									br
-									small.text-muted #{page.note}
-							td
-								table(width="100%")
-									tr
-										td(style="width: 33%; text-align: center;")
-											span.label(class="label label-success") #{pageProgress.desktop}
-										td(style="width: 33%; text-align: center;")
-											span.label(class="label label-success") #{pageProgress.tablet}
-										td(style="width: 33%; text-align: center;")
-											span.label(class="label label-success") #{pageProgress.mobile}
+						- var hidden = page.hidden;
+						if hidden == true
+						else
+							tr
+								td #{i}
+								td
+									a(href="pages/#{code}.html", target="_blank") #{page.name}
+									if page.note
+										br
+										small.text-muted #{page.note}
+								td
+									table(width="100%")
+										tr
+											td(style="width: 33%; text-align: center;")
+												span.label(class="label label-success") #{pageProgress.desktop}
+											td(style="width: 33%; text-align: center;")
+												span.label(class="label label-success") #{pageProgress.tablet}
+											td(style="width: 33%; text-align: center;")
+												span.label(class="label label-success") #{pageProgress.mobile}
 
 
 			if customer.removeCopyrights == false
