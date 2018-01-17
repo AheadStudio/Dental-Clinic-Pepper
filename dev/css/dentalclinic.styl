@@ -355,11 +355,13 @@ body
 		left 0
 		bottom 0
 
-		transition width 0.3s $transitionAnimation
+		transition width 0.5s $transitionAnimation
 
 /** //button and link **/
 
 /** form **/
+.form
+	max-width 590px
 
 .form-title
 	width 100%
@@ -424,6 +426,7 @@ body
 			width 100%
 
 		.form-item
+			color #fff
 			background-color transparent
 
 .form-privacy-policy
@@ -445,15 +448,67 @@ body
 	font-size 20px
 
 	cursor pointer
-	color: #fff
+	color #000
+
+.form-close
+	position absolute
+	width 20px
+	height 20px
+	top 0
+	left 0
+	right 0
+	bottom 0
+	background-image url(../svg/close.svg)
+	background-position center
+	background-repeat no-repeat
+	background-size contain
+
 
 
 // popup //
+
+.form-reviews-container
+	.lazy-modal-container
+		width 550px
+		margin-top 115px
+		border 1px solid $colordark
+
+		.lazy-modal-close
+			width 20px
+			height 20px
+			right 27px
+			top 27px
+
+	.reviews-item
+		padding 22px 30px 20px 25px
+
+		&:hover
+			background #fff
+
+		&:after
+			content none
+
+		.reviews-name
+			font-size 32px
+			margin-bottom 33px
+
+		.reviews-date
+			margin-bottom 17px
+
+		.reviews-text
+			max-height initial
+
 .form-call-container
 	.lazy-modal-container
 		padding-top 115px
 		width 590px
 
+		.lazy-modal-close
+			width 20px
+			height 20px
+			right -305px
+			top 12px
+// popup //
 
 /** //form **/
 
@@ -948,15 +1003,27 @@ body
 
 	.slick-arrow-prev
 	.slick-arrow-next
-		margin-top 3px
+		position relative
+		width 50%
+		margin-top 2.5px
+		cursor pointer
+	.slick-arrow-prev:before
+		content ""
+		position absolute
+		left 0
 		width 0
 		height 0
 		border-top 5px solid transparent
 		border-bottom 5px solid transparent
-		cursor pointer
-	.slick-arrow-prev
 		border-right 5px solid $colorgreen
-	.slick-arrow-next
+	.slick-arrow-next:after
+		content ""
+		position absolute
+		right 0
+		width 0
+		height 0
+		border-top 5px solid transparent
+		border-bottom 5px solid transparent
 		border-left 5px solid $colorgreen
 
 	&.hide
@@ -1713,10 +1780,10 @@ body
 			padding 35px 30px 0 58px
 
 
-.rewiews
+.reviews
 	position relative
 
-	.rewiews-add
+	.reviews-add
 		position absolute
 		right 0
 		top 7px
@@ -1734,7 +1801,7 @@ body
 				transform rotate(45deg) translateX(-30%) translateY(-20%)
 
 
-	.rewiews-items
+	.reviews-items
 		display grid
 		grid-template-columns 1fr 1fr
 		margin-top 50px
@@ -1743,7 +1810,7 @@ body
 		margin-top 28px
 
 
-.rewiews-item
+.reviews-item
 	position relative
 	display block
 	min-height 330px
@@ -1760,19 +1827,19 @@ body
 		opacity 0
 		transform translateY(50px)
 
-	.rewiews-date
+	.reviews-date
 		margin-bottom 27px
 		font-size 12px
 		text-transform uppercase
 
 		letter-spacing 2px
 
-	.rewiews-name
+	.reviews-name
 		margin-bottom 20px
 		font-size 18px
 		font-family ProximaNovaBold
 
-	.rewiews-text
+	.reviews-text
 		max-height 115px
 		overflow hidden
 		line-height 30px

@@ -3,19 +3,25 @@ extends ../templates/base
 block content
     div(class="page-inner page-inner--w1")
         form(class="form", action="#")
-            div(class="form-title") Заказать звонок
+            div(class="form-title") Добавить отзыв
             div(class="form-row")
                 label(for="name", class="form-label")
                     span(class="form-label-text") Представьтесь
                 div(class="form-holder fill-background")
                     span
-                    input(type="text", id="name", class="form-item input", required, data-error="Укажите Ваше имя", aria-required="true")
+                    input(type="text", id="name", name="name", class="form-item input", required, data-error="Укажите Ваше имя", aria-required="true")
             div(class="form-row")
                 label(for="name", class="form-label")
-                    span(class="form-label-text") Ваш телефон
+                    span(class="form-label-text") Как с вами связаться (телефон или e-mail)
                 div(class="form-holder fill-background")
                     span
-                    input(type="text", id="name", class="form-item input", required, data-error="Укажите Ваше телефон", aria-required="true", data-patternM="mobileRU", data-pattern="+7 (000) 000-00-00")
+                    input(type="text", id="name", name="mail_mobile", class="form-item input", required, data-error="Укажите Ваше телефон", aria-required="true", data-pattern="mobileRU")
+            div(class="form-row")
+                label(for="name", class="form-label")
+                    span(class="form-label-text") Напишите нам отзыв
+                div(class="form-holder fill-background")
+                    span
+                    input(type="text", id="name", name="review", class="form-item input")
             div(class="form-row")
                 div(class="form-privacy-policy")
                     | Нажимая кнопку отправить, вы даете согласие на обработку персональных данных и соглащаетесь с 

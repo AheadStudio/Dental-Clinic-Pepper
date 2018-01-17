@@ -55,7 +55,7 @@
         '</div>',
 
         // Button close template
-        btnclosetml: '<button data-lazymodal-close class="lazy-modal-close"'+
+        btnclosetml: '<button data-lazymodal-close class="lazy-modal-close">'+
                         '<?xml version="1.0" encoding="iso-8859-1"?>'+
                          '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">' +
                             '<g><g id="_x31_0_41_"><g><path d="M415.338,196.662c-7.535-7.535-19.737-7.535-27.253,0l-82.181,82.18l-81.033-81.032c-7.478-7.478-19.584-7.478-27.042,0'+
@@ -239,12 +239,12 @@
                 self.closeModal();
             });
 
-            $(self.options.htmlStructure.background).off("click.lm-close").on("click.lm-close", function(e) {
+            /*$(self.options.htmlStructure.background).off("click.lm-close").on("click.lm-close", function(e) {
                 e.stopPropagation();
                 e.preventDefault();
 
                 self.closeModal();
-            });
+            });*/
 
         },
 

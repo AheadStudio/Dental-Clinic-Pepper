@@ -152,6 +152,33 @@
                 "mobile": "0"
             },
             "hidden": true
+        },
+        "form-reception": {
+            "name": "Запись на прием",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
+        },
+        "form-review-add": {
+            "name": "Добавить отзыв",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
+        },
+        "result": {
+            "name": "Страница благодарности",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
         }
     },
     "paths": {

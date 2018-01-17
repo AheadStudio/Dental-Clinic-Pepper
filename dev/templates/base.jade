@@ -127,8 +127,8 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 							]
 						})
 					div(class="header-info-holder")
-						a(href="tel:+74932938128", class="link header-mobile", data-fancybox) +7 (4932) 938-128
-						span(data-lazymodal="form-mobile-order.html") Обратный звонок
+						a(href="tel:+74932938128", class="link header-mobile") +7 (4932) 938-128
+						span(class="open-form", data-lazymodal="form-mobile-order.html") Обратный звонок
 					div(class="header-burger-holder")
 						div(class="header-burger")
 					
@@ -234,7 +234,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 					div(class="contacts")
 						a(href="tel:+74932938128", class="link link--brown contacts-mobile") +7 (4932) 938-128
 						span Обратный звонок
-						a(href="#", class="link button button--green") Записаться на прием
+						a(href="#", class="link button button--green open-form", data-lazymodal="form-reception.html") Записаться на прием
 				div(class="mobile-menu-address") 
 					span Иваново, ул. Крутицкая, д.13
 					span ПН-СБ: 8:00 - 21:00 ВС: 8:00 - 15:00
@@ -271,6 +271,10 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 				src: "../js/plugins/jquery.lazy-modal.js"
 			}, { 
 				src: "../js/plugins/jquery.fancybox.js"
+			}, { 
+				src: "../js/plugins/jquery.mask.min.js"
+			}, { 
+				src: "../js/plugins/jquery.validate.min.js"
 			}, { 
 				src: "../js/" + info.code + ".js"
 			}

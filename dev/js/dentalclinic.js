@@ -104,11 +104,11 @@
 					self.button.on("click", function() {
 						var btn = $(this);
 
-						btn.addClass("active");
+						//btn.addClass("active");
 						self.show(self.menu);
 					});
 					self.close.on("click", function() {
-						self.button.removeClass("active");
+						//self.button.removeClass("active");
 						self.hide(self.menu);
 					})
 				},
@@ -416,6 +416,13 @@
 					var self = this;
 
 					self.fillInput();
+					self.dataMobile();
+
+					if (!$form) {
+						var $form = $sel.body;
+					}
+					$form.validate();
+
 				},
 
 				fillInput: function() {
@@ -425,6 +432,7 @@
 					input.on("click", function() {
 						var el = $(this);
 
+						$sel.body.find(input).removeClass("active");
 						if (!el.hasClass("active")) {
 							el.addClass("active");
 						}
@@ -434,6 +442,14 @@
 						if (input.has(event.target).length === 0){
 							input.removeClass("active");
 						}
+					});
+				},
+
+				dataMobile: function() {
+					var self = this;
+					$("[data-pattern]").each(function() {
+						var $item = $(this);
+						$item.mask($item.data("pattern"));
 					});
 				}
 			},
@@ -550,14 +566,19 @@
 			modalWindow: function() {
 				var self = this;
 				// вызывает метод init
-				$(".rewiews-item[data-lazymodal]").lazyModal({
+				$(".reviews-item[data-lazymodal]").lazyModal({
 				    type: "ajax",
 					init: function(obj) {
-						obj.options.htmlContent = $(".rewiews-item", obj.options.htmlContent);
-					}
+						obj.options.htmlContent = $(".reviews-item", obj.options.htmlContent);
+					},
+					customclass: "form-reviews-container",
+					btnclosetml: '<button data-lazymodal-close class="lazy-modal-close">'+
+									'<span class="form-close"></span>'+
+								 '</button>',
+				    positionclose: "inside",
 				});
 
-				$(".header-info-holder span[data-lazymodal]").lazyModal({
+				$(".open-form[data-lazymodal]").lazyModal({
 				    type: "ajax",
 					bcgcolor: "#fff",
 					init: function(obj) {
@@ -567,6 +588,10 @@
 						DENTALCLINIC.forms.init(obj.options.htmlContent);
 					},
 					customclass: "form-call-container",
+					btnclosetml: '<button data-lazymodal-close class="lazy-modal-close">'+
+									'<span class="form-close"></span>'+
+								 '</button>',
+				    positionclose: "inside",
 
 				});
 
