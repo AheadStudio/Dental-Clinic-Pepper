@@ -36,7 +36,7 @@
 
         // Transition effect
         // fade, top, bottom, left, right, zoom
-        effectshow: "top",
+        effectshow: "",
 
         // Type modal
         type: "html",
@@ -45,14 +45,13 @@
         customclass: "",
 
         // template modal window
-        basetpl:
-        '<div class="lazy-modal">' +
-            '<div class="lazy-modal-background"></div>' +
-            '<div class="lazy-modal-scroll">' +
-                '<div class="lazy-modal-container">' +
-                '</div>' +
-            '</div>' +
-        '</div>',
+        basetpl: '<div class="lazy-modal">' +
+                     '<div class="lazy-modal-background"></div>' +
+                     '<div class="lazy-modal-scroll">' +
+                         '<div class="lazy-modal-container">' +
+                         '</div>' +
+                     '</div>' +
+                 '</div>',
 
         // Button close template
         btnclosetml: '<button data-lazymodal-close class="lazy-modal-close">'+
@@ -99,10 +98,13 @@
     var LazyModal = function(el, settings, content) {
         var self = this;
 
+        event.preventDefault();
+
+        self.el = el;
         self.options = $.extend({}, $.lazymodal.defaults, settings);
         self.options.content = content;
 
-        self.el = el;
+        $.lazymodal.instance = true;
 
         self.create();
     };
@@ -113,20 +115,12 @@
         // == Create structure == //
         create: function() {
             var self = this,
-                initialization,
                 htmlContent;
 
-            initialization = self.el.data("lazyModalInit");
-
-            if (initialization === "on") {
-                $.error("Plugin already initialized");
-            } else {
-                self.el.data("lazyModalInit", "on");
-            }
-
+            // get content
             if (self.options.type === "html") {
-                htmlContent = $(self.options.content).get(0).outerHTML;
-                self.options.htmlContent = $(htmlContent);
+                dataContent = $(self.options.content).get(0).outerHTML;
+                self.options.htmlContent = $(dataContent);
 
                 self.hooks("init");
                 self.implant();
@@ -136,9 +130,8 @@
                 (function(href) {
                     $.ajax({
                         url: href,
-                        success: function(data) {
-                            var $data = $(data);
-                            self.options.htmlContent = $data;
+                        success: function(dataContent) {
+                            self.options.htmlContent = $(dataContent);
 
                             self.hooks("init");
                             self.implant();
@@ -150,42 +143,44 @@
 
         },
 
-        // == Load structure  in DOM model== //
+        // == Load structure in DOM model== //
         implant: function() {
             var self = this,
-                widStyles = {
-                    "margin-right": "17px",
-                    "overflow": "hidden",
-                };
+                initialization,
+                widthScroll = self.widthScroll();
 
             self.hooks("beforeLoad");
+            self.options.htmlStructure = {};
 
             if ($body) {
 
-                $body.css("overflow", "hidden");
-                $html.css(widStyles);
-
+                $html.css({ "overflow" : "hidden", "margin-right" : widthScroll });
                 $body.prepend(self.options.basetpl);
-                self.options.htmlStructure = {};
 
-                setTimeout(function() {
+                self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
+                self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
+                self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
 
-                    self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
-                    self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
-                    self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
+                self.options.htmlStructure.mainContainer.addClass(self.options.customclass);
+                self.options.htmlStructure.background.css("background", self.options.bcgcolor);
 
-                    self.options.htmlStructure.mainContainer.addClass(self.options.customclass);
-                    self.options.htmlStructure.background.css("background", self.options.bcgcolor);
+                if (self.options.positionclose === "outside") {
+                    self.options.htmlStructure.mainContainer.append(self.options.btnclosetml);
+                } else if (self.options.positionclose === "inside") {
+                    self.options.htmlStructure.contentContainer.append(self.options.btnclosetml);
+                }
 
-                    if (self.options.positionclose === "outside") {
-                        self.options.htmlStructure.mainContainer.append(self.options.btnclosetml);
-                    } else if (self.options.positionclose === "inside") {
-                        self.options.htmlStructure.contentContainer.append(self.options.btnclosetml);
-                    }
+                // check init plugin on element
+                initialization = self.options.htmlStructure.mainContainer.data("lazyModalInit");
 
-                    self.includeContent(self.options.htmlStructure.contentContainer, self.options.position);
+                if (initialization === "on") {
+                    $.error("Plugin already initialized");
+                } else {
+                    self.options.htmlStructure.mainContainer.data("lazyModalInit", "on");
+                }
 
-                }, 100)
+                self.includeContent(self.options.htmlStructure.contentContainer, self.options.position);
+
 
             } else {
                 $.error("No find 'body' in DOM model");
@@ -199,7 +194,7 @@
             var self = this;
 
             if (position) {
-                container.addClass("lazy-modal-container--" + position);
+                console.log("not style for position");
             }
             container.append(self.options.htmlContent);
 
@@ -265,7 +260,6 @@
                 $container.remove();
                 self.el.data("lazyModalInit", "off");
                 $html.css(widStyles);
-                $body.css("overflow", "auto");
                 self.hooks("afterClose");
 
             }, 600);
@@ -288,28 +282,51 @@
         },
 
 
+        // == function for determine width scroll == //
+        widthScroll: function() {
+            var self = this,
+                documentWidth = parseInt(document.documentElement.clientWidth),
+                windowsWidth = parseInt(window.innerWidth),
+                scrollbarWidth = windowsWidth - documentWidth;
+
+            return scrollbarWidth;
+        }
+
+
     });
 
 
     // === Lazy modal methods === //
     $.lazymodal = {
 
+        instance: null,
+
         defaults: defaults,
 
         open: function(el, settings, content) {
+            var self = this;
+
+            self.checkInstance();
+            self.instance = true;
+
             return new LazyModal(el, settings, content);
         },
 
-        hide: function(el, settings, content) {
-            return new LazyModal(el, settings, content);
-        },
+        checkInstance: function() {
+            var self = this;
+    		if(self.instance) {
+    			self.close();
+    		}
+    	},
 
-        close: function(el, settings, content) {
-            return new LazyModal(el, settings, content);
-        },
+        close: function() {
+            var instance = $('.lazy-modal:last').data("lazyModalInit");
 
-        destroy: function(el, settings, content) {
-            return new LazyModal(el, settings, content);
+            $('.lazy-modal:last').remove();
+            /*if ( instance instanceof LazyModal ) {
+                console.log("123");
+                instance["closeModal"].apply( instance, "closeModal");
+            }*/
         },
 
     }
@@ -317,41 +334,46 @@
 
     // === Start plugin === //
     // set handler for click
-    function startPlugin(event) {
-        var el = $(this),
-            settings = event.data ? event.data.options : {},
-            data = el.data(),
+    //  -settingsPlugin : settings in plugin, which are transmitted
+    //  -dataEl         : data params in data
+    //  -sizeDataObj    : length array data
+    //  -sizeDataObj    : content
+    function startPlugin(paramsPlugin) {
+        var $el = $(this),
+            settingsPlugin = paramsPlugin.data ? paramsPlugin.data.options : {},
+            dataEl = $el.data(),
             sizeDataObj = 0,
-            content = settings.content ? settings.content : data.lazymodal;
+            contentShow = settingsPlugin.content ? settingsPlugin.content : dataEl.lazymodal;
 
-        if (event.isDefaultPrevented()) {
+        if (paramsPlugin.isDefaultPrevented()) {
             return;
         }
-        event.preventDefault();
+        paramsPlugin.preventDefault();
 
-        sizeDataObj = Object.keys(data).length;
-
+        // check length data in event object
+        sizeDataObj = Object.keys(dataEl).length;
         if (sizeDataObj >= 2) {
-            settings = $.extend({}, data, settings);
+            settingsPlugin = $.extend({}, dataEl, settingsPlugin);
         }
 
-        if (content === "" || !content) {
-            content = $(this);
+        // checkcontent, if null or empty, element show in popup
+        if (contentShow === "" || !contentShow) {
+            contentShow = $(this);
         }
 
-        $.lazymodal.open(el, settings, content);
+        $.lazymodal.open($el, settingsPlugin, contentShow);
     }
 
 
     // === Create lazy modal plugin === //
     $.fn.lazyModal = function(options) {
-        options  = options || {};
-        var $el = false;
+        var options = options || {},
+            $el = false;
 
         this.each(function() {
             (function($el) {
+
                 $el.off("click.lm-on").on("click.lm-on", {
-                    item: $el,
                     options: options,
                 }, startPlugin);
 

@@ -22,7 +22,6 @@
     min-height: 100%;
     z-index: 1300;
 }
-
 .lazy-modal-container {
     position: relative;
     display: block;
@@ -47,9 +46,6 @@
     -o-transform: translateX(-200px);
     -ms-transform: translateX(-200px);
     transform: translateX(-200px);
-}
-.lazy-modal-container--left-show {
-
 }
 .lazy-modal-close {
     position: absolute;

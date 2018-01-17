@@ -421,7 +421,8 @@
 					if (!$form) {
 						var $form = $sel.body;
 					}
-					$form.validate();
+
+					self.validateForm($form);
 
 				},
 
@@ -447,9 +448,52 @@
 
 				dataMobile: function() {
 					var self = this;
-					$("[data-pattern]").each(function() {
+					$("[data-number]").each(function() {
 						var $item = $(this);
-						$item.mask($item.data("pattern"));
+						$item.mask($item.data("number"));
+					});
+				},
+
+				validateForm: function($form) {
+					var self = this;
+
+					$(".form", $sel.body).each(function() {
+						var $form = $(this),
+							$formFields = $form.find("[data-error]"),
+							formParams = {
+								rules: {
+
+								},
+								messages: {
+
+								}
+							};
+
+
+						$formFields.each(function() {
+							var $field = $(this);
+							formParams.messages[$field.attr("name")] = $field.data("error");
+						});
+
+						if($form.data("success")) {
+							formParams.submitHandler = function(form) {
+
+								var options = {
+									type: "ajax",
+									bcgcolor: "#fff",
+									customclass: "form-call-container",
+									btnclosetml: '<button data-lazymodal-close class="lazy-modal-close">'+
+													'<span class="form-close"></span>'+
+												 '</button>',
+								    positionclose: "inside",
+									init: function(obj) {
+										obj.options.htmlContent = $(".form", obj.options.htmlContent);
+									},
+								};
+								$.lazymodal.open($("button",$form), options, $form.data("success"));
+							};
+						}
+						$form.validate(formParams);
 					});
 				}
 			},
@@ -494,7 +538,6 @@
 						} else {
 							self.hide($el);
 						}
-
 					});
 
 				},
@@ -567,6 +610,7 @@
 				var self = this;
 				// вызывает метод init
 				$(".reviews-item[data-lazymodal]").lazyModal({
+					bcgcolor: "rgba(242, 246, 244, 0.5)",
 				    type: "ajax",
 					init: function(obj) {
 						obj.options.htmlContent = $(".reviews-item", obj.options.htmlContent);
@@ -592,7 +636,6 @@
 									'<span class="form-close"></span>'+
 								 '</button>',
 				    positionclose: "inside",
-
 				});
 
 			}
@@ -612,6 +655,7 @@
 	DENTALCLINIC.modalWindow();
 
 	DENTALCLINIC.reload = function() {
+		DENTALCLINIC.modalWindow();
 		DENTALCLINIC.scrollAnimation.init();
 	}
 })(jQuery);

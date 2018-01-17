@@ -429,6 +429,13 @@ body
 			color #fff
 			background-color transparent
 
+	label.error
+		position absolute
+		left 0
+		bottom -12px
+		font-size 12px
+		color #009c3c
+
 .form-privacy-policy
 	padding-top 10px
 	line-height 20px
@@ -449,6 +456,10 @@ body
 
 	cursor pointer
 	color #000
+
+	&.error
+		border-bottom-color #b42a2a
+
 
 .form-close
 	position absolute
@@ -471,7 +482,7 @@ body
 	.lazy-modal-container
 		width 550px
 		margin-top 115px
-		border 1px solid $colordark
+		border 1px solid #979797
 
 		.lazy-modal-close
 			width 20px
@@ -508,6 +519,22 @@ body
 			height 20px
 			right -305px
 			top 12px
+
+		.header-logo-holder
+			display block
+			width 160px
+			margin 0 auto
+			margin-top 95px
+			margin-bottom 40px
+
+		h3
+			margin-bottom 60px
+			text-align center
+		h4
+			text-align center
+			max-width 82%
+			margin 0 auto
+			
 // popup //
 
 /** //form **/
