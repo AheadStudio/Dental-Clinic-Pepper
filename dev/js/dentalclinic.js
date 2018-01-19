@@ -638,6 +638,20 @@
 				    positionclose: "inside",
 				});
 
+			},
+
+			blackVisually: {
+
+				init: function() {
+					var self = this;
+
+				},
+
+				checkCookie: function() {
+					var self = this;
+				},
+
+				
 			}
 		};
 

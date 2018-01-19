@@ -27,7 +27,7 @@ block content
         div(class="main-slider-items slick-slider")
             div(class="main-slider-item", id="main_1")
                 div(class="main-slider-item-img")
-                    div(class="main-slider-item-img-container", style="background-image: url(../dummy/grandmother.png)")
+                    div(class="main-slider-item-img-container", style="background-image: url(../dummy/grandmother.jpg)")
             div(class="main-slider-item", id="main_2")
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/ancle.png)")
@@ -43,7 +43,7 @@ block content
         div(class="intro")
             div(class="intro-personal")
                 div(class="intro-personal-photo", data-animationblock="true", data-animationtype="animation-left")
-                    img(src="../dummy/director_percev.png")
+                    img(src="../dummy/director_percev.jpg")
                 div(class="intro-personal-data")
                     span(class="data-name") Перцев Сергей Станиславович
                     span(class="data-prof") Директор, главный врач клиники
@@ -55,27 +55,35 @@ block content
                 div(class="title") Стоматологическая клиника Перцева в Иваново
                 div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
             div(class="clinics-container")
-                img(src="../dummy/microscope.png", alt="", data-animationblock="true", data-animationtype="animation-zoom")
+                img(src="../dummy/microscope.jpg", alt="", data-animationblock="true", data-animationtype="animation-zoom")
     div(class="page-inner page-inner--w1")
         div(class="services")
             div(class="services-circle")
                 div(class="services-container", data-deg="180")
                     div(class="services-item")
-                        include ../../prod/svg/tooth_green.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_green.svg
                     div(class="services-item")
-                        include ../../prod/svg/tooth_loupe.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_loupe.svg 
                     div(class="services-item")
-                        include ../../prod/svg/tooth_broken_green.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_broken_green.svg 
                     div(class="services-item")
-                        include ../../prod/svg/forceps.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/forceps.svg 
                     div(class="services-item")
-                        include ../../prod/svg/tooth_green.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_green.svg
                     div(class="services-item")
-                        include ../../prod/svg/tooth_loupe.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_loupe.svg	
                     div(class="services-item")
-                        include ../../prod/svg/tooth_broken_green.svg
+                        div(class="services-item-icon")
+                            include ../../prod/svg/tooth_broken_green.svg
                     div(class="services-item")
-                        include ../../prod/svg/forceps.svg	
+                        div(class="services-item-icon")
+                            include ../../prod/svg/forceps.svg 	
             div(class="services-slider", data-animationblock="true", data-animationtype="animation-right")
                 div(class="services-slider-items slick-slider")
                     div(class="services-slider-item info")
@@ -148,14 +156,14 @@ block content
                     span |
             div(class="advantages-photo-container")
                 div(class="advantages-photo active active-animation", data-sliderToggle="advantages_1")
-                    img(src="../dummy/director_percev.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="0.5s")
-                    img(src="../dummy/perceva.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1s")
-                    img(src="../dummy/tarhanov.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1.5s")
-                    img(src="../dummy/potanina.png", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="2s")
+                    img(src="../dummy/director_percev.jpg", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="0.5s")
+                    img(src="../dummy/perceva.jpg", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1s")
+                    img(src="../dummy/tarhanov.jpg", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="1.5s")
+                    img(src="../dummy/potanina.jpg", alt="", data-animationblock="true", data-animationtype="animation-opacity", data-animationduration="2s")
                 div(class="advantages-photo advantages-photo--one", data-sliderToggle="advantages_2")
                     img(src="../dummy/fauteuil_dentaire.png", alt="")
                 div(class="advantages-photo advantages-photo--one", data-sliderToggle="advantages_3")
-                    img(src="../dummy/microscope.png", alt="")
+                    img(src="../dummy/microscope.jpg", alt="")
     div(class="page-inner")
         div(class="mini-news")
             div(class="news-item", data-animationblock="true", data-animationtype="animation-top", data-animationduration="0.4s")
@@ -184,4 +192,4 @@ block content
             div(class="tag") контакты
             div(class="title") Нас легко найти
             div(class="map-container")
-                div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../i/point_map.png")
+                div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../svg/map_point.svg")

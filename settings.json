@@ -179,6 +179,15 @@
                 "mobile": "0"
             },
             "hidden": true
+        },
+        "reviews-load": {
+            "name": "Подгрузитьо отзывы",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
         }
     },
     "paths": {

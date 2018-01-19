@@ -1,19 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192" height="40">
-	<defs>
-		<clipPath id="clip_0">
-			<rect x="-1424" y="-15948" width="5200" height="21348" clip-rule="evenodd"/>
-		</clipPath>
-	</defs>
-	<g clip-path="url(#clip_0)">
-		<path fill="rgb(0,156,60)" stroke="none" transform="matrix(4 0 0 4 0 16)" d="M0 0L44 0L44 1L0 1L0 0Z"/>
-	</g>
-	<defs>
-		<clipPath id="clip_1">
-			<rect x="-1424" y="-15948" width="5200" height="21348" clip-rule="evenodd"/>
-		</clipPath>
-	</defs>
-	<g clip-path="url(#clip_1)">
-		<path fill="rgb(0,156,60)" stroke="none" transform="matrix(2.82843 -2.82843 2.82843 2.82843 152 20)" d="M7.07107 1.88294e-13L7.07107 7.07107L1.77636e-14 7.07107L7.07107 1.88294e-13Z"/>
-	</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 10">
+  <title>arrow_left_green</title>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="Слой_1-2" data-name="Слой 1">
+      <g id="Page-1">
+        <g id="Главная-1">
+          <g id="Group-7">
+            <rect id="Rectangle-4" y="4" width="44" height="1" fill="#009d3c"/>
+            <polygon id="Rectangle" points="43 0 48 5 43 10 43 0" fill="#009d3c"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
 </svg>

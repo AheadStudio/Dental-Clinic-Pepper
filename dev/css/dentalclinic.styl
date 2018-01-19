@@ -203,6 +203,26 @@ body
 .link--brown
 	color #4a494a
 
+.link--brown-bottom--inverse
+	border-bottom 1px solid transparent
+	transition border-bottom 0.3s $transitionAnimation
+
+	&:hover
+		border-bottom-color #4a4a4a
+
+.link--litebrown-bottom
+	border-bottom 1px solid transparent
+	transition border-bottom 0.3s $transitionAnimation
+
+	&:hover
+		border-bottom-color #cfcfcf
+
+
+.link--green-color
+	transition color 0.3s $transitionAnimation
+	&:hover
+		color $colorgreen
+
 .link--black-bottom
 	border-bottom 2px solid transparent
 	transition border-bottom-color 0.5s $transitionAnimation
@@ -214,13 +234,6 @@ body
 	transition border-bottom-color 0.5s $transitionAnimation
 	&:hover
 		border-bottom-color transparent
-
-.link--opacity
-	opacity 1
-	transition opacity 0.3s $transitionAnimation
-
-	&:hover
-		opacity 0.6
 
 .link--decoration
 	display inline
@@ -269,10 +282,7 @@ body
 		bottom 0
 		right 0
 
-		height 220px
-		width 270px
-
-		transform rotate(45deg) translateX(-20%) translateY(85%)
+		transform translateY(100%)
 		background $colorgreen
 		transition transform 0.5s $transitionAnimation
 
@@ -282,7 +292,7 @@ body
 		border-color $colorgreen
 
 		&:before
-			transform rotate(45deg) translateX(-20%) translateY(-20%)
+			transform translateY(0)
 
 
 
@@ -302,20 +312,17 @@ body
 		bottom 0
 		right 0
 
-		height 540px
-		width 600px
-
-		transform rotate(45deg) translateX(-395px) translateY(350px)
+		transform translateY(100%)
 		background #9b9b9b
 		transition transform 0.5s $transitionAnimation
 
 		z-index -10
 
 	&:hover
-		color #000
+		color #fff
 
 		&:before
-			transform rotate(45deg) translateX(-190px) translateY(-135px)
+			transform translateY(0)
 
 
 .input
@@ -325,27 +332,23 @@ body
 	font-family "ProximaNovaRegular"
 	color #4a494a
 
+	border-bottom 1px solid transparent
+	transition border-bottom-color 0.8s $transitionAnimation
+
 	&::-webkit-input-placeholder
 		font-size 16px
 		font-family "ProximaNovaRegular"
 		opacity 1
 		transition transform 0.8s $transitionAnimation, opacity 0.3s $transitionAnimation
 
-	&:before
-		content ""
-		position absolute
-		top 0
-		left 0
-		right 0
-		bottom 0
-
-		margin-left -100%
-
 	&:focus
+		border-bottom 1px solid #009c3c
 		&::-webkit-input-placeholder
 			opacity 0
 			transform translateY(50px)
 
+	&:hover
+		border-bottom-color #979797
 
 .fill-background
 	span
@@ -391,16 +394,6 @@ body
 			text-transform: uppercase
 			letter-spacing: 3px
 
-			&:before
-				width 600px
-				height 500px
-				trnasform rotate(45deg) translateX(-100%) translateY(55%)
-
-			&:hover
-				&:before
-					transform rotate(45deg) translateX(-34%) translateY(-27%)
-
-
 .form-label
 	display block
 	width 100%
@@ -431,9 +424,9 @@ body
 
 	label.error
 		position absolute
-		left 0
-		bottom -12px
-		font-size 12px
+		left 20px
+		top 22px
+		font-size 18px
 		color #009c3c
 
 .form-privacy-policy
@@ -457,9 +450,14 @@ body
 	cursor pointer
 	color #000
 
-	&.error
-		border-bottom-color #b42a2a
+	transition background 0.3s $transitionAnimation
 
+	&.error
+		background-color #fff1ef
+		border-bottom 2px solid #b42a2a
+
+	&:focus
+		border-bottom-color $colorgreen
 
 .form-close
 	position absolute
@@ -606,6 +604,7 @@ body
 
 			font-size 18px
 			color $colorgreen
+			cursor pointer
 
 		.button
 			width 195px
@@ -653,7 +652,7 @@ body
 	display none
 	width 920px
 
-	margin 150px auto 0 auto
+	margin 150px auto 30px auto
 
 	transform translateY(-50px)
 
@@ -913,6 +912,14 @@ body
 	.footer-creators-name
 		display inline-block
 		vertical-align top
+
+	.footer-creators-name
+		border-bottom 1px solid transparent
+		transition border-bottom 0.3s $transitionAnimation
+
+	&:hover
+		.footer-creators-name
+			border-bottom-color $colorgreen
 
 
 /*** //main style ***/
@@ -1192,12 +1199,16 @@ body
 
 		transition left 0.6s $transitionAnimation, top 0.6s $transitionAnimation, background 0.6s $transitionAnimation
 
-		svg
+		.services-item-icon
 			position absolute
-			top 50%
+			width 50px
+			height 62px
 			left 50%
-
-			transform translate(-50%, -50%)
+			top 50%
+			transform translate(-50%,-50%)
+			svg
+				width 100%
+				height 100%
 
 		&.active
 			background $colorgreen
@@ -1815,18 +1826,10 @@ body
 		right 0
 		top 7px
 
-		padding 14px 42px
+		padding 14px 42px 12px 42px
 		font-size 18px
 		letter-spacing 3px
 		text-transform uppercase
-
-		&:before
-			height 300px
-			width 300px
-		&:hover
-			&:before
-				transform rotate(45deg) translateX(-30%) translateY(-20%)
-
 
 	.reviews-items
 		display grid
@@ -2215,6 +2218,7 @@ body
 			img
 				display block
 				width 100%
+				height 100%
 
 		.doctors-item-text
 			padding 33px 0 0 27px
