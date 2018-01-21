@@ -27,8 +27,8 @@
             "name": "Главная",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "services_main": {
@@ -181,7 +181,16 @@
             "hidden": true
         },
         "reviews-load": {
-            "name": "Подгрузитьо отзывы",
+            "name": "Подгрузить отзывы",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            },
+            "hidden": true
+        },
+        "news-load": {
+            "name": "Подгрузить новости",
             "progress": {
                 "desktop": "100",
                 "tablet": "0",

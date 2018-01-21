@@ -23,10 +23,11 @@
 			},
 
 			scrollAnimation: {
-
 				blocks: [],
+
 				init: function() {
 					var self = this;
+
 					$("[data-animationblock]:not(.animated)").each(function() {
 						var $item = $(this),
 							itemAnimation = $item.data("animationtype"),
@@ -35,24 +36,29 @@
 						if (!itemAnimationDuration) {
 							itemAnimationDuration = 0;
 						}
+
 						self.blocks.push({
 							"html": $item,
 							"top": $item.offset().top,
 							"typeAnimation": itemAnimation,
 							"animation-duration" : itemAnimationDuration
 						});
+
 						$item.addClass("before-" + itemAnimation);
 						$item.css("animation-duration", itemAnimationDuration);
+
 					});
 
 					$sel.window.on("scroll", function() {
 						self.check();
 					});
+
 					setTimeout(function() {
 						self.check();
 					}, 50);
 
 				},
+
 				check: function() {
 					var self = this,
 						block = false,
@@ -321,7 +327,7 @@
 						});
 
 						el.removeClass("active");
-						if (Math.round(xCoor) == -50 && Math.round(yCoor) == 300) {
+						if (Math.round(xCoor) == -50) {
 							el.addClass("active");
 						}
 						number = number + radius;
@@ -651,7 +657,7 @@
 					var self = this;
 				},
 
-				
+
 			}
 		};
 

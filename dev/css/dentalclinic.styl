@@ -1041,6 +1041,12 @@ body
 		width 50%
 		margin-top 2.5px
 		cursor pointer
+
+	.slick-arrow-prev
+		&:hover
+			&:after
+				width 50px
+
 	.slick-arrow-prev:before
 		content ""
 		position absolute
@@ -1050,6 +1056,22 @@ body
 		border-top 5px solid transparent
 		border-bottom 5px solid transparent
 		border-right 5px solid $colorgreen
+
+	.slick-arrow-prev:after
+		content ""
+		position absolute
+		left 5px
+		width 0px
+		height 1px
+		top 4.5px
+		background-color $colorgreen
+		transition width 0.3s $transitionAnimation
+
+	.slick-arrow-next
+		&:hover
+			&:before
+				width 50px
+
 	.slick-arrow-next:after
 		content ""
 		position absolute
@@ -1059,6 +1081,19 @@ body
 		border-top 5px solid transparent
 		border-bottom 5px solid transparent
 		border-left 5px solid $colorgreen
+
+	.slick-arrow-next:before
+		content ""
+		position absolute
+		right 5px
+		width 0px
+		height 1px
+		top 4.5px
+		background-color $colorgreen
+		transition width 0.3s $transitionAnimation
+
+	span
+		color $colorgreen
 
 	&.hide
 		opacity 0
@@ -1340,34 +1375,38 @@ body
 		opacity 0
 		transform translateY(100px)
 
-	/*&:after
-		content ""
-		position absolute
-		right -25px
-		top -25px
-		width 50px
-		height 50px
-		background $colorgrayfone
-
-		opacity 0
-		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
-
-	&:hover
-		&:after
-			opacity 1
-			transform translate3d(-55px,25px,0)*/
-
-	.news-arrow
-		content ""
+	.news-arrow-icon
 		position absolute
 		bottom 7px
 		left 0
-		width 50px
-		height 10px
 
-		background-image url("../svg/arrow_left_green.svg")
-		background-repeat no-repeat
-		background-size contain
+		svg
+			margin-left -70px
+			overflow initial
+			width 213px
+
+			path:first-child
+				position absolute
+				width 20px
+
+				d path("M 0 4 h 25.8 v 0.1 H 0 Z")
+
+				transition d 0.3s $transitionAnimation
+
+
+			path:last-child
+				transition transform 0.3s $transitionAnimation
+				transform translateX(17.1px) translateY(3.1px) scale(0.2)
+
+	&:hover
+		.news-arrow-icon
+
+			svg
+				path:first-child
+					d path('M 0 4 h 30 v 0.1 H 0 Z')
+
+				path:last-child
+					transform translateX(21.3px) translateY(3.1px) scale(0.2)
 
 	.news-date
 		margin-bottom 17px
@@ -2330,11 +2369,4 @@ body
 			font-size 20px
 			letter-spacing 4px
 			text-transform uppercase
-
-			&:before
-				transform scale(8) rotate(45deg) translateX(-120px) translateY(120px)
-
-			&:hover
-				&:before
-					transform scale(8) rotate(45deg) translateX(0) translateY(0)
 /*** //page style ***/
