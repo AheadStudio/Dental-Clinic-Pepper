@@ -43,8 +43,8 @@
             "name": "Услуги раздел",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "services_element": {
