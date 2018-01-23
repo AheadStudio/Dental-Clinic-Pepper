@@ -8,7 +8,7 @@
 			display -webkit-box
 			-webkit-line-clamp 4
 			-webkit-box-orient vertical
-			max-height 100px
+			max-height 105px
 
 @media screen and (max-width: 1440px)
 	.news-detail
@@ -119,6 +119,10 @@
 			.data-prof
 				font-size 13px
 
+	.services-slider-item
+		.info-link
+			width auto
+
 	.intro-info
 		padding-left 20px
 		padding-top 30px
@@ -196,6 +200,25 @@
 			margin-top 20px
 			font-size 18px
 			line-height 24px
+		h3
+			font-size 22px
+			margin-bottom 10px
+		p
+			font-size 16px
+			line-height 26px
+		tag
+			font-size 10px
+
+	.news-detail
+		.page-text
+			h1
+				margin-bottom 20px
+				font-size 34px
+				line-height 38px
+
+		.news-detail-text
+			margin-top 40px
+			padding-left 20px
 
 	.services-section
 		.page-text
@@ -212,7 +235,90 @@
 	.services-section-description
 		min-height 300px
 
+	.news
+		.news-item
+			padding-right 15px
+
+			.news-date
+				margin-bottom 5px
+
+			.news-title
+				margin-bottom 15px
+
+	.reviews-item
+		padding 40px 30px 0px 20px
+		min-height 300px
+
+		.reviews-date
+			margin-bottom 5px
+
+		.reviews-name
+			margin-bottom 15px
+
+		&:after
+			left 20px
+
+	.clinic-inner
+		.clinic-text
+			padding-left 0
+
+	.contacts-container
+		.contacts-container-items
+			padding 50px 0px 0px 20px
+
+	.advantages-inner
+		.advantages-container--text
+			.advantages-title
+				line-height 28px
+
+	.doctors-filter
+		padding-left 20px
+
+	.doctors-items
+		.doctors-item
+			.doctors-item-text
+				padding  15px 0 0 10px
+
+				.doctors-item-name
+					width auto
+					font-size 18px
+					line-height 25px
+
+				.doctors-item-position
+					width auto
+					font-size 16px
+					line-height 20px
+
+	.doctor-detail-inner
+		.doctor-detail-info
+			padding 25px 25px 30px 20px
+
+		.doctor-detail-container
+			figure
+				margin-bottom 20px
+
+	.mobile-menu
+		.mobile-menu-close
+			right 20px
+
+	.mobile-menu-container
+		padding 0 20px
+		box-sizing border-box
+		width 100%
+		.mobile-menu-navigations
+			justify-content flex-start
+
+			.mobile-menu-information
+				margin-left 45px
+
+			.mobile-menu-version
+				margin-left 65px
+
+
 @media screen and (max-width: 840px)
+	.page-header
+		margin-bottom 120px
+
 	.mini-news
 		grid-template-columns 1fr 1fr
 		padding 60px
@@ -220,6 +326,61 @@
 
 	.news-item
 		min-height 300px
+
+	.news
+		.news-items
+			grid-template-columns 1fr 1fr 1fr
+
+	.news-detail
+		.news-detail-full
+
+			.news-detail-text
+				padding 20px 20px 0 30px
+
+			.news-detail-slider
+				max-height 400px
+
+				.slick-arrow-container
+					bottom 0
+
+	.contacts-container
+		.contacts-container-items>span.contacts-title
+			margin-bottom 25px
+			font-size 24px
+
+		.contacts-container-items>div
+			margin-bottom 15px
+
+			span
+				font-size 12px
+			a
+				font-size 16px
+
+	.contacts
+		.map-block
+			margin-top 20px
+
+	.advantages-inner
+		flex-flow column
+
+		.advantages-container
+			width 100%
+
+	.mobile-menu-container
+		.mobile-menu-navigations
+			flex-flow column
+			align-items flex-start
+
+			.mobile-menu-search
+				margin-bottom 20px
+
+			.mobile-menu-information
+				margin-left 35px
+				margin-bottom 20px
+
+			.mobile-menu-version
+				margin-bottom 48px
+				margin-left 48px
 
 @media screen and (max-width: 768px)
 	.page-header
@@ -254,6 +415,177 @@
 	.services-section-description
 		.description-list
 			padding 50px 25px 10px 35px
+
+	.services-element-information
+		padding-top 20px
+
+		.services-element-information-item
+			margin-bottom 40px
+			padding-left 15px
+
+	.page-text
+		ol
+			li
+				&:before
+					top 10px
+					left -55px
+					font-size 40px
+
+				.page-numbered-list-subtitle
+					margin-bottom 5px
+
+				.page-numbered-list-text
+					font-size 16px
+					line-height 26px
+
+	.services-element-information
+		.services-element-price
+			grid-template-columns 1fr 95px
+			grid-gap 15px 0
+
+		.button
+			font-size 16px
+
+	.news
+		.news-items
+			grid-template-columns 1fr 1fr
+			grid-gap 50px 0
+			margin-top 80px
+			margin-bottom 40px
+
+	.news-detail
+		.news-detail-full
+			flex-flow column
+
+			.news-detail-slider
+				max-height inherit
+				width 100%
+				margin-bottom 50px
+
+				.slick-arrow-container
+					bottom -40px
+
+			.news-detail-text
+				width 100%
+
+	.form-reviews-container
+		.lazy-modal-container
+			width 95%
+			margin-left auto
+			margin-right auto
+
+	.contacts-container
+		grid-template-columns 1fr
+
+		.contacts-container-items
+			padding 25px 0px 0px 20px
+
+			&>div.contacts-instagram
+				&:after
+					right inherit
+					left 222px
+
+	.form-call-container
+		.lazy-modal-container
+			.lazy-modal-close
+				right 20px
+
+	.price
+		.accordion
+			margin-top 20px
+
+	.accordion
+		.accordion-item
+			height auto
+
+		.accordion-header
+			.accordion-text
+				padding  20px 0 20px 15px
+				font-size 22px
+
+	.accordion
+		.accordion-content
+			padding 20px 30px
+
+			.accordion-content-title
+				font-size 18px
+
+			.accordion-content-service
+				margin-bottom 20px
+				padding 0 10px
+
+				.service-name
+					max-width 90%
+
+
+@media screen and (max-width: 650px)
+	.services-element-inner
+		grid-template-columns minmax(100px, 235px) 1fr
+
+	.doctors-items
+		flex-flow column
+
+		.doctors-item
+			width 100%
+
+	.doctor-detail-inner
+		grid-template-columns 1fr
+
+		.doctor-detail-info
+			.certificate-container
+				margin-left 0
+				grid-template-columns 1fr 1fr 1fr 1fr
+
+			.doctor-detail-info-left
+				margin-left 0
+
+			.doctor-detail-timetable
+				margin-left 0
+
+			.doctor-enroll
+				margin  40px 0 0 0
+
+	.doctor-detail
+		.page-information
+			h2
+				margin-bottom 40px
+
+	.mobile-menu-items
+		margin-bottom 40px
+		grid-template-columns 1fr 1fr
+		grid-gap 40px 0
+
+		.contacts
+			grid-column-start 1
+			grid-column-end 3
+
+			.contacts-mobile
+				font-size 22px
+				margin-bottom 10px
+
+			span
+				margin-bottom 15px
+				font-size 16px
+
+		.mobile-menu-item
+			.mobile-menu-item-item-holder
+				margin-bottom 15px
+
+				.mobile-menu-item-item
+					font-size 16px
+
+					&.main
+						font-size 20px
+
+	.mobile-menu-container
+		.mobile-menu-address
+			width 100%
+			margin-bottom 25px
+
+			span
+				margin-bottom 5px
+
+
 
 @media screen and (max-width: 600px)
 	.main-slider
@@ -309,12 +641,131 @@
 			width 100%
 			height 300px
 
+
+	.services-element-inner
+		grid-template-columns 1fr
+
+	.services-element-preview
+		figure
+			margin-bottom 45px
+		figcaption
+			padding-right 0
+
+	.services-element-information
+		.services-element-information-item
+			padding-left 0px
+
+		.services-element-information-background
+			padding 45px 30px 50px 20px
+
+	.page-text
+		ol
+			li
+				padding-left 35px
+				box-sizing border-box
+
+				&:before
+					left 0
+	.news
+		.news-items
+			grid-template-columns 1fr
+
+	.reviews
+		.reviews-items
+			grid-template-columns 1fr
+
+		.reviews-add
+			top 50px
+			bottom inherit
+			left 20px
+			padding 13px 20px
+			font-size 14px
+
+	.clinic-inner
+		margin-bottom 40px
+
+		.clinic-container
+			width 100%
+
+	.clinic-inner--photo
+		flex-flow column
+
 @media screen and (max-width: 500px)
 	.main-slider
 		.main-slider-item-img
 			.main-slider-item-img-container
 				box-shadow: none
 
+
+	.page-text
+		h1
+			font-size 24px
+			line-height 25px
+		h2
+			font-size 18px
+			line-height 24px
+		h3
+			font-size 18px
+		p
+			font-size 14px
+		ul
+			li
+				font-size 14px
+
+	.page-text
+		ol
+			li
+				font-size 14px
+				.page-numbered-list-subtitle
+					font-size 16px
+
+				.page-numbered-list-text
+					font-size 14px
+
+	.services-section-description
+		.description-list
+			ul
+				a
+					line-height 1
+					font-size 16px
+	.info
+		.tag
+			font-size 12px
+		.title
+			font-size 24px
+			line-height 25px
+		.description
+		.link
+			font-size 18px
+			line-height 24px
+
+	.advantages-slider
+		.info
+			.title
+				font-size 24px
+				line-height 25px
+				padding-right 0
+			.description
+				padding-right 0
+				font-size 18px
+				line-height 24px
+
+	.form-reviews-container
+		.reviews-item
+			.reviews-name
+				font-size 20px
+				margin-bottom 20px
+
+	.advantages
+		margin-bottom 0
+	.advantages-inner
+		margin-bottom 0
+
+		.advantages-container--text
+			padding 20px 0
+			ul
+				li
+					line-height 18px
 
 @media screen and (max-width: 425px)
 	.header-info-holder
@@ -392,27 +843,160 @@
 		.main-slider-item-subtitle
 			font-size 18px
 
-	.info
-		.tag
-			font-size 12px
-		.title
-			font-size 24px
-			line-height 25px
-		.description
-		.link
-			font-size 18px
-			line-height 24px
+	.page-information
+		padding-left 0
 
-	.advantages-slider
-		.info
-			.title
-				font-size 24px
-				line-height 25px
-				padding-right 0
-			.description
-				padding-right 0
-				font-size 18px
-				line-height 24px
+	.services-section-description
+		.description-list
+			padding  35px 15px 35px 30px
 
 	.news-item
 		padding-right 0
+
+	.services-element-information
+		padding-bottom 0
+
+		.services-element-information-background
+			padding 30px 20px 30px 20px
+			margin-bottom 40px
+
+		.services-element-price
+			grid-gap 5px 0
+
+		.button
+			font-size 14px
+			padding-top 20px
+			padding-bottom 16px
+
+
+	.news
+		.news-item
+			padding-right 0
+
+		.news-items
+			grid-gap 30px 0
+			margin-top 60px
+			margin-bottom 20px
+
+	.news-detail
+		.page-text
+			h1
+				font-size 24px
+				line-height 25px
+
+		.news-detail-text
+			padding-left 0
+
+		.news-detail-full
+			.news-detail-text
+				padding 0
+				padding-top 20px
+
+	.reviews
+		.reviews-items
+			margin-top 90px
+		.reviews-add
+			left 0
+
+	.reviews-item
+		padding 40px 0px 0px 0px
+
+		&:after
+			left 0
+
+	.form-reviews-container
+		.reviews-item
+			padding 30px 0
+
+	.contacts-container
+		.contacts-container-items
+			padding-left 0
+
+			&>span.contacts-title
+				font-size 20px
+				margin-bottom 15px
+
+			&>div
+				span
+					width 85px
+
+				&.contacts-instagram:after
+					left 195px
+
+	.accordion
+		.accordion-content
+			padding 20px 5px
+
+			.accordion-content-service
+				padding 0
+				.service-price
+					font-size 16px
+				.service-name
+					font-size 14px
+
+		.accordion-header
+			.accordion-text
+				font-size 18px
+				padding 20px 0 20px 5px
+			.accordion-arrow
+				right 5px
+
+	.doctors-filter
+		display flex
+		flex-wrap wrap
+		justify-content center
+		padding-left 0
+		margin-bottom 20px
+
+	.doctors-items
+		.doctors-item
+			.doctors-item-text
+				padding 0 0 0 10px
+
+				.doctors-item-name
+					font-size 16px
+					line-height 20px
+
+				.doctors-item-position
+					font-size 12px
+					line-height 15px
+
+
+	.doctor-detail-inner
+		.doctor-detail-info
+			padding 25px 0px 0px 0px
+
+			ul
+				margin-bottom 0
+
+			.certificate-container
+				grid-template-columns 1fr 1fr
+
+			.doctor-enroll
+				padding  15px 0 12px 0
+				font-size 12px
+
+			.doctor-detail-info-left
+				margin-top 30px
+
+	.form-title
+		font-size 24px
+
+	.form-label
+		span
+			font-size 16px
+
+	.form-privacy-policy
+		font-size 10px
+		line-height 15px
+
+	.form-row--button
+		button
+			padding 20px 0px 14px 0px
+			font-size 16px
+
+
+	.mobile-menu-container
+		.mobile-menu-navigations
+			.mobile-menu-search
+				width 100%

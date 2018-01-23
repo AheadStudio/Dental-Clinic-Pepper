@@ -26,6 +26,7 @@
     position: relative;
     display: block;
     padding: 30px 20px 10px 20px;
+    box-sizing: border-box;
     margin: 20px auto;
     background: #fff;
     opacity: 0;

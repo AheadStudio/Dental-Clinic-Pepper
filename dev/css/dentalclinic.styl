@@ -43,6 +43,53 @@ $colordark = #282828
 
 html
 	height 100%
+
+	&.poor-vision
+		span
+		a
+		div
+		h1
+		h2
+		h3
+		h4
+		h5
+		h6
+		li
+		ul
+		ol
+		body
+			color #000 !important
+		svg
+			fill  #000 !important
+		.news-date
+			font-size 14px !important
+		.news-title
+			font-size 20px !important
+		.news-text
+			font-size 18px !important
+		.info
+			.info-link
+			.description
+				font-size 20px !important
+		.intro-info
+			font-size 32px !important
+		.page-text
+			font-size 20px !important
+			h2
+				font-size 32px !important
+			p
+				font-size 22px !important
+			i
+				font-size 20px !important
+		.price-services
+			font-size 22px !important
+		.reviews-date
+			font-size 14px  !important
+		.reviews-name
+			font-size 24px  !important
+		.reviews-text
+			font-size 20px  !important
+
 body
 	width 100%
 	height 100%
@@ -54,6 +101,11 @@ body
 
 /*** //Settings ***/
 
+/* lines */
+.bg-lines
+	position relative
+	z-index: -100000
+/* lines */
 
 
 /*** main style ***/
@@ -748,6 +800,9 @@ body
 			display block
 			position relative
 
+			&.hide
+				display none
+
 			&:before
 				content ""
 				position absolute
@@ -1422,7 +1477,7 @@ body
 		line-height 26px
 
 	.news-text
-		height 185px
+		max-height 158px
 		line-height 27px
 		overflow hidden
 
@@ -1775,7 +1830,7 @@ body
 			justify-self end
 			font-weight 600
 
-	a
+	.button
 		max-width 590px
 		padding-top 32px
 		padding-bottom 25px
@@ -1984,7 +2039,7 @@ body
 	display grid
 	grid-template-columns 1fr 1fr
 
-	.contacts-container-items>span
+	.contacts-container-items>span.contacts-title
 		display block
 		margin-bottom 40px
 		font-size 35px
@@ -2225,6 +2280,7 @@ body
 	.doctors-filter-item
 		display inline-block
 		margin-right 20px
+		margin-bottom 10px
 
 		vertical-align middle
 		font-size 16px
@@ -2257,9 +2313,9 @@ body
 			img
 				display block
 				width 100%
-				height 100%
 
 		.doctors-item-text
+			width 220px
 			padding 33px 0 0 27px
 			box-sizing: border-box
 

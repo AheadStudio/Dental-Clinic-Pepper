@@ -648,22 +648,127 @@
 
 			blackVisually: {
 
+				clickForToggle: false,
+
+				cookieActive: false,
+
+				button: false,
+
 				init: function() {
 					var self = this;
+
+					self.button = $(".mobile-menu-version");
+
+
+					self.toggleVersion();
+
+					self.button.on("click", function(e) {
+						var el = $(this);
+						e.preventDefault();
+						self.clickForToggle = true;
+						self.toggleVersion(el);
+					})
 
 				},
 
 				checkCookie: function() {
 					var self = this;
+					self.cookieActive = $.cookie("poor_vision");
 				},
 
+				toggleVersion: function(el) {
+					var self = this;
 
-			}
+					self.checkCookie();
+
+					if (self.cookieActive) {
+						$sel.html.addClass("poor-vision");
+						self.button.text("Обычная версия");
+					}
+
+					if ($sel.window.width() <= "1023") {
+						self.button.addClass("hide");
+						$sel.html.removeClass("poor-vision");
+						$.removeCookie("poor_vision");
+					} else {
+						self.button.removeClass("hide");
+					}
+
+					if (self.clickForToggle) {
+						if (self.cookieActive) {
+							$sel.html.removeClass("poor-vision");
+							$.removeCookie("poor_vision", { path: '/' });
+							el.text("Версия для слабовидящих");
+						} else {
+							$sel.html.addClass("poor-vision");
+							$.cookie("poor_vision", true, { path: '/' });
+							el.text("Обычная версия");
+						}
+					}
+
+				}
+
+			},
+
+			bgLines: {
+
+				bgLinesContainer: '<div class="page-inner page-inner--w1 bg-lines"></div>',
+
+				init: function() {
+					var self = this;
+
+					if ($sel.window.width() >= "1300") {
+						$sel.body.append(self.bgLinesContainer);
+						self.show();
+					} else {
+						self.hide();
+					}
+
+				},
+
+				show: function() {
+					var self = this;
+
+					for (var i = 4; i >= 1; i--) {
+						$(".bg-lines").append('<div class="bg-lines-vertical">');
+					}
+
+					var pos = $(".bg-lines").offset();
+					var widthblock = 0;
+
+					$(".bg-lines-vertical").each(function() {
+						(function($el) {
+							console.log(widthblock);
+							$el.css({
+								"position"    : "fixed",
+								"top"         : 0,
+								"bottom"      : 0,
+								"background"  : "#f2f2f2",
+								"width"       : "1px",
+								"height"      : "100%",
+								"left"		  : widthblock + pos.left + 60,
+								"z-index"     : "-1000"
+							});
+							widthblock = widthblock + 295;
+						})($(this));
+					});
+
+					$(".bg-lines-horizontal").each(function() {
+						(function($el) {
+							$el.css("border-top", "1px solid #f2f2f2");
+						})($(this));
+					})
+				}
+
+			},
+
 		};
 
 	})();
 
 	DENTALCLINIC.menu();
+	DENTALCLINIC.blackVisually.init();
+	DENTALCLINIC.bgLines.init();
 	DENTALCLINIC.mobileMenu.init();
 	DENTALCLINIC.scrollAnimation.init();
 	DENTALCLINIC.map.init();
