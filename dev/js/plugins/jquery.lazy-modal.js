@@ -44,6 +44,9 @@
         // Custom class
         customclass: "",
 
+        // Close modal on click bcg class
+        closeonbcg: false,
+
         // template modal window
         basetpl: '<div class="lazy-modal">' +
                      '<div class="lazy-modal-background"></div>' +
@@ -208,16 +211,15 @@
         // == show modal window ==//
         showModal: function() {
             var self = this,
-                content = self.options.htmlStructure.contentContainer;
+                container = self.options.htmlStructure.mainContainer;
 
             self.hooks("beforeShow");
 
-
             setTimeout(function() {
-                content.addClass("lazy-modal-container--show");
+                container.addClass("lazy-modal--show");
                 self.hooks("afterShow");
                 self.addEvent();
-            }, 400);
+            }, 100);
         },
 
 
@@ -234,12 +236,14 @@
                 self.closeModal();
             });
 
-            /*$(self.options.htmlStructure.background).off("click.lm-close").on("click.lm-close", function(e) {
-                e.stopPropagation();
-                e.preventDefault();
+            if (self.options.closeonbcg) {
+                $(self.options.htmlStructure.background).off("click.lm-close").on("click.lm-close", function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
 
-                self.closeModal();
-            });*/
+                    self.closeModal();
+                });
+            }
 
         },
 
@@ -247,13 +251,12 @@
         closeModal: function() {
             var self = this,
                 $container = self.options.htmlStructure.mainContainer,
-                $content = self.options.htmlStructure.contentContainer,
                 widStyles = {
                     "margin-right": "",
                     "overflow": "",
                 };;
 
-            $content.removeClass("lazy-modal-container--show");
+            $container.removeClass("lazy-modal--show");
 
             setTimeout(function() {
 
@@ -262,7 +265,7 @@
                 $html.css(widStyles);
                 self.hooks("afterClose");
 
-            }, 600);
+            }, 400);
 
         },
 

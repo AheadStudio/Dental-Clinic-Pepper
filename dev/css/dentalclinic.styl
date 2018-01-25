@@ -99,6 +99,33 @@ body
 
 	font-family "ProximaNovaRegular"
 
+@-ms-keyframes spin
+	from
+		-ms-transform rotate(0deg)
+	to
+		-ms-transform rotate(360deg)
+
+@-moz-keyframes spin
+	from
+		-moz-transform rotate(0deg)
+	to
+		-moz-transform rotate(360deg)
+
+@-webkit-keyframes spin
+	from
+		-webkit-transform rotate(0deg)
+	to
+		-webkit-transform rotate(360deg)
+
+@keyframes spin
+	from
+		transform rotate(0deg)
+
+	to
+		transform rotate(360deg)
+
+
+
 /*** //Settings ***/
 
 /* lines */
@@ -169,6 +196,8 @@ body
 		overflow hidden
 
 		transition transform 0.3s $transitionAnimation
+
+		z-index 1001
 
 
 .header-logo-holder
@@ -885,7 +914,7 @@ body
 		margin-top 28px
 		margin-bottom 13px
 	span
-		display block
+		display inline-block
 		font-size 12px
 		cursor pointer
 
@@ -1280,14 +1309,17 @@ body
 
 	.services-item
 		position absolute
+		display block
 		width 100px
 		height 100px
 
-		border-radius: 50%;
+		border-radius 50%
 
 		background $colorgrayfone
 
-		transition left 0.6s $transitionAnimation, top 0.6s $transitionAnimation, background 0.6s $transitionAnimation
+		border 1px solid transparent
+
+		transition left 0.6s $transitionAnimation, top 0.6s $transitionAnimation, background 0.6s $transitionAnimation, transform 0.3s $transitionAnimation, border-color 0.3s $transitionAnimation
 
 		.services-item-icon
 			position absolute
@@ -1307,6 +1339,9 @@ body
 				path
 					fill #fff
 
+		&:hover
+			border-color $colorgreen
+			transform scale(1.12)
 
 .services-slider
 	position relative
@@ -1592,7 +1627,7 @@ body
 		font-size 14px
 		color #000
 
-	tag
+	.page-tag
 		display block
 		margin-bottom 15px
 
@@ -1663,7 +1698,7 @@ body
 				font-family  ProximaNovaBold
 				font-size 20px
 
-	date
+	.page-date
 		display block
 		text-transform uppercase
 		font-size 12px
@@ -1683,7 +1718,7 @@ body
 	height 75px
 	text-align center
 
-	a
+	.load-more
 		position absolute
 
 		left 50%
@@ -1710,6 +1745,12 @@ body
 			background-image url(../svg/circle-arrow.svg)
 			background-repeat no-repeat
 			background-size cover
+
+		&.loading
+			animation-name spin
+			animation-duration 300ms
+			animation-iteration-count infinite
+			animation-timing-function linear
 
 
 /* //main block in all page */
@@ -1862,7 +1903,7 @@ body
 
 .news-detail
 	.page-text
-		tag
+		.page-tag
 			margin-bottom 15px
 
 		h1
@@ -1872,7 +1913,7 @@ body
 			line-height 40px
 			color $colordark
 
-		date
+		.page-date
 			color $colordark
 
 	.news-detail-text
@@ -2426,3 +2467,14 @@ body
 			letter-spacing 4px
 			text-transform uppercase
 /*** //page style ***/
+
+
+/* popup */
+.lazy-modal-container
+	transform translateY(-50px)
+	transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+.lazy-modal.lazy-modal--show .lazy-modal-container
+	transform translateY(0)
+
+/* //popup */

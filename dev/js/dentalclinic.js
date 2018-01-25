@@ -110,13 +110,14 @@
 					self.button.on("click", function() {
 						var btn = $(this);
 
-						//btn.addClass("active");
-						self.show(self.menu);
+						if (!btn.hasClass("active")) {
+							btn.addClass("active");
+							self.show(self.menu);
+						} else {
+							self.button.removeClass("active");
+							self.hide(self.menu);
+						}
 					});
-					self.close.on("click", function() {
-						//self.button.removeClass("active");
-						self.hide(self.menu);
-					})
 				},
 				show: function(menu) {
 					menu.addClass("active-block");
@@ -510,20 +511,23 @@
 						href = $linkAddress.attr("href"),
 						$container = $($linkAddress.data("container"));
 
-						(function(href, $container) {
-							$.ajax({
-								url: href,
-								success: function(data) {
-									var $data = $(data).addClass("load-events-item");
-										$container.append($data);
-									setTimeout(function() {
-										$container.find(".load-events-item").removeClass("load-events-item");
-									}, 100);
-									DENTALCLINIC.reload();
-								}
-							})
-						})(href, $container);
-						event.preventDefault();
+					$linkAddress.addClass("loading");
+
+					(function(href, $container) {
+						$.ajax({
+							url: href,
+							success: function(data) {
+								var $data = $(data).addClass("load-events-item");
+									$container.append($data);
+								setTimeout(function() {
+									$container.find(".load-events-item").removeClass("load-events-item");
+									$linkAddress.removeClass("loading");
+								}, 100);
+								DENTALCLINIC.reload();
+							}
+						})
+					})(href, $container);
+					event.preventDefault();
 				})
 			},
 
@@ -626,6 +630,7 @@
 									'<span class="form-close"></span>'+
 								 '</button>',
 				    positionclose: "inside",
+					closeonbcg: true,
 				});
 
 				$(".open-form[data-lazymodal]").lazyModal({
@@ -720,8 +725,6 @@
 					if ($sel.window.width() >= "1300") {
 						$sel.body.append(self.bgLinesContainer);
 						self.show();
-					} else {
-						self.hide();
 					}
 
 				},
@@ -729,7 +732,7 @@
 				show: function() {
 					var self = this;
 
-					for (var i = 4; i >= 1; i--) {
+					for (var i = 5; i >= 1; i--) {
 						$(".bg-lines").append('<div class="bg-lines-vertical">');
 					}
 
@@ -737,8 +740,8 @@
 					var widthblock = 0;
 
 					$(".bg-lines-vertical").each(function() {
+
 						(function($el) {
-							console.log(widthblock);
 							$el.css({
 								"position"    : "fixed",
 								"top"         : 0,
@@ -751,6 +754,7 @@
 							});
 							widthblock = widthblock + 295;
 						})($(this));
+
 					});
 
 					$(".bg-lines-horizontal").each(function() {
