@@ -102,6 +102,7 @@
 				button: $(".header-burger-holder"),
 				menu: $(".mobile-menu"),
 				close: $(".mobile-menu-close"),
+				posLeft: "",
 
 
 				init: function() {
@@ -110,26 +111,47 @@
 					self.button.on("click", function() {
 						var btn = $(this);
 
+						self.posLeft = btn.offset().left;
+
 						if (!btn.hasClass("active")) {
 							btn.addClass("active");
-							self.show(self.menu);
+							self.show(self.menu, btn);
 						} else {
-							self.button.removeClass("active");
-							self.hide(self.menu);
+							btn.removeClass("active");
+							self.hide(self.menu, btn);
 						}
 					});
 				},
-				show: function(menu) {
+				show: function(menu, btn) {
+					var self = this;
+
 					menu.addClass("active-block");
-					setTimeout(function() {
-						menu.addClass("active-show");
-					}, 200);
-				},
-				hide: function(menu) {
-					menu.removeClass("active-show");
 
 					setTimeout(function() {
+
+						menu.addClass("active-show");
+
+						setTimeout(function() {
+							btn.css({
+								"position": "fixed",
+								"left": self.posLeft,
+							});
+						}, 220);
+
+					}, 200);
+				},
+				hide: function(menu, btn) {
+					var self = this;
+
+					menu.removeClass("active-show");
+					btn.css({
+						"position": "relative",
+						"left": "inherit",
+					});
+					setTimeout(function() {
+
 						menu.removeClass("active-block");
+
 					}, 600);
 				}
 			},
@@ -142,7 +164,7 @@
 					self.mainSlider($slider);
 					self.servicesSlider($slider);
 					self.advSlider($slider);
-					self.newsSlider($slider);
+					self.newsSlider($(".content-slider"));
 				},
 
 				mainSlider: function(slider) {
@@ -606,11 +628,14 @@
 					var self = this;
 
 					elements.addClass("hide");
+					elements.parent().css("border-top", "none");
 					setTimeout(function() {
 						elements.addClass("hide-block");
+
 						el.removeClass("hide-block");
 						setTimeout(function() {
 							el.removeClass("hide");
+							el.parent().css("border-top", "1px solid rgb(242, 242, 242)");
 						},50);
 					},300);
 				}
@@ -647,6 +672,17 @@
 									'<span class="form-close"></span>'+
 								 '</button>',
 				    positionclose: "inside",
+				});
+
+				// Options for the first group
+				$("[data-fancybox]").fancybox({
+					arrows : true,
+					keyboard : true,
+					buttons : [
+						'close'
+					],
+					defaultType : 'image',
+					animationEffect: "zoom-in-out",
 				});
 
 			},
