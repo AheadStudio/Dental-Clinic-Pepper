@@ -2,6 +2,9 @@
 	.page-inner
 		min-width 1024px
 
+		&--max
+			min-width 100%
+
 @media screen and (max-width: 1680px)
 	.news-item
 		.news-text
@@ -17,6 +20,12 @@
 				.slick-arrow-container
 					bottom -50px
 
+	.mobile-menu-items
+		margin-bottom 20px
+
+	.mobile-menu-container
+		.mobile-menu-address
+			margin-bottom 30px
 
 @media screen and (max-width: 1280px)
 	.form-call-container
@@ -38,9 +47,10 @@
 			left 40px
 
 	.advantages-slider
-		.info
-			.description
-				max-height 170px
+		padding-bottom 100px
+
+		.slick-arrow-container
+			bottom 30px
 
 	.advantages-mini
 		height auto
@@ -174,9 +184,7 @@
 
 	.advantages-slider
 		.slick-arrow-container
-			top 395px
 			left 0
-			bottom inherit
 
 	.map-block
 		.tag
@@ -319,11 +327,6 @@
 	.page-header
 		margin-bottom 120px
 
-	.mini-news
-		grid-template-columns 1fr 1fr
-		padding 60px
-		height auto
-
 	.news-item
 		min-height 300px
 
@@ -364,7 +367,16 @@
 		flex-flow column
 
 		.advantages-container
+			display none
 			width 100%
+
+			&--text
+			&--mobile
+				width 100%
+				display block
+
+			&--mobile
+				margin-bottom 15px
 
 	.mobile-menu-container
 		.mobile-menu-navigations
@@ -381,6 +393,17 @@
 			.mobile-menu-version
 				margin-bottom 48px
 				margin-left 48px
+
+	.mini-news
+		grid-template-columns 1fr 1fr
+		height auto
+		margin-top 100px
+
+		.news-item
+			padding 70px 20px 70px 0
+
+			.news-arrow-icon
+				bottom 0
 
 @media screen and (max-width: 768px)
 	.page-header
@@ -447,7 +470,6 @@
 	.news
 		.news-items
 			grid-template-columns 1fr 1fr
-			grid-gap 50px 0
 			margin-top 80px
 			margin-bottom 40px
 
@@ -600,7 +622,7 @@
 		padding 0
 
 	.advantages-mini
-		flex-flow column
+		flex-flow column-reverse
 
 	.advantages-slider
 		width 100%
@@ -618,7 +640,6 @@
 		grid-template-columns 1fr
 
 	.news-item
-		min-height 240px
 
 		.news-title
 			margin-bottom 10px
@@ -666,6 +687,11 @@
 
 				&:before
 					left 0
+
+		figcaption
+			line-height 1
+			margin-top 5px
+
 	.news
 		.news-items
 			grid-template-columns 1fr
@@ -682,13 +708,26 @@
 			font-size 14px
 
 	.clinic-inner
-		margin-bottom 40px
+		margin-bottom 25px
 
 		.clinic-container
 			width 100%
+			margin-bottom 20px
 
 	.clinic-inner--photo
 		flex-flow column
+
+	.mobile-menu-container
+		.mobile-menu-address
+			display block
+
+			span
+				margin-bottom 10px
+				display block
+
+	.advantages-photo
+		.advantages-photo-description
+			margin-top 10px
 
 @media screen and (max-width: 500px)
 	.main-slider
@@ -768,26 +807,15 @@
 					line-height 18px
 
 @media screen and (max-width: 425px)
-	.header-info-holder
-		.header-mobile
-			font-size 14px
-			margin-top 10px
-			margin-bottom 5px
-			text-align center
-		span
-			top -5px
-			margin-left -47px
-			font-size 12px
-			text-align center
-	.intro
-		flex-flow column
+	.page-header
+		.header-info-holder
+			display none
 
 	.intro-personal
-		width 100%
+		width 65%
 
 		.intro-personal-photo
-			width 60%
-			margin 0 auto
+			width 100%
 			margin-bottom 20px
 
 			img
@@ -799,16 +827,25 @@
 
 	.intro-info
 		width 100%
-		padding-left 0
-		font-size 16px
-		line-height 25px
-		margin-top -20px
+		margin-top 0
+		padding-top 0
+		padding-left 10px
+		font-size 12px
+		line-height 20px
 
 	.mini-news
 		padding 60px 30px
 
 	.services
-		height 260px
+		height auto
+		margin-top 50px
+
+		.services-slider-items
+			margin-bottom 20px
+
+			.services-slider-item-icon
+				display block
+
 
 		.services-circle
 			display none
@@ -818,25 +855,38 @@
 			width 100%
 
 			.slick-arrow-container
-				top 215px
+				top auto
+				bottom -20px
 				left 0
 
 	.main-slider
-		height 300px
-		margin-bottom 20px
+		height 350px
+		margin-bottom 35px
 
 		.slick-arrow-block
-			top 250px
+			top 285px
 
 		.main-slider-item-img
 			&:before
-				padding-top 300px
+				padding-top 350px
 
 			.main-slider-item-img-container
-				height 300px
+				height 350px
+
+	.intro
+		margin-bottom 50px
+
+	.advantages-mini
+		margin-top 60px
+
+	.mini-news
+		margin-top 40px
+
+	.map-block
+		margin-top 50px
 
 	.main-slider-info-container
-		top 40px
+		top 80px
 		max-width 295px
 
 		.main-slider-item-title
@@ -853,7 +903,7 @@
 			padding  35px 15px 35px 30px
 
 	.news-item
-		padding-right 0
+		padding 30px 30px 40px 0px
 
 	.services-element-information
 		padding-bottom 0
@@ -875,8 +925,11 @@
 		.news-item
 			padding-right 0
 
+			.news-arrow-icon
+				bottom 0
+
 		.news-items
-			grid-gap 30px 0
+			grid-gap 0
 			margin-top 60px
 			margin-bottom 20px
 
@@ -946,7 +999,7 @@
 	.doctors-filter
 		display flex
 		flex-wrap wrap
-		justify-content center
+		justify-content flex-start
 		padding-left 0
 		margin-bottom 20px
 
@@ -1008,3 +1061,29 @@
 			.accordion-arrow
 				height 15px
 				margin-top -5px
+
+	.mini-news
+		padding 30px 20px
+		.news-item
+			padding 30px 20px 70px 0
+
+	.page-footer
+		padding-bottom 20px
+
+		p
+			margin-bottom 25px
+
+		a
+			display inline
+
+	.mobile-menu-items
+		grid-template-columns 1fr
+		grid-gap 0
+
+		.mobile-menu-item
+			order 2
+
+		.contacts
+			margin-bottom 40px
+			grid-column-end 1
+			order 1

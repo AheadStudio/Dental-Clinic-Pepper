@@ -115,9 +115,15 @@
 
 						if (!btn.hasClass("active")) {
 							btn.addClass("active");
+
+							$sel.body.css("overflow", "hidden");
+
 							self.show(self.menu, btn);
 						} else {
 							btn.removeClass("active");
+
+							$sel.body.css("overflow", "auto");
+
 							self.hide(self.menu, btn);
 						}
 					});
@@ -821,6 +827,7 @@
 
 	DENTALCLINIC.reload = function() {
 		DENTALCLINIC.modalWindow();
+		DENTALCLINIC.bgLines.init();
 		DENTALCLINIC.scrollAnimation.init();
 	}
 })(jQuery);
