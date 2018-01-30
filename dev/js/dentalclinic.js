@@ -64,7 +64,7 @@
 						block = false,
 						blockTop = false,
 						top = $sel.window.scrollTop(),
-						buffer = parseInt($sel.window.height()) / 1.1;
+						buffer = parseInt($sel.window.height()) / 1.8;
 					for(var i = 0, len = self.blocks.length; i < len; i++) {
 						block = self.blocks[i],
 						blockTop = parseInt(block.top, 10);

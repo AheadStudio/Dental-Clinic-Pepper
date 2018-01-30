@@ -120,6 +120,7 @@
 /* right */
 .before-animation-right {
     display: block;
+	opacity: 0;
 }
 .before-animation-right.animated {
 	-webkit-animation: fadeInRight .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -132,6 +133,7 @@
 /* left */
 .before-animation-left {
     display: block;
+	opacity: 0;
 }
 .before-animation-left.animated {
 	-webkit-animation: fadeInLeft .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -144,6 +146,7 @@
 /* top */
 .before-animation-top {
     display: block;
+	opacity: 0;
 }
 .before-animation-top.animated {
 	-webkit-animation: fadeInTop .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -156,6 +159,7 @@
 /* bottom */
 .before-animation-bottom {
     display: block;
+	opacity: 0;
 }
 .before-animation-bottom.animated {
 	-webkit-animation: fadeInBottom .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
