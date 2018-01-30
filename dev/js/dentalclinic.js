@@ -127,7 +127,7 @@
 							if ($sel.window.width() <= "620") {
 								$sel.body.css("overflow", "auto");
 							}
-							
+
 							self.hide(self.menu, btn);
 						}
 					});
@@ -184,7 +184,7 @@
 						$itemSlider = $(".main-slider-item", $slider),
 						$arrowContainer = $(".slick-arrow-container", $mainSlider);
 
-					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true);
+					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true, true);
 
 					$slider.on("swipe", function(event, slick, direction) {
 						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
@@ -295,7 +295,9 @@
 
 				},
 
-				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint) {
+				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint, animate) {
+
+					animate = animate ? true : false;
 
 					slider.slick({
 						arrows: true,
@@ -306,7 +308,8 @@
 						speed: 600,
 						slidesToShow: 1,
 						//autoplay: true,
-						autoplaySpeed: 6000
+						autoplaySpeed: 6000,
+						fade: animate,
 					});
 
 					if (hidePoint == true) {
