@@ -545,8 +545,18 @@
 	.doctors-items
 		flex-flow column
 
-		.doctors-item
+		.doctors-item[filter]
 			width 100%
+			flex-flow column
+			margin-bottom 40px
+
+			.doctors-item-img
+				width 100%
+				margin-bottom 10px
+
+			.doctors-item-text
+				width 100%
+				padding 0
 
 	.doctor-detail-inner
 		grid-template-columns 1fr
@@ -1006,8 +1016,6 @@
 	.doctors-items
 		.doctors-item
 			.doctors-item-text
-				padding 0 0 0 10px
-
 				.doctors-item-name
 					font-size 16px
 					line-height 20px
