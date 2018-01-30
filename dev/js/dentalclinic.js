@@ -116,14 +116,18 @@
 						if (!btn.hasClass("active")) {
 							btn.addClass("active");
 
-							$sel.body.css("overflow", "hidden");
+							if ($sel.window.width() <= "620") {
+								$sel.body.css("overflow", "hidden");
+							}
 
 							self.show(self.menu, btn);
 						} else {
 							btn.removeClass("active");
 
-							$sel.body.css("overflow", "auto");
-
+							if ($sel.window.width() <= "620") {
+								$sel.body.css("overflow", "auto");
+							}
+							
 							self.hide(self.menu, btn);
 						}
 					});

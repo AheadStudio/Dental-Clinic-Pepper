@@ -245,6 +245,15 @@
                 });
             }
 
+            $html.off("keydown.lm-close").on("keydown.lm-close", function(e) {
+                if (e.keyCode == 27) {
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    self.closeModal();
+                }
+            });
+
         },
 
         // == close modal == //
@@ -265,7 +274,7 @@
                 $html.css(widStyles);
                 self.hooks("afterClose");
 
-            }, 400);
+            }, 800);
 
         },
 
