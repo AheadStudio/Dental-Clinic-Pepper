@@ -161,6 +161,8 @@
                 $html.css({ "overflow" : "hidden", "margin-right" : widthScroll });
                 $body.prepend(self.options.basetpl);
 
+                self.options.htmlStructure.el =  self.el;
+
                 self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
                 self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
                 self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
@@ -176,12 +178,12 @@
                 }
 
                 // check init plugin on element
-                initialization = self.options.htmlStructure.mainContainer.data("lazyModalInit");
+                var initialization = self.options.htmlStructure.el.data("lazyModalInit");
 
                 if (initialization === "on") {
-                    $.error("Plugin already initialized");
+                    return;
                 } else {
-                    self.options.htmlStructure.mainContainer.data("lazyModalInit", "on");
+                    self.options.htmlStructure.el.data("lazyModalInit", "on");
                 }
 
                 self.includeContent(self.options.htmlStructure.contentContainer, self.options.position);
@@ -219,12 +221,16 @@
 
             setTimeout(function() {
                 container.addClass("lazy-modal--show");
+
                 setTimeout(function() {
                     $body.addClass("open-lazy-modal");
                 }, 300);
+
                 self.hooks("afterShow");
                 self.addEvent();
+
             }, 100);
+
         },
 
 
@@ -245,7 +251,6 @@
                 $(self.options.htmlStructure.scrollClose).off("click.lm-close").on("click.lm-close", function(e) {
                     e.stopPropagation();
                     e.preventDefault();
-                    console.log("asdsda");
                     self.closeModal();
                 });
             }
@@ -257,6 +262,11 @@
 
                     self.closeModal();
                 }
+            });
+
+            $(self.options.htmlStructure.contentContainer).off("click.lm-close").on("click.lm-close", function(e) {
+                e.stopPropagation();
+                e.preventDefault();
             });
 
         },

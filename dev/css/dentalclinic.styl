@@ -2077,6 +2077,8 @@ body
 
 	transition background 0.3s $transitionAnimation, transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
 
+	overflow hidden
+
 	&.load-events-item
 		opacity 0
 		transform translateY(50px)
@@ -2098,20 +2100,24 @@ body
 		overflow hidden
 		line-height 30px
 
-	&:after
-		content ""
-		position absolute
-		display block
-		width 50px
+	.arrow-icon
+		position relative
+		bottom -40px
+		width 60px
 		height 10px
-		bottom 40px
-		left 30px
-		background-image url("../svg/arrow_left_green.svg")
-		background-repeat no-repeat
-		background-size cover
+		left -20px
+
+		transition left 0.3s $transitionAnimation
+
+		svg
+			width 100%
+			overflow inherit
 
 	&:hover
 		background $colorgrayfone
+
+		.arrow-icon
+			left 0
 
 .clinic
 .contacts

@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 10">
-  <title>arrow_left_green</title>
-  <g id="Слой_2" data-name="Слой 2">
-    <g id="Слой_1-2" data-name="Слой 1">
-      <g id="Page-1">
-        <g id="Главная-1">
-          <g id="Group-7">
-            <rect id="Rectangle-4" y="4" width="44" height="1" fill="#009d3c"/>
-            <polygon id="Rectangle" points="43 0 48 5 43 10 43 0" fill="#009d3c"/>
-          </g>
-        </g>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 10"><g data-name="Слой 2"><g fill="#009d3c" data-name="Слой 1"><path d="M0 4h64v1H0z"></path><path d="M64 0l5 5-5 5V0z"></path></g></g></svg>
