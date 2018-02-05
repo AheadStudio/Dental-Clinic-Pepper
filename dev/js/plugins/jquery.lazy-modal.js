@@ -129,6 +129,7 @@
                 self.implant();
 
             }
+
             if (self.options.type === "ajax") {
                 (function(href) {
                     $.ajax({
@@ -163,6 +164,7 @@
                 self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
                 self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
                 self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
+                self.options.htmlStructure.scrollClose = $(".lazy-modal-scroll", self.options.htmlStructure.mainContainer);
 
                 self.options.htmlStructure.mainContainer.addClass(self.options.customclass);
                 self.options.htmlStructure.background.css("background", self.options.bcgcolor);
@@ -217,6 +219,9 @@
 
             setTimeout(function() {
                 container.addClass("lazy-modal--show");
+                setTimeout(function() {
+                    $body.addClass("open-lazy-modal");
+                }, 300);
                 self.hooks("afterShow");
                 self.addEvent();
             }, 100);
@@ -237,10 +242,10 @@
             });
 
             if (self.options.closeonbcg) {
-                $(self.options.htmlStructure.background).off("click.lm-close").on("click.lm-close", function(e) {
+                $(self.options.htmlStructure.scrollClose).off("click.lm-close").on("click.lm-close", function(e) {
                     e.stopPropagation();
                     e.preventDefault();
-
+                    console.log("asdsda");
                     self.closeModal();
                 });
             }
@@ -266,6 +271,9 @@
                 };;
 
             $container.removeClass("lazy-modal--show");
+
+            $body.removeClass("open-lazy-modal");
+
 
             setTimeout(function() {
 

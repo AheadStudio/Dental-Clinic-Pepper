@@ -116,6 +116,7 @@
 						if (!btn.hasClass("active")) {
 							btn.addClass("active");
 
+
 							if ($sel.window.width() <= "620") {
 								$sel.body.css("overflow", "hidden");
 							}
@@ -174,6 +175,7 @@
 					self.mainSlider($slider);
 					self.servicesSlider($slider);
 					self.advSlider($slider);
+					self.miniNews($slider);
 					self.newsSlider($(".content-slider"));
 				},
 
@@ -184,17 +186,17 @@
 						$itemSlider = $(".main-slider-item", $slider),
 						$arrowContainer = $(".slick-arrow-container", $mainSlider);
 
-					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true, true);
+					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true, true, true);
 
-					$slider.on("swipe", function(event, slick, direction) {
+					/*$slider.on("swipe", function(event, slick, direction) {
 						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
 							idElement = $element.attr("id"),
 							$toggle = $(".main-slider-item-info");
 
 						self.sliderToggleAnimation($toggle, idElement);
-					});
+					});*/
 
-					$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
+					/*$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
 						var el = $(this),
 							$container  = el.closest(".main-slider"),
 							$sliderItem = $container.find(".main-slider-item.slick-active");
@@ -202,7 +204,16 @@
 							$photo = $(".main-slider-item-info");
 
 						self.sliderToggleAnimation($photo, idItem);
+					});*/
+
+					$slider.on("afterChange", function(event, slick, currentSlide) {
+						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
+							idElement = $element.attr("id"),
+							$toggle = $(".main-slider-item-info");
+
+						self.sliderToggleAnimation($toggle, idElement);
 					});
+
 
 				},
 
@@ -214,7 +225,7 @@
 						$arrowContainer = $(".slick-arrow-container", $servicesSlider);
 
 					self.servicesCalculation();
-					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false);
+					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false, false, false);
 
 					$slider.on("swipe", function(event, slick, direction){
 						if (direction == "left") {
@@ -226,12 +237,17 @@
 
 					$(".slick-arrow-prev", $arrowContainer).on("click", $arrowContainer, function() {
 						self.servicesCalculation("nextElement");
+						return;
 					})
 					$(".slick-arrow-next", $arrowContainer).on("click", $arrowContainer, function() {
 						self.servicesCalculation("prevElement");
+						return;
 					})
 
-
+					/*$slider.on("afterChange", function(event, slick, currentSlide) {
+						self.servicesCalculation("nextElement");
+						console.log(currentSlide);
+					});*/
 				},
 
 				advSlider: function(slider) {
@@ -241,11 +257,9 @@
 						$itemSlider = $(".main-slider-item", $slider),
 						$arrowContainer = $(".slick-arrow-container", $advSlider);
 
-					self.sliderEffect($slider, $advSlider, $itemSlider, $arrowContainer, false);
+					self.sliderEffect($slider, $advSlider, $itemSlider, $arrowContainer, false, false, true);
 
-
-
-					$slider.on("swipe", function(event, slick, direction) {
+					/*$slider.on("swipe", function(event, slick, direction) {
 						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
 							idElement = $element.attr("id"),
 							$photo = $(".advantages-photo", ".advantages-photo-container");
@@ -261,15 +275,39 @@
 							$photo = $(".advantages-photo", ".advantages-photo-container");
 
 						self.sliderToggleAnimation($photo, idItem);
+					});*/
+
+
+					$slider.on("afterChange", function(event, slick, currentSlide) {
+						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
+							idElement = $element.attr("id"),
+							$photo = $(".advantages-photo", ".advantages-photo-container");
+
+						self.sliderToggleAnimation($photo, idElement);
+					});
+				},
+
+				newsSlider: function(slider) {
+					var self = this;
+
+					slider.each(function() {
+						(function(sliderItem) {
+							var	$newsSlider = sliderItem.parents(".content-slider-container"),
+								$slider = $newsSlider.find(sliderItem),
+								$itemSlider = $(".content-slider-item", sliderItem),
+								$arrowContainer = $(".slick-arrow-container", $newsSlider);
+
+							self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
+						})($(this));
 					});
 
 				},
 
-				newsSlider: function(slider) {
+				miniNews: function(slider) {
 					var self = this,
-						$newsSlider = $(".news-detail-slider"),
+						$newsSlider = $(".mini-news-slider"),
 						$slider = $newsSlider.find(slider),
-						$itemSlider = $(".news-detail-slider-item", $slider),
+						$itemSlider = $(".news-item", $slider),
 						$arrowContainer = $(".slick-arrow-container", $newsSlider);
 
 					self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
@@ -295,13 +333,21 @@
 
 				},
 
-				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint, animate) {
+				sliderEffect: function(slider, container, itemSlider, arrowContainer, hidePoint, animate, autoplay) {
+					var self= this;
 
 					animate = animate ? true : false;
+					autoplay = autoplay ? true : false;
 
+					if (autoplay) {
+						autoplay = true;
+						var autoplaySpeed = 300;
+					}
 					slider.slick({
 						arrows: true,
 						appendArrows: arrowContainer,
+						autoplay: autoplay,
+  						autoplaySpeed: autoplaySpeed,
 						prevArrow: '<div class="slick-arrow-prev"></div>',
 						nextArrow: '<div class="slick-arrow-next"></div>',
 						infinite: true,
@@ -806,13 +852,66 @@
 
 					});
 
+					var pastElem = $sel.body.find(".bg-lines-horizontal-line");
+					pastElem.remove();
+
 					$(".bg-lines-horizontal").each(function() {
 						(function($el) {
-							$el.css("border-top", "1px solid #f2f2f2");
+							var posTop = $el.offset().top;
+							$sel.body.append('<div class="bg-lines-horizontal-line" data-horpos="'+posTop+'">');
 						})($(this));
 					})
+
+					var elements = $sel.body.find(".bg-lines-horizontal-line");
+
+					elements.each(function() {
+						var dataEl = $(this).data("horpos");
+						$(this).css({
+							"position"    : "absolute",
+							"top"         : dataEl,
+							"background"  : "#f2f2f2",
+							"width"       : "100%",
+							"height"      : "1px",
+							"left"		  : 0,
+							"right"       : 0,
+							"z-index"     : "-1000"
+						})
+					})
+
 				}
 
+			},
+
+
+			toggleElements: function() {
+				var self = this,
+					$toggle = $(".toggle");
+
+				$toggle.each(function() {
+					(function(el) {
+						el.on("click", function() {
+							var toggleEl = $(this),
+								toggleId = toggleEl.attr("id"),
+								$container = $sel.body.find("[data-toggle='"+toggleId+"']");
+
+							if (toggleEl.hasClass("active")) {
+								toggleEl.removeClass("active-animation");
+								$container.removeClass("active-animation");
+								setTimeout(function() {
+									toggleEl.removeClass("active");
+									$container.removeClass("active");
+								}, 300);
+							} else {
+								toggleEl.addClass("active");
+								$container.addClass("active");
+								setTimeout(function() {
+									toggleEl.addClass("active-animation");
+									$container.addClass("active-animation");
+								}, 300);
+							}
+						})
+					})($(this));
+				})
 			},
 
 		};
@@ -831,6 +930,7 @@
 	DENTALCLINIC.accordion.init();
 	DENTALCLINIC.filter.init();
 	DENTALCLINIC.modalWindow();
+	DENTALCLINIC.toggleElements();
 
 	DENTALCLINIC.reload = function() {
 		DENTALCLINIC.modalWindow();

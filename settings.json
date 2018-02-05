@@ -136,6 +136,22 @@
                 "mobile": "100"
             }
         },
+        "page_404": {
+            "name": "404",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "legal-information": {
+            "name": "Правовая информация",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
         "reviews-item": {
             "name": "Отзыв отдельно",
             "progress": {

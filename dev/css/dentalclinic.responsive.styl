@@ -83,6 +83,7 @@
 	.page-header
 		.header-menu-holder
 			width 350px
+			margin-right 0
 
 	.main-slider
 		height 450px
@@ -378,6 +379,9 @@
 			&--mobile
 				margin-bottom 15px
 
+				.content-slider-container
+					margin-bottom 50px
+
 	.mobile-menu-container
 		.mobile-menu-navigations
 			flex-flow column
@@ -536,6 +540,14 @@
 
 				.service-name
 					max-width 90%
+
+	.legal-information-inner
+		padding-top 0
+		grid-template-columns 1fr
+		padding-left 0
+
+		.legal-information-item
+			max-width 100%
 
 
 @media screen and (max-width: 650px)
@@ -818,11 +830,13 @@
 
 @media screen and (max-width: 425px)
 	.page-header
+		padding 35px 0 30px 0
+
 		.header-info-holder
 			display none
 
 	.intro-personal
-		width 65%
+		width 100%
 
 		.intro-personal-photo
 			width 100%
@@ -832,23 +846,15 @@
 				width 100%
 				min-width: auto
 
-		.intro-personal-data
-			text-align center
-
 	.intro-info
-		width 100%
-		margin-top 0
-		padding-top 0
-		padding-left 10px
-		font-size 12px
-		line-height 20px
+		display none
 
 	.mini-news
 		padding 60px 30px
 
 	.services
 		height auto
-		margin-top 50px
+		margin-top 0
 
 		.services-slider-items
 			margin-bottom 20px
@@ -870,33 +876,33 @@
 				left 0
 
 	.main-slider
-		height 350px
-		margin-bottom 35px
+		height 400px
+		margin-bottom 5px
 
 		.slick-arrow-block
-			top 285px
+			top 360px
 
 		.main-slider-item-img
 			&:before
-				padding-top 350px
+				padding-top 400px
 
 			.main-slider-item-img-container
-				height 350px
+				height 400px
 
 	.intro
-		margin-bottom 50px
+		margin-bottom 30px
 
 	.advantages-mini
-		margin-top 60px
+		margin-top 30px
 
 	.mini-news
-		margin-top 40px
+		margin-top 30px
 
 	.map-block
-		margin-top 50px
+		margin-top 30px
 
 	.main-slider-info-container
-		top 80px
+		top 55px
 		max-width 295px
 
 		.main-slider-item-title
@@ -1077,10 +1083,12 @@
 
 	.page-footer
 		padding-bottom 20px
+		padding-top 40px
 
+		.footer-license
+			margin-bottom 20px
 		p
-			margin-bottom 25px
-
+			margin-bottom 5px
 		a
 			display inline
 
@@ -1095,3 +1103,18 @@
 			margin-bottom 40px
 			grid-column-end 1
 			order 1
+
+	.mini-news-slider
+		display block
+
+	.mini-news
+		display none
+
+	.toggle
+		display inline-block
+
+	.toggle-container
+		display none
+		margin-top 5px
+		opacity 0
+		transform translateY(-50px)

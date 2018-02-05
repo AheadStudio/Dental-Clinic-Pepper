@@ -25,7 +25,7 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 		})
 		+webIcons({
 			favicon: {
-				src: "/i/favicon.ico"
+				src: "../i/icons/favicon.ico"
 			},
 			appleTouchIcon: [
 				{
@@ -76,71 +76,72 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 	body(itemscope, itemtype="http://schema.org/WebPage")
 
 		div(class="page")
-			div(class="page-inner page-inner--w1")
-				header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-					a(href="home.html", class="header-logo-holder")
-						img(src="../svg/logo.svg")
-					div(class="header-menu-holder")
-						+menu({
-							rootClass: "header-menu",
-							items: [
-								{
-									name: "Клиника",
-									linkClass: "link link--green link--opacity active",
-									href: "home.html",
-									title: "Клиника",
-									items: [
-										{
-											name: "О клинике",
-											href: "about.html",
-											linkClass: "link animation-link link--green-color",
-											title: "О клинике",
-										}, {
-											name: "Новости",
-											href: "news.html",
-											linkClass: "link animation-link link--green-color",
-											title: "Новости",
-										}, {
-											name: "Врачи",
-											href: "doctors.html",
-											linkClass: "link animation-link link--green-color",
-											title: "Врачи",
-										}, {
-											name: "Отзывы",
-											href: "reviews.html",
-											linkClass: "link animation-link link--green-color",
-											title: "Отзывы",
-										}
-									]
-								}, {
-									name: "Услуги",
-									href: "services_section.html",
-									linkClass: "link link--green link--opacity",
-									title: "Услуги",
-								}, {
-									name: "Цены",
-									href: "price.html",
-									linkClass: "link link--green link--opacity",
-									title: "Цены",
-								}, {
-									name: "Врачи",
-									href: "doctors.html",
-									linkClass: "link link--green link--opacity",
-									title: "Врачи",
-								}, {
-									name: "Контакты",
-									href: "contacts.html",
-									linkClass: "link link--green link--opacity",
-									title: "Контакты",
-								}
-							]
-						})
-					div(class="header-info-holder")
-						a(href="tel:+74932938128", class="link header-mobile link--opacity") +7 (4932) 938-128
-						span(class="open-form link--brown-bottom--inverse", data-lazymodal="form-mobile-order.html") Обратный звонок
-					div(class="header-burger-holder")
-						div(class="header-burger")
-					
+			if page.code != "page_404"
+				div(class="page-inner page-inner--w1")
+					header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
+						a(href="home.html", class="header-logo-holder")
+							img(src="../svg/logo.svg")
+						div(class="header-menu-holder")
+							+menu({
+								rootClass: "header-menu",
+								items: [
+									{
+										name: "Клиника",
+										linkClass: "link link--green link--opacity active",
+										href: "home.html",
+										title: "Клиника",
+										items: [
+											{
+												name: "О клинике",
+												href: "about.html",
+												linkClass: "link animation-link link--green-color",
+												title: "О клинике",
+											}, {
+												name: "Новости",
+												href: "news.html",
+												linkClass: "link animation-link link--green-color",
+												title: "Новости",
+											}, {
+												name: "Врачи",
+												href: "doctors.html",
+												linkClass: "link animation-link link--green-color",
+												title: "Врачи",
+											}, {
+												name: "Отзывы",
+												href: "reviews.html",
+												linkClass: "link animation-link link--green-color",
+												title: "Отзывы",
+											}
+										]
+									}, {
+										name: "Услуги",
+										href: "services_section.html",
+										linkClass: "link link--green link--opacity",
+										title: "Услуги",
+									}, {
+										name: "Цены",
+										href: "price.html",
+										linkClass: "link link--green link--opacity",
+										title: "Цены",
+									}, {
+										name: "Врачи",
+										href: "doctors.html",
+										linkClass: "link link--green link--opacity",
+										title: "Врачи",
+									}, {
+										name: "Контакты",
+										href: "contacts.html",
+										linkClass: "link link--green link--opacity",
+										title: "Контакты",
+									}
+								]
+							})
+						div(class="header-info-holder")
+							a(href="tel:+74932938128", class="link header-mobile link--opacity") +7 (4932) 938-128
+							span(class="open-form link--brown-bottom--inverse", data-lazymodal="form-mobile-order.html") Обратный звонок
+						div(class="header-burger-holder")
+							div(class="header-burger")
+				
 			main(class="page-content")
 				block content
 					
@@ -254,16 +255,19 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 						button(type="submit")
 					a(href="#", class="link link--brown mobile-menu-information link--litebrown-bottom", target="_blank") Официальная информация
 					a(href="#", class="link link--brown mobile-menu-version link--litebrown-bottom", target="_blank") Версия для слабовидящих
-		footer(class="page-footer bg-lines-horizontal", itemscope, itemtype="http://schema.org/WPFooter")
-			div(class="page-inner page-inner--w1")
-				div(class="footer-license show-data")
-					p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
-					p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
-					p Публикация материалов с сайоа разрешена с письменного согласия правообладателя.
-					a(href="#", class="link link--green link--green-bottom") Политика ООО &#187;Стоматологическая клиника Перцева С.С.&#171; в отношении обработки персональных данных
-				a(href="http://aheadstudio.ru", target="_blank", class="link footer-creators", title="Разработка интернет-магазинов")
-					div(class="footer-creators-title") Сделанно в
-					div(class="footer-creators-name link--green") Aheadstudio
+		if page.code != "page_404"
+			footer(class="page-footer bg-lines-horizontal", itemscope, itemtype="http://schema.org/WPFooter")
+				div(class="page-inner page-inner--w1")
+					div(class="footer-license show-data")
+						p Лицензия на осуществление медицинской деятельности № 000447199 от 30 января 2004 года.
+						div(class="link toggle", id="moreinfo") Дополнительная информация
+						div(class="toggle-container", data-toggle="moreinfo")
+							p &#169; 2017 Все права защищены. Стоматологическая клиника Перцева. Иваново
+							p Публикация материалов с сайта разрешена с письменного согласия правообладателя.
+							a(href="#", class="link link--green link--green-bottom") Политика ООО &#171;Стоматологическая клиника Перцева С.С.&#187; в отношении обработки персональных данных
+					a(href="http://aheadstudio.ru", target="_blank", class="link footer-creators", title="Разработка интернет-магазинов")
+						div(class="footer-creators-title") Сделанно в
+						div(class="footer-creators-name link--green") Aheadstudio
 				
 
 
