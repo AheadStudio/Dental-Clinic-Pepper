@@ -140,16 +140,24 @@
             "name": "404",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "legal-information": {
             "name": "Правовая информация",
             "progress": {
                 "desktop": "100",
-                "tablet": "0",
-                "mobile": "0"
+                "tablet": "100",
+                "mobile": "100"
+            }
+        },
+        "schedule": {
+            "name": "Расписание",
+            "progress": {
+                "desktop": "100",
+                "tablet": "100",
+                "mobile": "100"
             }
         },
         "reviews-item": {

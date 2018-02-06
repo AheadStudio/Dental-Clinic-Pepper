@@ -635,6 +635,7 @@
 						} else {
 							self.hide($el);
 						}
+
 					});
 
 				},
@@ -647,13 +648,16 @@
 							DENTALCLINIC.common.go(el.offset().top, 500);
 						}, 100);
 					}, 300);
+					DENTALCLINIC.bgLines.show(true);
 				},
 
 				hide: function(el) {
 					el.removeClass("show-content");
 					setTimeout(function() {
 						el.removeClass("active");
+						DENTALCLINIC.bgLines.show(true);
 					}, 300);
+
 				}
 
 			},
@@ -828,6 +832,10 @@
 						self.show();
 					}
 
+					$sel.window.resize(function() {
+						self.show(true);
+					});
+
 				},
 
 				show: function(show) {
@@ -858,34 +866,34 @@
 
 					});
 
-					if (show !== false) {
-						var pastElem = $sel.body.find(".bg-lines-horizontal-line");
+
+					var pastElem = $sel.body.find(".bg-lines-horizontal-line");
+					if (show) {
 						pastElem.remove();
-
-						$(".bg-lines-horizontal").each(function() {
-							(function($el) {
-								var posTop = $el.offset().top;
-								$sel.body.append('<div class="bg-lines-horizontal-line" data-horpos="'+posTop+'">');
-							})($(this));
-						})
-
-						var elements = $sel.body.find(".bg-lines-horizontal-line");
-
-						elements.each(function() {
-							var dataEl = $(this).data("horpos");
-							$(this).css({
-								"position"    : "absolute",
-								"top"         : dataEl,
-								"background"  : "#f2f2f2",
-								"width"       : "100%",
-								"height"      : "1px",
-								"left"		  : 0,
-								"right"       : 0,
-								"z-index"     : "-1000"
-							})
-						})
-
 					}
+
+					$(".bg-lines-horizontal").each(function() {
+						(function($el) {
+							var posTop = $el.offset().top;
+							$sel.body.append('<div class="bg-lines-horizontal-line" data-horpos="'+posTop+'">');
+						})($(this));
+					})
+
+					var elements = $sel.body.find(".bg-lines-horizontal-line");
+
+					elements.each(function() {
+						var dataEl = $(this).data("horpos");
+						$(this).css({
+							"position"    : "absolute",
+							"top"         : dataEl,
+							"background"  : "#f2f2f2",
+							"width"       : "100%",
+							"height"      : "1px",
+							"left"		  : 0,
+							"right"       : 0,
+							"z-index"     : "-1000"
+						})
+					})
 
 				}
 
@@ -923,6 +931,15 @@
 				})
 			},
 
+			stickyElements: function() {
+				var self = this;
+
+				$(".sticky-elements").stick_in_parent({
+					container: $sel.body,
+					offset_top: 50
+				});
+			},
+
 		};
 
 	})();
@@ -940,6 +957,7 @@
 	DENTALCLINIC.filter.init();
 	DENTALCLINIC.modalWindow();
 	DENTALCLINIC.toggleElements();
+	DENTALCLINIC.stickyElements();
 
 	DENTALCLINIC.reload = function() {
 		DENTALCLINIC.modalWindow();

@@ -2714,3 +2714,80 @@ body
 			.arrow-icon
 				svg
 					left 0px
+
+
+/* schedule */
+
+.schedule-list
+	display grid
+	grid-template-columns minmax(530px, auto) 1fr 1fr
+	margin-bottom 60px
+
+	h3
+		margin-bottom 0
+		font-size 28px
+		font-family "ProximaNovaRegular"
+
+	.schedule-item
+		display flex
+		justify-content flex-start
+
+		.schedule-item-icon
+			width 100px
+			height 30px
+
+			margin-right 20px
+
+			text-align center
+			color #fff
+
+			&.green
+				background $colorgreen
+
+			&.darkgreen
+				background #024924
+
+.schedule-week
+	display flex
+	padding 20px 30px 25px 0
+	box-sizing border-box
+	justify-content flex-end
+
+	.schedule-day
+		margin-right 94px
+		font-size 18px
+		font-weight 600
+
+.schedule-pers
+	position relative
+	display flex
+	justify-content flex-end
+	padding 30px 0
+	box-sizing border-box
+	border-top 1px solid #c6c7c7
+
+	&:last-child
+		border-bottom 1px solid #c6c7c7
+	.schedule-name
+		position absolute
+		left 0
+		font-size 22px
+		font-weight 600
+
+	.schedule-point
+		display block
+		width 20px
+		height 20px
+
+		margin-right 92.5px
+
+		border-radius 50%
+
+		&--green
+			background $colorgreen
+
+		&--darkgreen
+			background #024924
+
+
+/* //schedule */
