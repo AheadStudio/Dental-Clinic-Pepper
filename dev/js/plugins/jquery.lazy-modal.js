@@ -205,6 +205,7 @@
             if (position) {
                 console.log("not style for position");
             }
+            
             container.append(self.options.htmlContent);
 
             self.hooks("afterImplant");
@@ -289,7 +290,9 @@
 
             setTimeout(function() {
                 $html.css(widStyles);
+
                 $container.remove();
+
                 self.el.data("lazyModalInit", "off");
                 self.hooks("afterClose");
 

@@ -116,9 +116,8 @@
 						if (!btn.hasClass("active")) {
 							btn.addClass("active");
 
-
 							if ($sel.window.width() <= "620") {
-								$sel.body.css("overflow", "hidden");
+								$sel.body.addClass("open-lazy-modal");
 							}
 
 							self.show(self.menu, btn);
@@ -126,7 +125,7 @@
 							btn.removeClass("active");
 
 							if ($sel.window.width() <= "620") {
-								$sel.body.css("overflow", "auto");
+								$sel.body.removeClass("open-lazy-modal");
 							}
 
 							self.hide(self.menu, btn);
