@@ -2119,6 +2119,10 @@ body
 		.arrow-icon
 			left 0
 
+.reviews-item-container
+	overflow hidden
+	padding-bottom 50px
+
 .clinic
 .contacts
 	h1
@@ -2199,18 +2203,20 @@ body
 			font-size 14px
 			letter-spacing 1.5px
 		a
+			position relative
 			font-size 20px
 
 		&.contacts-instagram
-			&:after
-				content ""
-				position absolute
-				width 21px
-				height 21px
-				right 105px
-				background-image url("../svg/instagram.svg")
-				background-size cover
-				background-repeat no-repeat
+			a
+				&:after
+					content ""
+					position absolute
+					width 21px
+					height 21px
+					right -25px
+					background-image url("../svg/instagram.svg")
+					background-size cover
+					background-repeat no-repeat
 
 	.contacts-container-items>.contacts-time
 		display grid
@@ -2660,6 +2666,9 @@ body
 
 			p
 				font-size 15px
+
+		.link--black-inverse
+			border-bottom-width 1px
 
 /* //page 404 */
 

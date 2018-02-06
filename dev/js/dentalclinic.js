@@ -222,12 +222,13 @@
 						$servicesSlider = $(".services-slider"),
 					 	$slider = $servicesSlider.find(slider),
 						$itemSlider = $(".services-slider-item", $slider),
-						$arrowContainer = $(".slick-arrow-container", $servicesSlider);
+						$arrowContainer = $(".slick-arrow-container", $servicesSlider),
+						itemSLide = -1;
 
 					self.servicesCalculation();
-					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false, false, false);
+					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false, false, true );
 
-					$slider.on("swipe", function(event, slick, direction){
+					/*$slider.on("swipe", function(event, slick, direction){
 						if (direction == "left") {
 							self.servicesCalculation("prevElement")
 						} else {
@@ -242,12 +243,17 @@
 					$(".slick-arrow-next", $arrowContainer).on("click", $arrowContainer, function() {
 						self.servicesCalculation("prevElement");
 						return;
-					})
+					})*/
 
-					/*$slider.on("afterChange", function(event, slick, currentSlide) {
-						self.servicesCalculation("nextElement");
-						console.log(currentSlide);
-					});*/
+					$slider.on("afterChange", function(event, slick, currentSlide) {
+						if (currentSlide < itemSLide) {
+							self.servicesCalculation("nextElement");
+							itemSLide = currentSlide;
+						} else {
+							self.servicesCalculation("prevElement");
+							itemSLide = currentSlide;
+						}
+					});
 				},
 
 				advSlider: function(slider) {
@@ -564,6 +570,7 @@
 						});
 
 						if($form.data("success")) {
+
 							formParams.submitHandler = function(form) {
 
 								var options = {
@@ -824,7 +831,7 @@
 
 				},
 
-				show: function() {
+				show: function(show) {
 					var self = this;
 
 					for (var i = 5; i >= 1; i--) {
@@ -852,31 +859,34 @@
 
 					});
 
-					var pastElem = $sel.body.find(".bg-lines-horizontal-line");
-					pastElem.remove();
+					if (show !== false) {
+						var pastElem = $sel.body.find(".bg-lines-horizontal-line");
+						pastElem.remove();
 
-					$(".bg-lines-horizontal").each(function() {
-						(function($el) {
-							var posTop = $el.offset().top;
-							$sel.body.append('<div class="bg-lines-horizontal-line" data-horpos="'+posTop+'">');
-						})($(this));
-					})
-
-					var elements = $sel.body.find(".bg-lines-horizontal-line");
-
-					elements.each(function() {
-						var dataEl = $(this).data("horpos");
-						$(this).css({
-							"position"    : "absolute",
-							"top"         : dataEl,
-							"background"  : "#f2f2f2",
-							"width"       : "100%",
-							"height"      : "1px",
-							"left"		  : 0,
-							"right"       : 0,
-							"z-index"     : "-1000"
+						$(".bg-lines-horizontal").each(function() {
+							(function($el) {
+								var posTop = $el.offset().top;
+								$sel.body.append('<div class="bg-lines-horizontal-line" data-horpos="'+posTop+'">');
+							})($(this));
 						})
-					})
+
+						var elements = $sel.body.find(".bg-lines-horizontal-line");
+
+						elements.each(function() {
+							var dataEl = $(this).data("horpos");
+							$(this).css({
+								"position"    : "absolute",
+								"top"         : dataEl,
+								"background"  : "#f2f2f2",
+								"width"       : "100%",
+								"height"      : "1px",
+								"left"		  : 0,
+								"right"       : 0,
+								"z-index"     : "-1000"
+							})
+						})
+
+					}
 
 				}
 

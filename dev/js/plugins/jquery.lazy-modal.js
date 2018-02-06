@@ -51,6 +51,8 @@
         basetpl: '<div class="lazy-modal">' +
                      '<div class="lazy-modal-background"></div>' +
                      '<div class="lazy-modal-scroll">' +
+                         '<div class="lazy-modal-area-close">' +
+                         '</div>' +
                          '<div class="lazy-modal-container">' +
                          '</div>' +
                      '</div>' +
@@ -159,14 +161,14 @@
             if ($body) {
 
                 $html.css({ "overflow" : "hidden", "margin-right" : widthScroll });
-                $body.prepend(self.options.basetpl);
+                $body.append(self.options.basetpl);
 
                 self.options.htmlStructure.el =  self.el;
 
                 self.options.htmlStructure.mainContainer = $(".lazy-modal", $body);
                 self.options.htmlStructure.contentContainer = $(".lazy-modal-container", self.options.htmlStructure.mainContainer);
                 self.options.htmlStructure.background = $(".lazy-modal-background", self.options.htmlStructure.mainContainer);
-                self.options.htmlStructure.scrollClose = $(".lazy-modal-scroll", self.options.htmlStructure.mainContainer);
+                self.options.htmlStructure.areaClose = $(".lazy-modal-area-close", self.options.htmlStructure.mainContainer);
 
                 self.options.htmlStructure.mainContainer.addClass(self.options.customclass);
                 self.options.htmlStructure.background.css("background", self.options.bcgcolor);
@@ -206,6 +208,12 @@
             container.append(self.options.htmlContent);
 
             self.hooks("afterImplant");
+
+            $(".lazy-modal").each(function () {
+                (function(el) {
+                    el.data("LazyModal", self);
+                })($(this));
+            });
 
             self.showModal();
 
@@ -248,7 +256,7 @@
             });
 
             if (self.options.closeonbcg) {
-                $(self.options.htmlStructure.scrollClose).off("click.lm-close").on("click.lm-close", function(e) {
+                $(self.options.htmlStructure.areaClose).off("click.lm-close").on("click.lm-close", function(e) {
                     e.stopPropagation();
                     e.preventDefault();
                     self.closeModal();
@@ -262,11 +270,6 @@
 
                     self.closeModal();
                 }
-            });
-
-            $(self.options.htmlStructure.contentContainer).off("click.lm-close").on("click.lm-close", function(e) {
-                e.stopPropagation();
-                e.preventDefault();
             });
 
         },
@@ -284,12 +287,10 @@
 
             $body.removeClass("open-lazy-modal");
 
-
             setTimeout(function() {
-
+                $html.css(widStyles);
                 $container.remove();
                 self.el.data("lazyModalInit", "off");
-                $html.css(widStyles);
                 self.hooks("afterClose");
 
             }, 800);
@@ -320,8 +321,7 @@
                 scrollbarWidth = windowsWidth - documentWidth;
 
             return scrollbarWidth;
-        }
-
+        },
 
     });
 
@@ -337,6 +337,7 @@
             var self = this;
 
             self.checkInstance();
+
             self.instance = true;
 
             return new LazyModal(el, settings, content);
@@ -344,19 +345,27 @@
 
         checkInstance: function() {
             var self = this;
+
     		if(self.instance) {
-    			self.close();
+    			self.close(true);
     		}
     	},
 
-        close: function() {
-            var instance = $('.lazy-modal:last').data("lazyModalInit");
+        close: function(hide) {
+            var self = this,
+                $elements = $(".lazy-modal:last"),
+                instance = $elements.data("LazyModal");
 
-            $('.lazy-modal:last').remove();
-            /*if ( instance instanceof LazyModal ) {
-                console.log("123");
-                instance["closeModal"].apply( instance, "closeModal");
+            /*if (hide == true) {
+                $elements.find(".lazy-modal-container").css({"opacity":"0"});
             }*/
+
+            if (instance instanceof LazyModal ) {
+                instance["closeModal"].apply(instance, { "outside" : true });
+                return instance;
+            }
+
+            return false;
         },
 
     }
