@@ -106,6 +106,21 @@ body
 		left 0
 		right 0
 		bottom 0
+		overflow hidden
+		height 100%
+		-webkit-overflow-scrolling touch
+
+	&.sticky-elements
+		.sticky
+			position fixed
+			top 0
+
+			transform translateY(-100%)
+		&--show
+			.sticky
+				transform translateY(0)
+
+				transition .3s transform $transitionAnimation
 
 @-ms-keyframes spin
 	from
@@ -568,6 +583,11 @@ body
 	&:focus
 		border-bottom-color $colorgreen
 
+	&.textarea
+		resize none
+		height 100%
+
+
 .form-close
 	position absolute
 	width 20px
@@ -1020,7 +1040,7 @@ body
 		margin-bottom 12px
 		line-height 20px
 	a
-		display block
+		display inline-block
 		margin-top 35px
 
 .footer-creators
@@ -2431,6 +2451,7 @@ body
 	box-sizing border-box
 
 	.doctors-filter-item
+		position relative
 		display inline-block
 		margin-right 20px
 		margin-bottom 10px
@@ -2448,6 +2469,15 @@ body
 		&.active
 			font-family ProximaNovaBold
 			color #128F2E
+
+		&:before
+			content attr(area-bold)
+			display block
+			width 101%
+			margin-top -15px
+			opacity 0
+			font-family ProximaNovaBold
+
 
 .doctors-items
 	display flex
@@ -2789,5 +2819,12 @@ body
 		&--darkgreen
 			background #024924
 
+.schedule-container
+	&.sticky-activate
+		padding-top 20px
+		padding-left 60px
+		margin-left -60px
+		background #fff
+		z-index 100
 
 /* //schedule */

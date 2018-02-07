@@ -57,6 +57,7 @@
 						self.check();
 					}, 50);
 
+					self.fixedBlock();
 				},
 
 				check: function() {
@@ -76,6 +77,34 @@
 						}
 
 					}
+				},
+
+				fixedBlock: function() {
+					$sel.window.on("scroll", function() {
+						var $elements = $(".sticky"),
+							sticky = $elements.outerHeight(),
+							sTop = $sel.window.scrollTop();
+
+						if(sTop > sticky) {
+							var $bgLines = $elements.find(".bg-lines-horizontal");
+							$bgLines.removeClass("bg-lines-horizontal");
+							$sel.body.addClass("sticky-elements");
+							$elements.addClass("sticky-activate");
+
+							setTimeout(function() {
+								$sel.body.addClass("sticky-elements--show");
+							},300);
+						} else {
+							$sel.body.removeClass("sticky-elements");
+							$sel.body.removeClass("sticky-elements--show");
+							$elements.removeClass("sticky-activate");
+						}
+
+						if ($sel.body.hasClass("sticky-elements--show")) {
+							DENTALCLINIC.bgLines.show(true);
+						}
+					});
+
 				}
 			},
 
@@ -117,7 +146,7 @@
 							btn.addClass("active");
 
 							if ($sel.window.width() <= "620") {
-								$sel.body.addClass("open-lazy-modal");
+								//$sel.body.addClass("open-lazy-modal");
 							}
 
 							self.show(self.menu, btn);
@@ -125,7 +154,7 @@
 							btn.removeClass("active");
 
 							if ($sel.window.width() <= "620") {
-								$sel.body.removeClass("open-lazy-modal");
+								//$sel.body.removeClass("open-lazy-modal");
 							}
 
 							self.hide(self.menu, btn);
@@ -146,6 +175,9 @@
 								"position": "fixed",
 								"left": self.posLeft,
 							});
+
+							$sel.body.addClass("open-menu");
+
 						}, 220);
 
 					}, 200);
@@ -158,10 +190,14 @@
 						"position": "relative",
 						"left": "inherit",
 					});
+
 					setTimeout(function() {
+						$sel.body.removeClass("open-menu");
 
+					}, 300);
+
+					setTimeout(function() {
 						menu.removeClass("active-block");
-
 					}, 600);
 				}
 			},
@@ -610,7 +646,10 @@
 									$container.find(".load-events-item").removeClass("load-events-item");
 									$linkAddress.removeClass("loading");
 								}, 100);
-								DENTALCLINIC.reload();
+								setTimeout(function() {
+									DENTALCLINIC.bgLines.show(true);
+									DENTALCLINIC.reload();
+								}, 300);
 							}
 						})
 					})(href, $container);
@@ -646,9 +685,13 @@
 						el.addClass("show-content");
 						setTimeout(function() {
 							DENTALCLINIC.common.go(el.offset().top, 500);
+							DENTALCLINIC.bgLines.show(true);
 						}, 100);
 					}, 300);
-					DENTALCLINIC.bgLines.show(true);
+					setTimeout(function() {
+						DENTALCLINIC.bgLines.show(true);
+					}, 600);
+
 				},
 
 				hide: function(el) {
@@ -705,7 +748,9 @@
 						setTimeout(function() {
 							el.removeClass("hide");
 							el.parent().css("border-top", "1px solid rgb(242, 242, 242)");
+							DENTALCLINIC.bgLines.show(true);
 						},50);
+
 					},300);
 				}
 			},
@@ -930,23 +975,15 @@
 					})($(this));
 				})
 			},
-
-			stickyElements: function() {
-				var self = this;
-
-				$(".sticky-elements").stick_in_parent({
-					container: $sel.body,
-					offset_top: 50
-				});
-			},
-
 		};
 
 	})();
 
 	DENTALCLINIC.menu();
 	DENTALCLINIC.blackVisually.init();
-	DENTALCLINIC.bgLines.init();
+	setTimeout(function() {
+		DENTALCLINIC.bgLines.init();
+	}, 300);
 	DENTALCLINIC.mobileMenu.init();
 	DENTALCLINIC.scrollAnimation.init();
 	DENTALCLINIC.map.init();
@@ -957,11 +994,10 @@
 	DENTALCLINIC.filter.init();
 	DENTALCLINIC.modalWindow();
 	DENTALCLINIC.toggleElements();
-	DENTALCLINIC.stickyElements();
 
 	DENTALCLINIC.reload = function() {
 		DENTALCLINIC.modalWindow();
-		DENTALCLINIC.bgLines.init();
+		DENTALCLINIC.bgLines.init(true);
 		DENTALCLINIC.scrollAnimation.init();
 	}
 })(jQuery);

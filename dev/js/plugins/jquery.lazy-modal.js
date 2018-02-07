@@ -205,7 +205,7 @@
             if (position) {
                 console.log("not style for position");
             }
-            
+
             container.append(self.options.htmlContent);
 
             self.hooks("afterImplant");
@@ -232,7 +232,9 @@
                 container.addClass("lazy-modal--show");
 
                 setTimeout(function() {
-                    $body.addClass("open-lazy-modal");
+                    if ($(window).width() <= "620") {
+                        $body.addClass("open-lazy-modal");
+                    }
                 }, 300);
 
                 self.hooks("afterShow");
@@ -375,7 +377,7 @@
 
 
     // === Start plugin === //
-    // set handler for click
+    //   set handler for click
     //  -settingsPlugin : settings in plugin, which are transmitted
     //  -dataEl         : data params in data
     //  -sizeDataObj    : length array data
