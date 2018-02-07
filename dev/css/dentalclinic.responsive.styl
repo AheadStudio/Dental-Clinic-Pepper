@@ -847,12 +847,12 @@
 			line-height 20px
 		p
 			font-size 14px
-			line-height 20px
+			line-height 28px
 			margin-bottom 15px
 		ul
 			li
 				font-size 14px
-				line-height 20px
+				line-height 28px
 				margin-bottom 10px
 
 		ol
@@ -866,11 +866,11 @@
 					font-size 30px
 
 				.page-numbered-list-subtitle
-					line-height 20px
+					line-height 28px
 					font-size 16px
 
 				.page-numbered-list-text
-					line-height 20px
+					line-height 28px
 					font-size 14px
 
 	.services-element-information
@@ -1084,12 +1084,18 @@
 		&.sticky-activate
 			padding-left 60px
 
+	.advantages-photo-container
+		display none
+		
 @media screen and (max-width: 425px)
 	.page-header
 		padding 35px 0 30px 0
 
 		.header-info-holder
 			display none
+
+	.intro
+		flex-flow column
 
 	.intro-personal
 		width 100%
@@ -1103,7 +1109,13 @@
 				min-width: auto
 
 	.intro-info
-		display none
+		display block
+		width 100%
+		padding-top 10px
+		padding-left 0
+		padding-right 0
+		font-size 16px
+		line-height 26px
 
 	.mini-news
 		padding 60px 30px
@@ -1231,7 +1243,7 @@
 
 			&>div
 				span
-					margin-bottom 7px
+					margin-bottom 15px
 					width 85px
 
 				&.contacts-instagram:after
