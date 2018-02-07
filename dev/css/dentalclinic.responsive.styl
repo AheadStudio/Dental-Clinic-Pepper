@@ -745,6 +745,7 @@
 		figure
 			margin-bottom 45px
 		figcaption
+			padding-left 0
 			padding-right 0
 
 	.services-element-information
@@ -766,8 +767,9 @@
 					left 0
 
 		figcaption
-			line-height 1
-			margin-top 5px
+			padding-left 0
+			line-height 20px
+			margin-top 10px
 
 	.news
 		.news-items
@@ -840,21 +842,23 @@
 			line-height 24px
 		h3
 			font-size 18px
-			margin-top 10px
+			margin-top 20px
 			margin-bottom 10px
 			line-height 20px
 		p
 			font-size 14px
 			line-height 20px
+			margin-bottom 15px
 		ul
 			li
 				font-size 14px
 				line-height 20px
+				margin-bottom 10px
 
 		ol
 			li
 				font-size 14px
-				padding-left 20px
+				padding-left 25px
 				margin-bottom 10px
 
 				&:before
@@ -1023,6 +1027,7 @@
 			figcaption
 				font-size 14px
 				line-height 20px
+				margin-top 10px
 
 		.doctor-detail-info
 			padding 0
@@ -1127,18 +1132,21 @@
 				left 0
 
 	.main-slider
-		height 400px
-		margin-bottom 5px
+		height 600px
+		margin-bottom 20px
 
 		.slick-arrow-block
-			top 360px
+			top 205px
 
 		.main-slider-item-img
 			&:before
-				padding-top 400px
+				padding-top 600px
 
 			.main-slider-item-img-container
-				height 400px
+				width 600px
+				height 600px
+				background-position-x 85px
+				background-position-y 230px
 
 	.intro
 		margin-bottom 30px
@@ -1153,7 +1161,7 @@
 		margin-top 30px
 
 	.main-slider-info-container
-		top 55px
+		top 40px
 		max-width 295px
 
 		.main-slider-item-title
@@ -1223,6 +1231,7 @@
 
 			&>div
 				span
+					margin-bottom 7px
 					width 85px
 
 				&.contacts-instagram:after
@@ -1322,6 +1331,10 @@
 
 	.mini-news-slider
 		display block
+		padding 20px 0
+
+		.slick-arrow-container
+			bottom 55px
 
 	.mini-news
 		display none
@@ -1337,6 +1350,7 @@
 
 	.contacts-container
 		.contacts-container-items>div
+			margin-bottom 25px
 			flex-flow column
 			align-items flex-start
 
@@ -1352,3 +1366,15 @@
 			right 0
 			padding-left 20px
 			padding-right 20px
+
+			.schedule-list
+				grid-gap 10px 0
+
+			h3
+				margin-top 0
+
+			.schedule-week
+				padding 5px
+
+	.mobile-menu-container
+		margin 40px auto 30px auto

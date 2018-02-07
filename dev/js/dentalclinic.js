@@ -86,8 +86,6 @@
 							sTop = $sel.window.scrollTop();
 
 						if(sTop > sticky) {
-							var $bgLines = $elements.find(".bg-lines-horizontal");
-							$bgLines.removeClass("bg-lines-horizontal");
 							$sel.body.addClass("sticky-elements");
 							$elements.addClass("sticky-activate");
 
@@ -100,9 +98,6 @@
 							$elements.removeClass("sticky-activate");
 						}
 
-						if ($sel.body.hasClass("sticky-elements--show")) {
-							DENTALCLINIC.bgLines.show(true);
-						}
 					});
 
 				}
@@ -241,11 +236,10 @@
 						self.sliderToggleAnimation($photo, idItem);
 					});*/
 
-					$slider.on("afterChange", function(event, slick, currentSlide) {
-						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
+					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
+						var $element = $(event.currentTarget).find(".main-slider-item[data-slick-index='"+nextSlide+"']"),
 							idElement = $element.attr("id"),
 							$toggle = $(".main-slider-item-info");
-
 						self.sliderToggleAnimation($toggle, idElement);
 					});
 
@@ -280,13 +274,14 @@
 						return;
 					})*/
 
-					$slider.on("afterChange", function(event, slick, currentSlide) {
-						if (currentSlide < itemSLide) {
+					$slider.on("beforeChange", function(event, slick, currentSlide) {
+						if (currentSlide < itemSLide && currentSlide !== 0) {
 							self.servicesCalculation("nextElement");
-							itemSLide = currentSlide;
-						} else {
+						} else if (currentSlide > itemSLide && currentSlide !== 0) {
 							self.servicesCalculation("prevElement");
-							itemSLide = currentSlide;
+						} else if (currentSlide == 0) {
+							self.servicesCalculation("prevElement");
+							itemSLide = -1;
 						}
 					});
 				},
@@ -319,8 +314,11 @@
 					});*/
 
 
-					$slider.on("afterChange", function(event, slick, currentSlide) {
-						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
+					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
+						var $element = $(event.currentTarget).find(".advantages-slider-item[data-slick-index='"+nextSlide+"']"),
+
+							$toggle = $(".main-slider-item-info");
+
 							idElement = $element.attr("id"),
 							$photo = $(".advantages-photo", ".advantages-photo-container");
 
@@ -392,7 +390,7 @@
 						prevArrow: '<div class="slick-arrow-prev"></div>',
 						nextArrow: '<div class="slick-arrow-next"></div>',
 						infinite: true,
-						speed: 600,
+						speed: 1000,
 						slidesToShow: 1,
 						//autoplay: true,
 						autoplaySpeed: 6000,
@@ -658,11 +656,12 @@
 			},
 
 			accordion: {
-
 				init: function() {
 					var self = this,
 						$accordion = $(".accordion"),
 						$accordionItem = $(".accordion-header", $accordion);
+
+
 
 					$accordionItem.on("click", function() {
 						var $el = $(this).parent(),
@@ -680,11 +679,16 @@
 				},
 
 				show: function(el) {
+					var self = this;
+
 					el.addClass("active");
+
 					setTimeout(function() {
 						el.addClass("show-content");
+
 						setTimeout(function() {
 							DENTALCLINIC.common.go(el.offset().top, 500);
+
 							DENTALCLINIC.bgLines.show(true);
 						}, 100);
 					}, 300);
@@ -875,11 +879,11 @@
 					if ($sel.window.width() >= "1300") {
 						$sel.body.append(self.bgLinesContainer);
 						self.show();
-					}
 
-					$sel.window.resize(function() {
-						self.show(true);
-					});
+						$sel.window.resize(function() {
+							self.show(true);
+						});
+					}
 
 				},
 

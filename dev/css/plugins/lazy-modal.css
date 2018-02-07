@@ -95,8 +95,8 @@
     cursor: pointer;
 }
 body.open-lazy-modal {
-    position: fixed;
-    overflow: hidden;
+    /*position: fixed;*/
+    /*overflow: hidden;*/
     height: 100%;
     -webkit-overflow-scrolling: touch;
 }
