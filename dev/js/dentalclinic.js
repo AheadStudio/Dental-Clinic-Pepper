@@ -166,10 +166,10 @@
 						menu.addClass("active-show");
 
 						setTimeout(function() {
-							btn.css({
+							/*btn.css({
 								"position": "fixed",
 								"left": self.posLeft,
-							});
+							});*/
 
 							$sel.body.addClass("open-menu");
 
@@ -181,10 +181,10 @@
 					var self = this;
 
 					menu.removeClass("active-show");
-					btn.css({
+					/*btn.css({
 						"position": "relative",
 						"left": "inherit",
-					});
+					});*/
 
 					setTimeout(function() {
 						$sel.body.removeClass("open-menu");
@@ -205,7 +205,9 @@
 					self.mainSlider($slider);
 					self.servicesSlider($slider);
 					self.advSlider($slider);
+
 					self.miniNews($slider);
+
 					self.newsSlider($(".content-slider"));
 				},
 
@@ -217,32 +219,6 @@
 						$arrowContainer = $(".slick-arrow-container", $mainSlider);
 
 					self.sliderEffect($slider, $mainSlider, $itemSlider, $arrowContainer, true, true, true);
-
-					/*$slider.on("swipe", function(event, slick, direction) {
-						var $element = $(event.currentTarget).find(".main-slider-item.slick-active"),
-							idElement = $element.attr("id"),
-							$toggle = $(".main-slider-item-info");
-
-						self.sliderToggleAnimation($toggle, idElement);
-					});*/
-
-					/*$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
-						var el = $(this),
-							$container  = el.closest(".main-slider"),
-							$sliderItem = $container.find(".main-slider-item.slick-active");
-							idItem =  $sliderItem.attr("id"),
-							$photo = $(".main-slider-item-info");
-
-						self.sliderToggleAnimation($photo, idItem);
-					});*/
-
-					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
-						var $element = $(event.currentTarget).find(".main-slider-item[data-slick-index='"+nextSlide+"']"),
-							idElement = $element.attr("id"),
-							$toggle = $(".main-slider-item-info");
-						self.sliderToggleAnimation($toggle, idElement);
-					});
-
 
 				},
 
@@ -256,23 +232,6 @@
 
 					self.servicesCalculation();
 					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false, false, true );
-
-					/*$slider.on("swipe", function(event, slick, direction){
-						if (direction == "left") {
-							self.servicesCalculation("prevElement")
-						} else {
-							self.servicesCalculation("nextElement")
-						}
-					});
-
-					$(".slick-arrow-prev", $arrowContainer).on("click", $arrowContainer, function() {
-						self.servicesCalculation("nextElement");
-						return;
-					})
-					$(".slick-arrow-next", $arrowContainer).on("click", $arrowContainer, function() {
-						self.servicesCalculation("prevElement");
-						return;
-					})*/
 
 					$slider.on("beforeChange", function(event, slick, currentSlide) {
 						if (currentSlide < itemSLide && currentSlide !== 0) {
@@ -294,25 +253,6 @@
 						$arrowContainer = $(".slick-arrow-container", $advSlider);
 
 					self.sliderEffect($slider, $advSlider, $itemSlider, $arrowContainer, false, false, true);
-
-					/*$slider.on("swipe", function(event, slick, direction) {
-						var $element = $(event.currentTarget).find(".advantages-slider-item.slick-active"),
-							idElement = $element.attr("id"),
-							$photo = $(".advantages-photo", ".advantages-photo-container");
-
-						self.sliderToggleAnimation($photo, idElement);
-					});
-
-					$(".slick-arrow", $arrowContainer).on("click", $arrowContainer, function() {
-						var el = $(this),
-							$container  = el.closest(".advantages-slider"),
-							$sliderItem = $container.find(".advantages-slider-item.slick-active");
-							idItem =  $sliderItem.attr("id"),
-							$photo = $(".advantages-photo", ".advantages-photo-container");
-
-						self.sliderToggleAnimation($photo, idItem);
-					});*/
-
 
 					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
 						var $element = $(event.currentTarget).find(".advantages-slider-item[data-slick-index='"+nextSlide+"']"),
@@ -344,12 +284,24 @@
 
 				miniNews: function(slider) {
 					var self = this,
-						$newsSlider = $(".mini-news-slider"),
-						$slider = $newsSlider.find(slider),
+						$slider = $(".mini-news"),
+						$newsSlider = $(".mini-news").parent(),
 						$itemSlider = $(".news-item", $slider),
-						$arrowContainer = $(".slick-arrow-container", $newsSlider);
+						$arrowContainer = $(".slick-arrow-container", ".mini-news-arrow");
 
-					self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
+					ssm.addStates([
+						{
+							// Tablets in landscape orientation
+							id: "tabletLandscape",
+							query: "(max-width: 500px)",
+							onEnter: function() {
+								self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
+							},
+							onLeave: function() {
+								$slider.slick("destroy");
+							}
+						}
+					]);
 				},
 
 				sliderToggleAnimation: function(el, idElement) {
@@ -630,27 +582,34 @@
 				$sel.body.on("click", ".load-more", function(event) {
 					var $linkAddress = $(this),
 						href = $linkAddress.attr("href"),
-						$container = $($linkAddress.data("container"));
+						$container = $($linkAddress.data("container")),
+						$items = $linkAddress.data("itemsselector");
+
 
 					$linkAddress.addClass("loading");
 
-					(function(href, $container) {
+					(function(href, $container, selector) {
 						$.ajax({
 							url: href,
 							success: function(data) {
-								var $data = $(data).addClass("load-events-item");
-									$container.append($data);
+								var $data = $('<div />').append(data),
+									$items = $data.find(selector);
+
+								$items.addClass("load-events-item");
+								$container.append($items);
+
 								setTimeout(function() {
 									$container.find(".load-events-item").removeClass("load-events-item");
 									$linkAddress.removeClass("loading");
 								}, 100);
+
 								setTimeout(function() {
 									DENTALCLINIC.bgLines.show(true);
 									DENTALCLINIC.reload();
 								}, 300);
 							}
 						})
-					})(href, $container);
+					})(href, $container, $items);
 					event.preventDefault();
 				})
 			},

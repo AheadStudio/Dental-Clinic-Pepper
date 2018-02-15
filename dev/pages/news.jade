@@ -5,7 +5,7 @@ block content
         div(class="news")
             div(class="page-information")
                 div(class="page-text")
-                    span(class="page-tag") клиника
+                    a(href="clinic.html",class="link page-tag") клиника
                     h1 Новости
             div(id="news-items-load", class="news-items")
                 a(href="#", class="link news-item bg-lines-horizontal")
@@ -75,4 +75,4 @@ block content
                     div(class="news-title") Специалисты клиники повышают квалификацию в Москве
                     div(class="news-text") Специалисты нашей клиники продолжают совершенствовать свои профессиональные навыки. Елена Гудкова, врач пародонтолог, детский - стоматолог клиники прошла обучение в Москве
             div(class="load")
-                a(href="news-load.html", data-container="#news-items-load", class="link load-more")
+                a(href="news-load.html", data-container="#news-items-load", data-itemsselector=".news-item", class="link load-more")

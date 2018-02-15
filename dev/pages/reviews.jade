@@ -6,7 +6,7 @@ block content
             div(class="page-information")
                 div(class="page-text")
                     h1 Отзывы
-            button(type="button",class="button button--green reviews-add", class="open-form", data-lazymodal="form-review-add.html") Добавить отзыв
+            a(href="form-review-add.html", class="link button button--green reviews-add", class="open-form", data-lazymodal) Добавить отзыв
             div(id="reviews-items-load", class="reviews-items")
                 a(href="#", class="link reviews-item bg-lines-horizontal", data-lazymodal="reviews-item.html")
                     div(class="reviews-item-container")
@@ -51,5 +51,5 @@ block content
                         div(class="arrow-icon") 
                             include ../../prod/svg/arrow_left_green.svg 
             div(class="load")
-                a(href="reviews-load.html", data-container="#reviews-items-load", class="link load-more")
+                a(href="reviews-load.html", data-container="#reviews-items-load", data-itemsselector=".reviews-item", class="link load-more")
         
