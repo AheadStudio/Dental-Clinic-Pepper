@@ -274,14 +274,12 @@
 						return;
 					})*/
 
-					$slider.on("beforeChange", function(event, slick, currentSlide) {
-						if (currentSlide < itemSLide && currentSlide !== 0) {
+					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
+						if ((currentSlide > nextSlide && (nextSlide !== 0 || currentSlide === 1)) || (currentSlide === 0 && nextSlide === slick.slideCount - 1)) {
+							self.servicesCalculation("prevElement");
+						}
+						else {
 							self.servicesCalculation("nextElement");
-						} else if (currentSlide > itemSLide && currentSlide !== 0) {
-							self.servicesCalculation("prevElement");
-						} else if (currentSlide == 0) {
-							self.servicesCalculation("prevElement");
-							itemSLide = -1;
 						}
 					});
 				},
