@@ -2,36 +2,39 @@ extends ../templates/base
 
 block content
     div(class="main-slider")
-        div(class="main-slider-info-container")
-            div(class="main-slider-item-info active active-animation", data-sliderToggle="main_1")
-                div(class="main-slider-item-title") 
-                    | Все виды 
-                    br 
-                    | протезирования
-                div(class="main-slider-item-subtitle") Мы обязательно подберем то, что подойдет именно в вашем случае
-            div(class="main-slider-item-info", data-sliderToggle="main_2") 
-                div(class="main-slider-item-title") 
-                    | Имплантация зубов –  
-                    br 
-                    | это чувство здоровья и
-                    br
-                    | комфорта на всю жизнь!
-                div(class="main-slider-item-subtitle") Самый современный и эстетичный способ восстановления утраченных зубов
-            div(class="main-slider-item-info", data-sliderToggle="main_3") 
-                div(class="main-slider-item-title") 
-                    | Простой путь к 
-                    br 
-                    | здоровью полости рта
-                div(class="main-slider-item-subtitle") Уровень ведущих мировых клиник. Инновационное техническое оборудование
-
         div(class="main-slider-items slick-slider")
-            div(class="main-slider-item", id="main_1")
+            div(class="main-slider-item")
+                div(class="page-inner page-inner--w1")
+                    div(class="main-slider-item-info")
+                        div(class="main-slider-item-title") 
+                            | Все виды 
+                            br 
+                            | протезирования
+                        div(class="main-slider-item-subtitle") Мы обязательно подберем то, что подойдет именно в вашем случае
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/grandmother.jpg)")
-            div(class="main-slider-item", id="main_2")
+                        
+            div(class="main-slider-item")
+                div(class="page-inner page-inner--w1")
+                    div(class="main-slider-item-info") 
+                        div(class="main-slider-item-title") 
+                            | Имплантация зубов –  
+                            br 
+                            | это чувство здоровья и
+                            br
+                            | комфорта на всю жизнь!
+                        div(class="main-slider-item-subtitle") Самый современный и эстетичный способ восстановления утраченных зубов
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/ancle.jpg)")
-            div(class="main-slider-item", id="main_3")
+                        
+            div(class="main-slider-item")
+                div(class="page-inner page-inner--w1")
+                    div(class="main-slider-item-info") 
+                        div(class="main-slider-item-title") 
+                            | Простой путь к 
+                            br 
+                            | здоровью полости рта
+                        div(class="main-slider-item-subtitle") Уровень ведущих мировых клиник. Инновационное техническое оборудование
                 div(class="main-slider-item-img")
                     div(class="main-slider-item-img-container", style="background-image: url(../dummy/girl.jpg)")
                         
@@ -52,7 +55,7 @@ block content
     div(class="page-inner page-inner--w1 bg-lines-horizontal")
         div(class="clinics info")
             div(class="clinics-info", data-animationblock="true", data-animationtype="animation-left")
-                div(class="tag") клиника
+                a(href="clinic.html", class="link tag") клиника
                 div(class="title") Стоматологическая клиника Перцева в Иваново
                 div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
             div(class="clinics-container")
@@ -87,7 +90,7 @@ block content
                         div(class="services-item-icon")
                             include ../../prod/svg/forceps.svg 	 
             div(class="services-slider info", data-animationblock="true", data-animationtype="animation-right")
-                div(class="tag") услуги
+                a(href="services_section.html", class="link tag") услуги
                 div(class="services-slider-items slick-slider")
                     div(class="services-slider-item")
                         a(href="services_element.html", class="services-slider-item-icon")
@@ -159,7 +162,7 @@ block content
     div(class="page-inner page-inner--w1 bg-lines-horizontal")
         div(class="advantages-mini")
             div(class="advantages-slider info")
-                div(class="tag") Наши приемущства
+                a(href="advantages.html", class="link tag") Наши приемущства
                 div(class="advantages-slider-items slick-slider")
                     div(class="advantages-slider-item", id="advantages_1")
                         div(class="title") Только современное зарубежное оборудование
@@ -200,28 +203,6 @@ block content
 
     div(class="page-inner page-inner--max")
         div(class="page-inner")
-            div(class="mini-news-slider")
-                div(class="slick-slider")
-                    a(href="news_detail_full.html", target="_blank", class="link news-item")
-                        div(class="news-date") 12 мая 2017
-                        div(class="news-title") XIV Всероссийский денталогический форум в Сочи
-                        div(class="news-text") В выставочном комплексе "Ленэкспо" прошел симпозиум "Федеральная программа профилактики стоматологических заболеваний"
-                    a(href="news_detail_full.html", target="_blank", class="link news-item")
-                        div(class="news-date") 23 июня 2017
-                        div(class="news-title") Всемирный день улыбки
-                        div(class="news-text") От всей диши желаем, чтобы ваши паценты широко улыбались и искренне благодарили своих докторов! Вы дарите людям здоровье и красоту!
-                    a(href="news_detail_full.html", target="_blank", class="link news-item")
-                        div(class="news-date") 30 июня 2017
-                        div(class="news-title") У нас юбилей!
-                        div(class="news-text") А у нас снова юбилей! на этот раз это внушительная цифра 55 000!!! Именно столько пациентов зарегистрировано в нашей клиентской базе на сегодняшний день. Скульптурной композиции "От улыбки..." пройдет ежегодный праздник.
-                    a(href="news_detail_full.html", target="_blank", class="link news-item")
-                        div(class="news-date") 30 июня 2017
-                        div(class="news-title") Специалисты клиники повышают квалификацию в Москве
-                        div(class="news-text") Специалисты нашей клиники продолжают совершенствовать свои профессиональные навыки. Елена Гудкова, врач пародонтолог, детский - стоматолог клиники прошла обучение в Москве
-                div(class="slick-arrow-container")
-                    span |
-
- 
             div(class="mini-news")
                 a(href="news_detail_full.html", target="_blank", class="link news-item")
                     div(class="news-date") 12 мая 2017
@@ -247,10 +228,13 @@ block content
                     div(class="news-text") Специалисты нашей клиники продолжают совершенствовать свои профессиональные навыки. Елена Гудкова, врач пародонтолог, детский - стоматолог клиники прошла обучение в Москве
                     div(class="news-arrow-icon")
                         include ../../prod/svg/arrow_left_green.svg 
+            div(class="mini-news-arrow")
+                div(class="slick-arrow-container")
+                    span |
 
     div(class="page-inner page-inner--w1")
         div(class="map-block info")
-            div(class="tag") контакты
+            a(href="contacts.html", class="link tag") контакты
             div(class="title") Нас легко найти
             div(class="map-container")
                 div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../svg/map_point.svg")

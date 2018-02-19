@@ -212,6 +212,9 @@ body
 		display block
 		width 160px
 
+		.header-call
+			font-size 12px
+
 	.header-burger-holder
 		position relative
 		display block
@@ -727,7 +730,7 @@ body
 
 			font-weight 600
 
-		span
+		.contacts-call
 			display block
 			margin-bottom 30px
 
@@ -1080,36 +1083,23 @@ body
 .main-slider-item
 	position relative
 
-.main-slider-info-container
-	position absolute
-	top 87px
-	left 50%
-
-	width 100%
-	max-width 660px
-
-	padding 0 60px 0 120px
-	box-sizing border-box
-
-	transform translateX(-99%)
-
-	z-index 1000
-
-	pointer-events none
-
-	.main-slider-item-info
-		display none
-		width 660px
-		opacity 0
-		transform translateY(-30px)
-		transition opacity 0.6s $transitionAnimation, transform 0.6s $transitionAnimation
-
-		&.active
-			display block
-
-		&.active-animation
+	&.slick-active
+		.main-slider-item-info
 			opacity 1
 			transform translateY(0)
+
+.main-slider
+	.main-slider-item-info
+		position absolute
+		top 87px
+		left 120px
+
+		max-width 660px
+		opacity 0
+		transform translateY(-50px)
+		transition opacity 0.6s $transitionAnimation, transform 0.6s $transitionAnimation
+
+		z-index 50
 
 	.main-slider-item-title
 		display block
@@ -1304,6 +1294,7 @@ body
 
 .info
 	.tag
+		display block
 		margin-bottom 15px
 
 		font-size 14px
@@ -1541,20 +1532,9 @@ body
 		.news-arrow-icon
 			bottom 0
 
-
-.mini-news-slider
+.mini-news-arrow
 	display none
-	width 100%
-	height auto
-	background $colorgrayfone
-
-	.news-item
-		padding 30px 20px
-
-	.slick-arrow-container
-		left 20px
-		bottom 20px
-		top inherit
+	position relative
 
 .news-item
 	position relative

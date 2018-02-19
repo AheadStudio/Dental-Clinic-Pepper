@@ -251,8 +251,7 @@
 						$servicesSlider = $(".services-slider"),
 					 	$slider = $servicesSlider.find(slider),
 						$itemSlider = $(".services-slider-item", $slider),
-						$arrowContainer = $(".slick-arrow-container", $servicesSlider),
-						itemSLide = -1;
+						$arrowContainer = $(".slick-arrow-container", $servicesSlider);
 
 					self.servicesCalculation();
 					self.sliderEffect($slider, $servicesSlider, $itemSlider, $arrowContainer, false, false, true );

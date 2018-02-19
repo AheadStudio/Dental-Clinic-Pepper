@@ -82,6 +82,12 @@
 		.schedule-day
 			margin-right 51.5px
 
+	.main-slider
+		.main-slider-item-info
+			position absolute
+			top 87px
+			left 60px
+
 @media screen and (max-width: 1024px)
 	.services-section-description
 		.description-list
@@ -111,9 +117,6 @@
 			.main-slider-item-img-container
 				width 100%
 				height 450px
-
-	.main-slider-info-container
-		max-width 450px
 
 		.main-slider-item-info
 			width auto
@@ -455,7 +458,7 @@
 			padding 70px 20px 70px 0
 
 			.news-arrow-icon
-				bottom 0
+				bottom 20px
 
 @media screen and (max-width: 768px)
 	.page-header
@@ -695,6 +698,9 @@
 			.slick-arrow-container
 				left 20px
 
+		.main-slider-item-info
+			left 20px
+
 	.main-slider-info-container
 		padding 0
 
@@ -847,12 +853,15 @@
 			line-height 20px
 		p
 			font-size 14px
-			line-height 20px
+			line-height 25px
 			margin-bottom 15px
+
+		i
+			line-height 25px
 		ul
 			li
 				font-size 14px
-				line-height 20px
+				line-height 28px
 				margin-bottom 10px
 
 		ol
@@ -866,11 +875,11 @@
 					font-size 30px
 
 				.page-numbered-list-subtitle
-					line-height 20px
+					line-height 25px
 					font-size 16px
 
 				.page-numbered-list-text
-					line-height 20px
+					line-height 25px
 					font-size 14px
 
 	.services-element-information
@@ -1084,12 +1093,37 @@
 		&.sticky-activate
 			padding-left 60px
 
+	.advantages-photo-container
+		display none
+
+	.doctors-filter
+		.doctors-filter-item
+			margin-right 8px
+
+	.mini-news
+		.news-item
+			padding 40px 20px 70px 0
+			.news-arrow-icon
+				bottom 40px
+				left 0px
+
+	.mini-news-arrow
+		display block
+
+		.slick-arrow-container
+			bottom 20px
+			left 60px
+
+
 @media screen and (max-width: 425px)
 	.page-header
 		padding 35px 0 30px 0
 
 		.header-info-holder
 			display none
+
+	.intro
+		flex-flow column
 
 	.intro-personal
 		width 100%
@@ -1103,10 +1137,22 @@
 				min-width: auto
 
 	.intro-info
-		display none
+		display block
+		width 100%
+		padding-top 10px
+		padding-left 0
+		padding-right 0
+		font-size 16px
+		line-height 26px
 
 	.mini-news
-		padding 60px 30px
+		margin-top 30px
+
+		padding 30px 20px
+
+	.mini-news-arrow
+		.slick-arrow-container
+			left 20px
 
 	.services
 		height auto
@@ -1135,6 +1181,9 @@
 		height 600px
 		margin-bottom 20px
 
+		.main-slider-item-info
+			top 35px
+
 		.slick-arrow-block
 			top 205px
 
@@ -1154,16 +1203,10 @@
 	.advantages-mini
 		margin-top 30px
 
-	.mini-news
-		margin-top 30px
-
 	.map-block
 		margin-top 30px
 
-	.main-slider-info-container
-		top 40px
-		max-width 295px
-
+	.main-slider
 		.main-slider-item-title
 			font-size 24px
 			line-height 25px
@@ -1231,7 +1274,7 @@
 
 			&>div
 				span
-					margin-bottom 7px
+					margin-bottom 15px
 					width 85px
 
 				&.contacts-instagram:after
@@ -1301,11 +1344,6 @@
 				height 15px
 				margin-top -5px
 
-	.mini-news
-		padding 30px 20px
-		.news-item
-			padding 30px 20px 70px 0
-
 	.page-footer
 		padding-bottom 20px
 		padding-top 40px
@@ -1328,17 +1366,6 @@
 			margin-bottom 40px
 			grid-column-end 1
 			order 1
-
-	.mini-news-slider
-		display block
-		padding 20px 0
-
-		.slick-arrow-container
-			bottom 55px
-
-	.mini-news
-		display none
-
 	.toggle
 		display inline-block
 
