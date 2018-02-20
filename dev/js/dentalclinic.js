@@ -80,23 +80,28 @@
 				},
 
 				fixedBlock: function() {
+					var stickyWidth = $(".sticky").outerWidth();
+
 					$sel.window.on("scroll", function() {
 						var $elements = $(".sticky"),
-							sticky = $elements.outerHeight(),
+							stickyHeight = $elements.outerHeight(),
 							sTop = $sel.window.scrollTop();
 
-						if(sTop > sticky) {
+						if(sTop > stickyHeight) {
 							$sel.body.addClass("sticky-elements");
 							$elements.addClass("sticky-activate");
 
 							setTimeout(function() {
 								$sel.body.addClass("sticky-elements--show");
 							},300);
+
 						} else {
 							$sel.body.removeClass("sticky-elements");
 							$sel.body.removeClass("sticky-elements--show");
 							$elements.removeClass("sticky-activate");
 						}
+
+						$(".sticky-activate").css("width", stickyWidth);
 
 					});
 
@@ -310,17 +315,6 @@
 						self.sliderToggleAnimation($photo, idItem);
 					});*/
 
-
-					$slider.on("beforeChange", function(event, slick, currentSlide, nextSlide) {
-						var $element = $(event.currentTarget).find(".advantages-slider-item[data-slick-index='"+nextSlide+"']"),
-
-							$toggle = $(".main-slider-item-info");
-
-							idElement = $element.attr("id"),
-							$photo = $(".advantages-photo", ".advantages-photo-container");
-
-						self.sliderToggleAnimation($photo, idElement);
-					});
 				},
 
 				newsSlider: function(slider) {

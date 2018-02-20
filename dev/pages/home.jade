@@ -55,7 +55,7 @@ block content
     div(class="page-inner page-inner--w1 bg-lines-horizontal")
         div(class="clinics info")
             div(class="clinics-info", data-animationblock="true", data-animationtype="animation-left")
-                a(href="clinic.html", class="link tag") клиника
+                a(href="clinic.html", class="link tag link--darkgray") клиника
                 div(class="title") Стоматологическая клиника Перцева в Иваново
                 div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
             div(class="clinics-container")
@@ -90,7 +90,7 @@ block content
                         div(class="services-item-icon")
                             include ../../prod/svg/forceps.svg 	 
             div(class="services-slider info", data-animationblock="true", data-animationtype="animation-right")
-                a(href="services_section.html", class="link tag") услуги
+                a(href="services_section.html", class="link tag link--darkgray") услуги
                 div(class="services-slider-items slick-slider")
                     div(class="services-slider-item")
                         a(href="services_element.html", class="services-slider-item-icon")
@@ -162,44 +162,55 @@ block content
     div(class="page-inner page-inner--w1 bg-lines-horizontal")
         div(class="advantages-mini")
             div(class="advantages-slider info")
-                a(href="advantages.html", class="link tag") Наши приемущства
+                a(href="advantages.html", class="link tag link--darkgray") Наши приемущства
                 div(class="advantages-slider-items slick-slider")
-                    div(class="advantages-slider-item", id="advantages_1")
-                        div(class="title") Только современное зарубежное оборудование
-                        div(class="description page-text")
-                            ul
-                                li Стоматологические установки С8+ (
-                                    a(href="#", class="link link--brown link--brown-bottom") Sirona Dental Systems, GmbH 
-                                    | , Германия)
-                                li Рентгеновкая система компьютерной томографии GALILEOS 3D (
-                                    a(href="#", class="link link--brown link--brown-bottom") Sirona Dental Systems, GmbH
-                                    | , Германия)
-                                li Лентальные цифровые рентгеновские аппараты XGENUS 
-                                    a(href="#", class="link link--brown link--brown-bottom") (Olgiate Olina, Italy)
-                                li Энтодонтические микроскопы Som ( 
-                                    a(href="#", class="link link--brown link--brown-bottom") Karl Kaps
-                                    | , Германия )
-                    div(class="advantages-slider-item info", id="advantages_2")
-                        div(class="title") Оснащение клиники
-                        div(class="description") Своя собственная зуботехническая лаборатория позволяет сократить временные издержки для изготовления зубных протезов, а своя стерилизационная дает тотальную очистку и дезинфекция инструментов прямо на месте.
-                    div(class="advantages-slider-item info", id="advantages_3") 
-                        div(class="title") Высочайший уровень наших специалистов
-                        div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
+                    div(class="advantages-slider-item")
+                        div(class="advantages-slider-item-container")
+                            div(class="advantages-slider-item-container-item")
+                                div(class="title") Только современное зарубежное оборудование
+                                div(class="description page-text")
+                                    ul
+                                        li Стоматологические установки С8+ (
+                                            a(href="#", class="link link--brown link--brown-bottom") Sirona Dental Systems, GmbH 
+                                            | , Германия)
+                                        li Рентгеновкая система компьютерной томографии GALILEOS 3D (
+                                            a(href="#", class="link link--brown link--brown-bottom") Sirona Dental Systems, GmbH
+                                            | , Германия)
+                                        li Лентальные цифровые рентгеновские аппараты XGENUS 
+                                            a(href="#", class="link link--brown link--brown-bottom") (Olgiate Olina, Italy)
+                                        li Энтодонтические микроскопы Som ( 
+                                            a(href="#", class="link link--brown link--brown-bottom") Karl Kaps
+                                            | , Германия )
+                                            
+                            div(class="advantages-slider-item-container-item")
+                                div(class="advantages-photo")
+                                    img(src="../dummy/fauteuil_dentaire.png", alt="")
+                                    span(class="advantages-photo-description") Стоматологическая установка С8
+                            
+                    div(class="advantages-slider-item info")
+                        div(class="advantages-slider-item-container")
+                            div(class="advantages-slider-item-container-item")
+                                div(class="title") Оснащение клиники
+                                div(class="description") Своя собственная зуботехническая лаборатория позволяет сократить временные издержки для изготовления зубных протезов, а своя стерилизационная дает тотальную очистку и дезинфекция инструментов прямо на месте.
+                            div(class="advantages-slider-item-container-item")
+                                div(class="advantages-photo")
+                                    img(src="../dummy/Artboard_2.png", alt="")
+                                    span(class="advantages-photo-description") Стерилизацтонная печь MELAG
+                                
+                    div(class="advantages-slider-item info")
+                        div(class="advantages-slider-item-container")
+                            div(class="advantages-slider-item-container-item")
+                                div(class="title") Высочайший уровень наших специалистов
+                                div(class="description") Клиника оснащена рентгеновским кабинетом, стерилизационной, кабинетами с современными немецкими стоматологическими установками, регистратурой, удобным холлом для ожидания пациентов и их сопровождающими, где можно почитать журналы и немного расслабиться перед приемом у доктора.
+                            div(class="advantages-slider-item-container-item")
+                                div(class="advantages-photo advantages-photo--many")
+                                    img(src="../dummy/director_percev.jpg", alt="")
+                                    img(src="../dummy/perceva.jpg", alt="")
+                                    img(src="../dummy/tarhanov.jpg", alt="")
+                                    img(src="../dummy/potanina.jpg", alt="")
                 div(class="slick-arrow-container")
                     span |
-                    
-            div(class="advantages-photo-container")
-                div(class="advantages-photo advantages-photo--one active active-animation", data-sliderToggle="advantages_1")
-                    img(src="../dummy/fauteuil_dentaire.png", alt="")
-                    span(class="advantages-photo-description") Стоматологическая установка С8
-                div(class="advantages-photo advantages-photo--one", data-sliderToggle="advantages_2")
-                    img(src="../dummy/Artboard_2.png", alt="")
-                    span(class="advantages-photo-description") Стерилизацтонная печь MELAG
-                div(class="advantages-photo", data-sliderToggle="advantages_3")
-                    img(src="../dummy/director_percev.jpg", alt="")
-                    img(src="../dummy/perceva.jpg", alt="")
-                    img(src="../dummy/tarhanov.jpg", alt="")
-                    img(src="../dummy/potanina.jpg", alt="")
+
 
     div(class="page-inner page-inner--max")
         div(class="page-inner")
@@ -234,7 +245,7 @@ block content
 
     div(class="page-inner page-inner--w1")
         div(class="map-block info")
-            a(href="contacts.html", class="link tag") контакты
+            a(href="contacts.html", class="link tag link--darkgray") контакты
             div(class="title") Нас легко найти
             div(class="map-container")
                 div(id="map", class="map", data-lat="57.00134462", data-lng="40.98069906", data-zoom="15", data-icon="../svg/map_point.svg")
