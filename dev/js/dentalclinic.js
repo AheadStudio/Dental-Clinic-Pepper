@@ -621,27 +621,40 @@
 				$sel.body.on("click", ".load-more", function(event) {
 					var $linkAddress = $(this),
 						href = $linkAddress.attr("href"),
+						selector = $linkAddress.data("itemsselector"),
 						$container = $($linkAddress.data("container"));
 
 					$linkAddress.addClass("loading");
 
-					(function(href, $container) {
+					(function(href, $container, $link, selector) {
 						$.ajax({
 							url: href,
 							success: function(data) {
-								var $data = $(data).addClass("load-events-item");
-									$container.append($data);
+								var $data = $('<div />').append(data),
+									$items = $data.find(selector),
+									$preloader = $data.find(".load");
+
+								$items.addClass("load-events-item");
+								$container.append($items);
+								$link.parent().remove();
+
+								if($preloader && $preloader.length) {
+									$container.parent().append($preloader);
+								}
+
 								setTimeout(function() {
 									$container.find(".load-events-item").removeClass("load-events-item");
 									$linkAddress.removeClass("loading");
 								}, 100);
+
 								setTimeout(function() {
 									DENTALCLINIC.bgLines.show(true);
 									DENTALCLINIC.reload();
 								}, 300);
+
 							}
 						})
-					})(href, $container);
+					})(href, $container, $linkAddress, selector);
 					event.preventDefault();
 				})
 			},
