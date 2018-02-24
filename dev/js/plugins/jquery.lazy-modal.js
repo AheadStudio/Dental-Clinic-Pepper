@@ -31,9 +31,6 @@
         // Postion button close
         positionclose:  "outside",
 
-        // Close modal when clicked outside
-        closeoutside: true,
-
         // Transition effect
         // fade, top, bottom, left, right, zoom
         effectshow: "",
@@ -70,6 +67,9 @@
             				'C38.25,158.125,158.125,38.25,306,38.25c147.875,0,267.75,119.875,267.75,267.75C573.75,453.875,453.875,573.75,306,573.75z"/></g></g></g></svg>'+
                      '</button>',
 
+        // information which send this ajax request
+        ajaxdatasend: false,
+
         // Create structure
         // using params
         init: $.noop,
@@ -95,7 +95,7 @@
 
         // Close modal window
         // destroy structure in DOM model
-        close: $.noop,
+        afterClose: $.noop,
 
     };
 
@@ -137,6 +137,7 @@
                 (function(href) {
                     $.ajax({
                         url: href,
+                        data: self.options.ajaxdatasend,
                         success: function(dataContent) {
                             self.options.htmlContent = $(dataContent);
 
@@ -156,7 +157,8 @@
                 initialization,
                 widthScroll = self.widthScroll();
 
-            self.hooks("beforeLoad");
+            self.hooks("beforeImplant");
+
             self.options.htmlStructure = {};
 
             if ($body) {

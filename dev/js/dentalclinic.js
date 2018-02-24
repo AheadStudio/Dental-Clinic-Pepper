@@ -113,14 +113,20 @@
 
 				$(".header-menu-item-holder--has-submenu").on("mouseenter", function() {
 					var $holder = $(this);
+
 					$(".header-menu-level1", $holder).css("display", "block");
+					$holder.css("z-index", "20");
+
 					setTimeout(function() {
 						$(".header-menu-level1", $holder).addClass("show");
 					}, 50);
 				});
 				$(".header-menu-item-holder--has-submenu").on("mouseleave", function() {
 					var $holder = $(this);
+
 					$(".header-menu-level1", $holder).removeClass("show");
+					$holder.css("z-index", "10");
+
 					setTimeout(function() {
 						$(".header-menu-level1", $holder).css("display", "none");
 					}, 350);
@@ -335,12 +341,41 @@
 
 				miniNews: function(slider) {
 					var self = this,
-						$newsSlider = $(".mini-news-slider"),
-						$slider = $newsSlider.find(slider),
-						$itemSlider = $(".news-item", $slider),
-						$arrowContainer = $(".slick-arrow-container", $newsSlider);
+						$slider = $(".mini-news"),
+						$arrowContainer = $slider.parent().find($(".slick-arrow-container"));
 
-					self.sliderEffect($slider, $newsSlider, $itemSlider, $arrowContainer, false);
+					ssm.addStates([
+						{
+							id: "tabletLandscape",
+							query: "(max-width: 600px)",
+							onEnter: function() {
+								$(".mini-news").slick({
+									arrows: true,
+									appendArrows: $arrowContainer,
+									autoplay: true,
+									autoplaySpeed: 300,
+									prevArrow: '<div class="slick-arrow-prev"></div>',
+									nextArrow: '<div class="slick-arrow-next"></div>',
+									infinite: true,
+									speed: 1000,
+									autoplaySpeed: 6000,
+									responsive: [
+										{
+											breakpoint: 500,
+											settings: {
+												slidesToShow: 1,
+												slidesToScroll: 1
+											}
+										}
+									]
+								});
+							},
+							onLeave: function() {
+								$(".mini-news").slick("destroy");
+							}
+						}
+					]);
+
 				},
 
 				sliderToggleAnimation: function(el, idElement) {
@@ -605,8 +640,12 @@
 													'<span class="form-close"></span>'+
 												 '</button>',
 								    positionclose: "inside",
+									ajaxdatasend: {
+										"IS_AJAX": "Y"
+									},
 									init: function(obj) {
 										obj.options.htmlContent = $(".form", obj.options.htmlContent);
+										console.log(obj);
 									},
 								};
 								$.lazymodal.open($("button",$form), options, $form.data("success"));
@@ -983,6 +1022,7 @@
 					})($(this));
 				})
 			},
+
 		};
 
 	})();
